@@ -1,0 +1,164 @@
+\documentclass{dsa}
+
+\usepackage{array}
+
+\renewcommand{\arraystretch}{1.4}
+
+\newcommand{\num}[1]{\dsaTextInput{#1}{0.75cm}}
+
+\begin{document}   
+   \begin{dsaCharacterSheet}
+      \begin{center}
+         \includegraphics[width=6cm]{./fanpaket/logo-fanprodukt.png}
+      \end{center}
+      
+      \setlength{\multicolsep}{11pt}
+      
+      \titlespacing{\section}{0pt}{-15pt}{0pt}
+      \titlespacing{\subsection}{0pt}{-18pt}{0pt}
+      
+      \vspace{-15pt}
+      
+      \section*{Vertrautendokument}
+      
+      \vspace{-2pt}
+      
+      \setlength{\columnsep}{9pt}
+      
+      \begin{multicols}{2}
+      
+         \begin{dsaSheetBox}[8.5cm]
+            \begin{tabular}{p{2.1cm}p{5.5cm}}
+               Name & \dsaTextInput{Name}{5.5cm} \\ \hline
+               Rasse & \dsaTextInput{Rasse}{5.5cm} \\ \hline
+               Alter & \dsaTextInput{Alter}{5.5cm} \\ \hline
+               Größe & \dsaTextInput{Groesse}{5.5cm} \\ \hline
+               Geschlecht & \dsaTextInput{Geschlecht}{5.5cm} \\ \hline
+               Tiersinn & \dsaTextInput{Tiersinn}{5.45cm} \\
+            \end{tabular}
+         \end{dsaSheetBox}
+         
+         \columnbreak
+         
+         \begin{center}
+            \setlength\fboxrule{2pt}
+            \fcolorbox{black}{white}{
+               \begin{minipage}{8.65cm}
+                  \centering Porträt
+                  \vspace{108pt}
+               \end{minipage}
+            }
+         \end{center}
+         
+      \end{multicols}
+      
+      \subsection*{Eigenschaften \& Basiswerte}
+      \vspace{-5pt}
+      
+      \newcommand{\dsaPropline}[2]{#1 & \hspace{1pt} \num{#2modif} & \hspace{1pt} \num{#2orig} & \cellcolor{white} \hspace{1pt} \num{#2akt}}
+      
+      \begin{multicols}{2}
+
+            \begin{dsaSheetBox}[8.5cm]
+               \begin{tabu}{p{3.5cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}}
+                  \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell} \Xhline{2\arrayrulewidth}
+                  \dsaPropline{Mut}{MU} \\ \hline
+                  \dsaPropline{Klugkeit}{KL} \\ \hline
+                  \dsaPropline{Intuition}{IN} \\ \hline
+                  \dsaPropline{Charisma}{CH} \\ \hline
+                  \dsaPropline{Fingerfertigkeit}{FF} \\ \hline
+                  \dsaPropline{Gewandtheit}{GE} \\ \hline
+                  \dsaPropline{Konstitution}{KO} \\ \hline
+                  \dsaPropline{Körperkraft}{KK} \\
+                  
+               \end{tabu}
+            \end{dsaSheetBox}
+            
+            \columnbreak
+         
+            \begin{dsaSheetBox}[8.5cm]
+               \begin{tabu}{p{3.5cm}|p{1.1cm}|p{1.1cm}|p{1.1cm}}
+                  \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell } \Xhline{2\arrayrulewidth}
+                  \dsaPropline{Lebenspunkte}{LP} \\ \hline
+                  \dsaPropline{Ausdauer}{AU} \\ \hline
+                  \dsaPropline{Astralenergie}{AE} \\ \hline
+                  \dsaPropline{Magieresistenz}{MR} \\ \hline
+                  \dsaPropline{AT-Basiswert}{AT} \\ \hline
+                  \dsaPropline{PA-Basiswert}{PA} \\ \hline
+                  \dsaPropline{Loyalität}{LO} \\ \hline
+                  \dsaPropline{Geschwindigkeit}{GS} \\
+               \end{tabu}
+            \end{dsaSheetBox}
+      
+      \end{multicols}
+      
+      \vspace{-18pt}
+      
+      \begin{multicols}{2}
+         \subsection*{Kampf}
+         \vspace{-8pt}
+         
+         \begin{dsaSheetBox}[8.5cm]
+            \small
+            \begin{tabu}{p{3cm}|p{0.75cm}|p{3.25cm}}
+               \dsaRow{\scriptsize}{\scriptsize\normalfont\bfseries\centering}{ & max. & aktuell } \hline
+               \dsaRow{\footnotesize}{}{Lebensenergie & \cellcolor{white} \num{LEmax} & \cellcolor{white} \num{LEakt}} \hline
+               \dsaRow{\footnotesize}{}{Ausdauer      & \cellcolor{white} \num{AUmax} & \cellcolor{white} \num{AUakt2}} \hline
+               \dsaRow{\tiny}{}{\multicolumn{3}{l}{}}
+               \dsaRow{\footnotesize}{}{\multicolumn{3}{@{}l}{\normalfont \bfseries \footnotesize Bes. Kampfregeln: \dsaTextInput[9]{kampfregeln1}{5.2cm}}} \hline
+               \dsaRow{\footnotesize}{}{\multicolumn{3}{@{}l}{\dsaTextInput[9]{kampfregeln2}{7.8cm}}} \Xhline{3\arrayrulewidth}
+               \dsaRow{\footnotesize}{}{\multicolumn{3}{l}{INI: \dsaTextInput[10]{INI}{2cm} RS: \dsaTextInput[10]{RS}{1.25cm} TP: \dsaTextInput[10]{TP}{2cm}}}
+            \end{tabu}
+         \end{dsaSheetBox}
+         
+         \columnbreak
+         
+         \subsection*{Ausbildung}
+         \vspace{-8pt}
+         
+         \begin{dsaSheetBox}[8.5cm]
+            \begin{tabu}{@{}p{8.2cm}}
+               \dsaRow{\small}{\normalfont\bfseries\footnotesize}{Stufe: \dsaTextInput[9]{ausbildungsstufe}{6.9cm}} \hline
+               \dsaRow{\small}{\normalfont\bfseries\footnotesize}{Vor- und Nachteile: \dsaTextInput[9]{vorteile1}{5.4cm}} \hline
+               \dsaRow{\small}{}{\dsaTextInput[9]{vorteile2}{8.3cm}} \hline
+               \dsaRow{\small}{\normalfont\bfseries\footnotesize}{Fertigkeiten: \dsaTextInput[9]{fertigkeiten1}{6.4cm}} \hline
+               \dsaRow{\small}{}{\dsaTextInput[9]{fertigkeiten2}{8.3cm}} \hline
+               \dsaRow{\small}{}{\dsaTextInput[9]{fertigkeiten3}{8.3cm}}
+            \end{tabu}
+         \end{dsaSheetBox}
+         
+      \end{multicols}
+      
+      \newcommand{\ritrow}[1]{\dsaRow{\tiny}{}{\dsaTextInput[7]{RitName#1}{3.4cm} &
+                              \dsaTextInput[7]{RitProbA#1}{0.475cm}•\dsaTextInput[7]{RitProbB#1}{0.475cm}•\dsaTextInput[7]{RitProbC#1}{0.475cm} &
+                              \dsaTextInput[7]{RitDauer#1}{1.3cm} & \dsaTextInput[7]{RitKosten#1}{1.3cm} & \dsaTextInput[7]{RitWirkung#1}{9.7cm}}}
+      
+      \subsection*{Vertrautenmagie}
+      \vspace{-8pt}
+      
+      \begin{dsaSheetBox}[18.2cm]
+         \begin{tabu}{@{}p{3.5cm}@{}|@{}p{1.7cm}|@{}p{1.4cm}@{}|@{}p{1.4cm}@{}|@{}p{9.8cm}@{}}
+            \dsaRow{\scriptsize}{\scriptsize\normalfont\bfseries\centering}{Ritualname & Probe & Dauer & Kosten & Wirkung / Anmerkungen} \Xhline{2\arrayrulewidth}
+            \ritrow{1} \hline
+            \ritrow{2} \hline
+            \ritrow{3} \hline
+            \ritrow{4} \hline 
+            \ritrow{5} \hline
+            \ritrow{6} \hline
+            \ritrow{7} \hline
+            \ritrow{8} \hline
+            \ritrow{9} \hline
+            \ritrow{10}
+         \end{tabu}
+         Ritualkenntnis (Vertrautenmagie): \setlength{\fboxrule}{0.6pt} \fcolorbox{black}{white}{\dsaTextInput{RK}{1.5cm}} \hspace{0.7cm} Astralenergie: \normalfont \bfseries \scriptsize max: \fcolorbox{black}{white}{\dsaTextInput{AEmax}{0.75cm}} aktuell: \fcolorbox{black}{white}{\dsaTextInput{AEakt2}{2cm}}
+      \end{dsaSheetBox}
+      
+      \subsection*{Abenteuerpunkte}
+      \vspace{-8pt}
+      
+      \begin{dsaSheetBox}[18.2cm]
+         Gesamt: \dsaTextInput{APges}{2.3cm} Eingesetzt: \dsaTextInput{APeing}{2.3cm} Von Hexe: \dsaTextInput{APhex}{2.3cm} Guthaben: \dsaTextInput{APgut}{2.3cm}
+      \end{dsaSheetBox}
+      
+   \end{dsaCharacterSheet}
+\end{document}

@@ -1,0 +1,324 @@
+\documentclass{dsa}
+
+\pagenumbering{gobble}
+
+\usepackage{multicol}
+
+\usepackage{listings}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  basicstyle=\footnotesize\ttfamily, % the size of the fonts that are used for the code
+  breakatwhitespace=false,           % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                   % sets automatic line breaking
+  captionpos=b,                      % sets the caption-position to bottom
+  commentstyle=\color{mygreen},      % comment style
+  keepspaces=true,                   % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},         % keyword style
+  language=[LaTeX]TeX,               % the language of the code
+  numberstyle=\tiny\color{mygray},   % the style that is used for the line-numbers
+  showspaces=false,                  % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,            % underline spaces within strings only
+  showtabs=false,                    % show tabs within strings adding particular underscores
+  stringstyle=\color{mymauve},       % string literal style
+  tabsize=2,                         % sets default tabsize to 2 spaces
+}
+
+\sloppy
+
+\begin{document}
+   \begin{dsaTitlePage}
+      \bfseries \Huge \LaTeX-Klasse für Das Schwarze Auge \\[15pt]
+      \LARGE Für Charakterbögen, Abenteuer und Sonstiges
+   \end{dsaTitlePage}
+   
+   \twocolumn[\section*{Überblick}]
+   
+   \subsection*{Einleitung}
+   
+   Dies ist eine \LaTeX-Klasse, die Umgebungen und Kommandos zur Verfügung
+   stellt, um Dokumente im Stil der DSA-Regelbücher und Charakterbögen zu 
+   erstellen - auf der Basis der Grafiken aus dem DSA-Fanpaket.
+   
+   \subsection*{Abhängigkeiten}
+   
+   Die Schriftart der Überschriften heißt \textit{Mason} und ist
+   kostenpflichtig. Es gibt jedoch einen Klon namens \textit{Manson}, der
+   kostenlos verfügbar ist. Installiere zumindest die Variante
+   \textit{Manson Bold} auf deinem System (auf Windows und OSX kannst du auf
+   die heruntergeladene Schriftart doppelklicken und dort auf
+   \textit{installieren} klicken). Für normale Schrift wird die freie Schriftart
+   \textit{GaramondNo8} verwendet, die du \href{http://garamond.org}{hier}
+   herunterladen kannst.
+   
+   Das Fanpaket, das die Grafiken beinhaltet, wird von der Makefile automatisch
+   heruntergeladen (für mehr Informationen zum Makefile, siehe den Abschnitt
+   \textit{Benutzung}). Da die Dateinamen Leerzeichen beinhalten, werden sie
+   nach dem Herunterladen umbenannt. Falls du Windows benutzt und mit der
+   Makefile nichts anfangen kannst, beachte die Anweisungen im Kasten unten.
+   
+   \vspace{12pt}
+   
+   \begin{dsaBoxPortrait}
+      \subsection*{Windows: Manuelles Setup}
+      Lade das Fanpaket
+      \href{http://www.ulisses-spiele.de/download/889/}{hier} herunter und
+      entpacke es in das Verzeichnis, wo \texttt{dsa.cls} sich befindet. Den
+      Ordner, der die Bilder enthält, musst du in \texttt{fanpaket} umbenennen.
+      
+      Nach dem Entpacken müssen folgende Dateien wiefolgt umbenannt werden:
+      
+      \scriptsize
+      \begin{itemize} \itemsep0em
+         \item \texttt{Balken - Seite - links.png} $\Rightarrow$ \texttt{balken-links.png}
+         \item \texttt{Balken - Seite - rechts.png} $\Rightarrow$ \texttt{balken-rechts.png}
+         \item \texttt{Balken - Seite (Symbole) - links.png} \\ $\Rightarrow$ \texttt{symbol-balken-links.png}
+         \item \texttt{Balken - Seite (Symbole) - rechts.png} \\ $\Rightarrow$ \texttt{symbol-balken-rechts.png}
+         \item \texttt{Logo - Fanprodukt.png} $\Rightarrow$ \texttt{logo-fanprodukt.png}
+         \item \texttt{Logo - Fanprojekt.png} $\Rightarrow$ \texttt{logo-fanprojekt.png}
+         \item \texttt{Kasten - Halbseiter.png} \\ $\Rightarrow$ \texttt{kasten-halbseiter.png}
+         \item \texttt{Kasten - Viertelseiter.png} \\ $\Rightarrow$ \texttt{kasten-viertelseiter.png}
+         \item \texttt{Kasten - Achtelseiter.png} \\ $\Rightarrow$ \texttt{kasten-achtelseiter.png}
+      \end{itemize}
+   \end{dsaBoxPortrait}
+   
+   Das Hintergrundbild für Charakterbögen ist nicht Bestandteil des Fanpakets.
+   Standardmäßig verwendet die \LaTeX-Klasse statt dessen die Seitenränder mit
+   Symbolen für Charakterbögen. Wenn du Charakterbögen mit Hintergrundbild
+   erstellen möchtest, lege dein Hintergrundbild in den Ordner \texttt{fanpaket}
+   und nenne es \texttt{wallpaper.png}. Das Original-Hintergrundbild lässt sich
+   aus der PDF des Kampfprotokolls von \textit{Wege des Schwerts} extrahieren.
+   Extrahieren lassen sich Bilder aus einem PDF zum Beispiel mit dem Adobe
+   Acrobat - es existieren auch kostenlose Werkzeuge, etwa
+   \href{http://sourceforge.net/projects/pdf-images/}{PDF-Images} für OSX.
+   Dieses Programm extrahiert die Bilder im \texttt{.ppm}-Format. Dieses kann
+   zum Beispiel mit \href{http://www.gimp.org}{GIMP} geladen und als
+   \texttt{.png} exportiert werden.
+   
+   Zum Erstellen der Dokumente wird eine TeX-Distribution benötigt, die
+   \texttt{xelatex} beinhaltet (das trifft auf alle derzeit verbreiteten
+   Distributionen zu). Außerdem müssen folgende LaTeX-Pakete verfügbar sein:
+   \texttt{polyglossia, xunicode, fontspec, titlesec, xcolor, pgf, graphics
+    wallpaper, environ}.
+   
+   Des Weiteren benötigst du \texttt{eforms} für editierbare Textfelder und so.
+   Im Gegensatz zu den anderen Paketen musst du dieses manuell
+   \href{http://www.ctan.org/pkg/eforms}{hier} herunterladen und dann in deine
+   Distribution installieren (wie genau das geht, hängt von der Distribution ab).
+   
+   \subsection*{Mitgelieferte Dokumente}
+   
+   Der Klasse liegen bereits einige Dokumente bei, die mit der Makefile oder
+   von Hand erzeugt werden können. Zur Erzeugung einfach folgendes Kommando
+   eingeben (hier beispielhaft für dieses Dokument):
+   
+   \hspace{30pt}\texttt{make dokumentation.pdf}
+   
+   Beim ersten Aufruf wird dieses Kommando das Fanpaket herunterladen. Auf
+   Windows kann statt dessen folgendes Kommando verwendet werden, nachdem
+   das Fanpaket manuell heruntergeladen wurde:
+   
+   \hspace{30pt}\texttt{xelatex dokumentation.tex}
+   
+   Die Dokumente sind im Einzelnen:
+   
+   \begin{itemize}
+      \item \textbf{dokumentation.tex:} Dieses Dokument.
+      \item \textbf{vertrautendokument.tex:} Ein Charakterbogen für
+            Vertrautentiere von Hexen und Geoden.
+   \end{itemize}
+   
+   \onecolumn
+   
+   \section*{Benutzung}
+   
+   \begin{multicols}{2}
+   
+      \subsection*{Vorbereitung}
+      
+      Auf OSX und Linux kann das Fanpaket mit folgendem Kommando herundergeladen
+      und in einen benutzbaren Zustand gebracht werden:
+      
+      \hspace{30pt}\texttt{make fanpaket-anpassung}
+      
+      Auf Windows muss die Anleitung im Kasten auf der vorherigen Seite
+      ausgeführt werden. Optional kann nun noch ein \texttt{wallpaper.png}
+      in den Ordner \texttt{fanpaket} gelegt werden wie im vorherigen
+      Kapitel beschrieben.
+      
+      \subsection*{Dokumentengerüst}
+         
+      Ein DSA-Dokument sieht etwa so aus:
+      
+      \begin{lstlisting}
+\documentclass{dsa}
+\begin{document}
+   \begin{dsaTitlePage}
+      \bfseries \Huge
+      Mein tolles DSA-Dokument
+   \end{dsaTitlePage}
+   
+   % Inhalt
+\end{document}\end{lstlisting}
+   
+   \columnbreak
+      
+      Die \texttt{dsaTitlePage} ist für Charakterbögen natürlich nicht notwendig,
+      ebensowenig wie die Überschriften. Das Erstellen von Charakterbögen wird
+      auf der nächsten Seite beschrieben.
+      
+      \subsection*{Überschriften \& Layout}
+
+      Überschriften werden, wie man in diesem Dokument sehen kann, in der
+      Schriftart \textit{Manson} gesetzt. Standardmäßig wird ein zweispaltiges
+      Layout verwendet. Eine Überschrift, die über die gesamte Seitenbreite
+      geht, lässt sich folgendermaßen setzen:
+
+      \begin{lstlisting}
+\twocolumn[\section*{Überschrift}]\end{lstlisting}
+
+      Dies startet eine neue Seite. Wenn - wie auf dieser Seite - Ein Kasten
+      über die gesamte Breite der Seite gehen soll, muss die Seite selbst mit
+      \verb|\onecolumn| begonnen werden. Die zweispaltigen Teile der Seite
+      können dann mithilfe der \verb|multicols|-Umgebung erstellt werden. 
+      
+   \end{multicols}
+   
+   \begin{dsaBoxLandscape}
+      \subsection*{Mit Grafiken hinterlegte Boxen}
+      
+      \begin{multicols}{2}
+         Es ist drei Größen für Boxen verfügbar, die mit
+         folgenden Umgebungen benutzt werden können:
+         
+         \begin{itemize} \itemsep0em
+            \item \textbf{dsaBoxLandscape}: Querformat, gedacht für etwa eine
+                  halbe Seite (so wie diese Box hier).
+            \item \textbf{dsaBoxPortrait}: Hochformat, gedacht für etwa eine
+                  Viertelseite (so wie die Box auf der vorherigen Seite).
+            \item \textbf{dsaBoxLandscapeSmall}: Querformat, gedacht für etwa
+                  eine Achtelseite.
+         \end{itemize}
+         
+         Jede der Umgebungen nimmt als optionalen Parameter ihre Länge.
+         Standardmäßig wird \verb|\linewidth| als Länge genommen. Die Höhe
+         passt sich dem Inhalt an, das Hintergrundbild wird entsprechend
+         verzerrt. Folgende vier Längenvariablen können geändert werden, um
+         den Abstand des Inhalts zum Rand anzupassen:
+         
+         \begin{itemize} \itemsep0em
+            \item \verb|\dsaBoxLeftPadding| (Standard: 12pt)
+            \item \verb|\dsaBoxRightPadding| (Standard: 14pt)
+            \item \verb|\dsaBoxTopPadding| (Standard: 7pt)
+            \item \verb|\dsaBoxBottomPadding| (Standard: 14pt)
+         \end{itemize}
+
+      \columnbreak
+      
+         Standardmäßig werden die Boxen nicht in eine
+         \texttt{float}-Umgebung gepackt. Das erscheint mir nicht als sinnvoll,
+         denn die Boxen sollten schon genau dort erscheinen, wo der Autor sie
+         haben möchte. Bildverweise oder ähnliches sind hier wohl eher fehl
+         am Platz.
+         
+         Der Inhalt in den Boxen befindet sich automatisch in einer Minipage,
+         das heißt, es können alle üblichen Formatierungstechniken verwendet
+         werden. In dieser Box etwa wird der Text mittels einer
+         \verb|multicols|-Umgebung zweispaltig gelayoutet.
+         
+         Beispiel:
+         
+         \begin{lstlisting}
+\begin[0.5\linewidth]{dsaBoxPortrait}
+   \subsection*{Informationskasten}
+   
+   Hier steht etwas interessantes drin.
+\end{dsaBoxPortrait}\end{lstlisting}
+         
+      \end{multicols}
+      \vspace{-1pt}
+      
+   \end{dsaBoxLandscape}
+   
+   \begin{dsaCharacterSheet}
+      \section*{Charakterbögen}
+      
+      \begin{multicols}{2}
+         \begin{dsaSheetBox}[8.5cm]
+            \normalfont
+            Die Umgebung \textbf{dsaCharacterSheet} startet eine neue Seite,
+            auf der ein Charakterbogen, Handout oder ähnliches erstellt werden
+            kann. Diese Seite wird mit dem Hintergrundbild \texttt{wallpaper.png}
+            im \texttt{fanpaket}-Ordner hinterlegt, sofern dieses Bild vorhanden
+            ist (wie auf der ersten Seite beschrieben, ist es nicht Bestandteil
+            des Fanpakets). Ansonsten werden die Ränder mit Symbolen verwendet.
+            
+            Die Seite hat weniger Rand als normale Seiten, um möglichst viel
+            Platz verwenden zu können. Mit der Umgebung \textbf{dsaSheetBox}
+            können schwarz umrandete Boxen wie diese hier erstellt werden.
+            Wird das Hintergrundbild verwendet, wird die Box mit
+            halbtransparentem weiß gefüllt. \textbf{dsaSheetBox} nimmt als
+            optionales Argument die Breite der Box, deren Standardwert
+            \texttt{\textbackslash linewidth} ist.
+            
+            Auf der gesamten Seite wird standardmäßig die Schriftart für
+            Überschriften verwendet, mit \texttt{\textbackslash normalfont} kann zur
+            Schriftart für Fließtext gewechselt werden.
+         \end{dsaSheetBox}
+         
+         \begin{dsaSheetBox}[8.5cm]
+            \subsection*{Tabellen}
+            
+            \normalfont
+            Charakterbögen beinhalten viele Tabellen. Hier sollte die
+            \textbf{tabu}-Umgebung (statt \textbf{tabular}) verwendet werden.
+            Hierfür wird folgendes Kommando zur Verfügung gestellt:
+            
+            \texttt{\textbackslash dsaRow\{<rowheight>\}\{<font>\}\{<content>\}}
+            
+            Fügt eine Zeile inklusive abschließendem Zeilenumbruch in eine Tabelle ein.
+            Sowohl die Höhe der Zeile wie auch die benutzte Schriftart können angepasst
+            werden. \texttt{<rowheight>} nimmt übliche Textgrößenparameter wie
+            \texttt{\textbackslash scriptsize}. Mit \texttt{<font>} kann die
+            Schriftart, -größe usw. für die gesamte Zeile festgelegt werden.
+            
+            Ein weiteres Kommando, das genutzt werden kann, ist:
+            
+            \texttt{\textbackslash dsaTextInput[<fontsize>]\{<name>\}\{<width>\}}
+            
+            Es fügt ein editierbares Textfeld ein. \texttt{<fontsize>} bestimmt die 
+            Schriftgröße und steht standardmäßig auf 12 (ohne Einheit angeben!).
+            \texttt{<name>} ist der Name des Textfelds (wird nirgends angezeigt,
+            es muss nur darauf geachtet werden, dass kein Name doppelt benutzt
+            wird). \texttt{<width>} setzt die Breite der Textbox.
+         \end{dsaSheetBox}
+      
+         \columnbreak
+         
+         \begin{dsaSheetBox}[8.5cm]
+            \subsection*{Beispiel: Zwei Boxen nebeneinander}
+            \lstinputlisting{examples/characterSheetBoxes.tex}
+         \end{dsaSheetBox}
+         
+         \begin{dsaSheetBox}[8.5cm]
+            \subsection*{Beispiel: Tabelle (Code)}
+            \lstinputlisting{examples/characterSheetTabu.tex}
+         \end{dsaSheetBox}
+         
+         
+         \begin{dsaSheetBox}[8.5cm]
+            \subsection*{Beispiel: Tabelle (Output)}
+            
+            \renewcommand{\arraystretch}{1.4}
+            \begin{tabu}{p{3.5cm}|p{1.1cm}|p{1.1cm}}
+               \dsaRow{\scriptsize}{\scriptsize\normalfont\bfseries\centering}{& Start & Aktuell} \Xhline{2\arrayrulewidth}
+               Eigenschaft 1 & \hspace{1pt} \dsaTextInput{E1orig}{0.75cm} & \cellcolor{white} \dsaTextInput{E1cur}{0.75cm} \\ \hline
+               Eigenschaft 2 & \hspace{1pt} \dsaTextInput{E2orig}{0.75cm} & \cellcolor{white} \dsaTextInput{E2cur}{0.75cm} \\
+            \end{tabu}
+         \end{dsaSheetBox}
+      \end{multicols}
+      
+   \end{dsaCharacterSheet}
+\end{document}
