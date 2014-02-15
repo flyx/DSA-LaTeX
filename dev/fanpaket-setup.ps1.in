@@ -1,11 +1,15 @@
-$client = new-object system.net.WebClient;
-$client.DownloadFile("{{url}}", "fanpaket.zip");
+$CurrentLocation=get-location
+$CurrentPath=$CurrentLocation.path
 
-$shell = new-object -com shell.application
-$zip = $shell.NameSpace("fanpaket.zip")
-foreach($item in $zip.items()) {
-   $shell.Namespace(".").copyhere($item)
+$client = new-object system.net.WebClient;
+$client.DownloadFile("{{url}}", $CurrentPath + "\fanpaket.zip");
+
+$shell=new-object -com shell.application
+$zip = get-childitem fanpaket.zip
+foreach($item in $shell.namespace($zip.fullname).items()) {
+   $shell.Namespace($CurrentPath).copyhere($item)
 }
+Move-Item "Das Schwarze Auge - Fanpaket - 2013.07.29" fanpaket
 
 Set-Location fanpaket
 {{#files}}
