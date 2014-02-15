@@ -89,8 +89,8 @@
       \ClearWallPaper
       \ThisCenterWallPaper{1.0}{./fanpaket/wallpaper.png}
    }{
-      \ThisULCornerWallPaper{}{./fanpaket/symbol-balken-links.png}
-      \ThisURCornerWallPaper{}{./fanpaket/symbol-balken-rechts.png}
+      \ThisULCornerWallPaper{}{./fanpaket/balken-symbole-links.png}
+      \ThisURCornerWallPaper{}{./fanpaket/balken-symbole-rechts.png}
    }
    
    \titleformat{\section}%
@@ -126,8 +126,8 @@
 
 \newenvironment{dsaTitlePage}{
    \onecolumn
-   \ThisULCornerWallPaper{}{./fanpaket/symbol-balken-links.png}
-   \ThisURCornerWallPaper{}{./fanpaket/symbol-balken-rechts.png}
+   \ThisULCornerWallPaper{}{./fanpaket/balken-symbole-links.png}
+   \ThisURCornerWallPaper{}{./fanpaket/balken-symbole-rechts.png}
    \centering
    \includegraphics[width=12cm]{./fanpaket/logo-fanprodukt.png}
    \vfill

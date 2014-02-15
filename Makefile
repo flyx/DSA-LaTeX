@@ -1,64 +1,23 @@
-FANPAKET_RENAMES := \
- fanpaket/balken-links.png \
- fanpaket/balken-rechts.png \
- fanpaket/symbol-balken-links.png \
- fanpaket/symbol-balken-rechts.png \
- fanpaket/logo-fanprodukt.png \
- fanpaket/logo-fanprojekt.png \
- fanpaket/kasten-achtelseiter.png \
- fanpaket/kasten-viertelseiter.png \
- fanpaket/kasten-halbseiter.png
+all: release-files
 
 clean:
-	rm -rf *.pdf fanpaket
+	rm -rf release *.zip *.pdf fanpaket
 
-fanpaket:
-	curl -o tmp.zip http://www.ulisses-spiele.de/download/889/
-	unzip tmp.zip
-	rm tmp.zip
-	mv Das\ Schwarze\ Auge\ -\ Fanpaket* fanpaket
+release:
+	mkdir release
 
-fanpaket/balken-links.png: fanpaket
-	-mv fanpaket/Balken\ -\ Seite\ -\ links.png $@
-	touch $@
+build-scripts: release
+	python dev/build-release.py dev release
 
-fanpaket/balken-rechts.png: fanpaket
-	-mv fanpaket/Balken\ -\ Seite\ -\ rechts.png $@
-	touch $@
+release/fanpaket-setup.sh: build-scripts
 
-fanpaket/symbol-balken-links.png: fanpaket
-	-mv fanpaket/Balken\ -\ Seite\ \(Symbole\)\ -\ links.png $@
-	touch $@
+fanpaket: build-scripts
+	sh release/fanpaket-setup.sh
 
-fanpaket/symbol-balken-rechts.png: fanpaket
-	-mv fanpaket/Balken\ -\ Seite\ \(Symbole\)\ -\ rechts.png $@
-	touch $@
+.PHONY: build-scripts
 
-fanpaket/logo-fanprodukt.png: fanpaket
-	-mv fanpaket/Logo\ -\ Fanprodukt.png $@
-	touch $@
-
-fanpaket/logo-fanprojekt.png: fanpaket
-	-mv fanpaket/Logo\ -\ Fanprojekt.png $@
-	touch $@
-
-fanpaket/kasten-halbseiter.png: fanpaket
-	-mv fanpaket/Kasten\ -\ Halbseiter.png $@
-	touch $@
-
-fanpaket/kasten-viertelseiter.png: fanpaket
-	-mv fanpaket/Kasten\ -\ Viertelseiter.png $@
-	touch $@
-
-fanpaket/kasten-achtelseiter.png: fanpaket
-	-mv fanpaket/Kasten\ -\ Achtelseiter.png $@
-	touch $@
-
-fanpaket-anpassung: ${FANPAKET_RENAMES}
-
-.PHONY: fanpaket-anpassung clean
-
-%.pdf: %.tex fanpaket-anpassung dsa.cls
-	xelatex $<
-	xelatex $<
-	rm -rf *.aux *.log *.out
+release-files: $(shell find dev) $(shell find . -name "*.tex") clean build-scripts fanpaket
+	xelatex -output-directory release dokumentation.tex
+	xelatex -output-directory release vertrautendokument.tex
+	cp dsa.cls release
+	cd release && rm -rf *.aux *.log *.out 

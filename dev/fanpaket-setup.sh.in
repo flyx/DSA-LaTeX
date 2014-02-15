@@ -1,0 +1,10 @@
+#!/bin/sh
+
+curl -o fanpaket.zip http://www.ulisses-spiele.de/download/889/
+unzip fanpaket.zip
+rm fanpaket.zip
+mv "Das Schwarze Auge - Fanpaket - 2013.07.29" fanpaket
+cd fanpaket
+{{#files}}
+mv {{source}} "{{target}}"
+{{/files}}
