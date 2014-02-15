@@ -1,0 +1,13 @@
+$client = new-object system.net.WebClient;
+$client.DownloadFile("{{url}}", "fanpaket.zip");
+
+$shell = new-object -com shell.application
+$zip = $shell.NameSpace("fanpaket.zip")
+foreach($item in $zip.items()) {
+   $shell.Namespace(".").copyhere($item)
+}
+
+Set-Location fanpaket
+{{#files}}
+Move-Item "{{source}}" {{target}}
+{{/files}}
