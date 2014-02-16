@@ -3,22 +3,25 @@ all: release-files
 clean:
 	rm -rf release *.zip *.pdf fanpaket
 
-release:
-	mkdir release
+release/dsa:
+	mkdir -p release/dsa
 
-build-scripts: release
-	python dev/build-release.py dev release
+build-scripts: release/dsa
+	python dev/build-release.py dev release/dsa
 
-release/fanpaket-setup.sh: build-scripts
+release/dsa/fanpaket-setup.sh: build-scripts
 
 fanpaket: build-scripts
-	sh release/fanpaket-setup.sh
+	sh release/dsa/fanpaket-setup.sh
 
 .PHONY: build-scripts
 
 release-files: $(shell find dev) $(shell find . -name "*.tex") clean build-scripts fanpaket
-	xelatex -output-directory release dokumentation.tex
-	xelatex -output-directory release vertrautendokument.tex
-	cp dsa.cls dokumentation.tex vertrautendokument.tex release
-	cp -r dokumentation-snippets release
-	cd release && rm -rf *.aux *.log *.out 
+	xelatex -output-directory release/dsa dokumentation.tex
+	xelatex -output-directory release/dsa vertrautendokument.tex
+	cp dsa.cls dokumentation.tex vertrautendokument.tex release/dsa
+	cp -r dokumentation-snippets release/dsa
+	cd release/dsa && rm -rf *.aux *.log *.out
+
+release-zip: release-files
+	cd release && zip dsa dsa
