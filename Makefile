@@ -1,4 +1,4 @@
-all: release-files
+all: release-zip
 
 clean:
 	rm -rf release *.zip *.pdf fanpaket
@@ -24,4 +24,4 @@ release-files: $(shell find dev) $(shell find . -name "*.tex") clean build-scrip
 	cd release/dsa && rm -rf *.aux *.log *.out
 
 release-zip: release-files
-	cd release && zip dsa dsa
+	cd release && zip -r dsa dsa
