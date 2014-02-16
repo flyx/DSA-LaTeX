@@ -20,4 +20,5 @@ release-files: $(shell find dev) $(shell find . -name "*.tex") clean build-scrip
 	xelatex -output-directory release dokumentation.tex
 	xelatex -output-directory release vertrautendokument.tex
 	cp dsa.cls dokumentation.tex vertrautendokument.tex release
+	cp -r dokumentation-snippets release
 	cd release && rm -rf *.aux *.log *.out 

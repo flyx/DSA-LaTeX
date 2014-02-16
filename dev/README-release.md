@@ -61,6 +61,13 @@ der Online verfügbar ist, extrahieren. Ihr könnt die PDF-Datei [hier][3]
 herunterladen. Zum Extrahieren des Hintergrundbilds benötigt ihr das Tool
 `pdfimages`.
 
+*Hinweis:* Es ist auch möglich, mit *Adobe Acrobat Pro* Bilder aus einem PDF zu
+extrahieren. Das Hintergrundbild, das verwendet wird, ist allerdings größer als
+eine A4-Seite, und Acrobat Pro exportiert nur den Teil, der auf der Seite
+sichtbar ist, daher wird ein Bild, das mit Acrobat Pro extrahiert wurde, nicht
+korrekt mit der DSA-Klasse funktionieren. Die Klasse ist darauf ausgelegt, mit
+dem vollständigen Bild, wie es `pdfimages` extrahiert, zu arbeiten.
+
 ### Windows
 
 Es gibt keine offizielle Version von `pdfimages` für Windows, aber eine

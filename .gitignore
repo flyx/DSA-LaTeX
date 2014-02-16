@@ -2,3 +2,6 @@ fanpaket
 release
 *.zip
 *.pdf
+*.aux
+*.log
+*.out

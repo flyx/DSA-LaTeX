@@ -1,3 +1,22 @@
+%% dsa.cls
+%% Copyright 2014 Felix Krause <contact@flyx.org>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Felix Krause
+%
+% This work consists of the dsa.cls, fanpaket-setup.sh and fanpaket-setup.ps1.
+% Other accompanying files may have different licenses, see their source code
+% for details
+
 \NeedsTeXFormat{LaTeX2e} 
 \ProvidesClass{dsa}[2014/02/06 v0.1]
 
@@ -50,8 +69,11 @@
 
 % default side images
 
-\ULCornerWallPaper{}{./fanpaket/balken-links.png}
-\URCornerWallPaper{}{./fanpaket/balken-rechts.png}
+\newcommand{\dsaSetDefaultPageBorders}{
+   \ULCornerWallPaper{}{./fanpaket/balken-links.png}
+   \URCornerWallPaper{}{./fanpaket/balken-rechts.png}
+}
+\dsaSetDefaultPageBorders
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % font selection
@@ -85,13 +107,13 @@
    \onecolumn
    \dsaHeadingFont\bfseries
    \newgeometry{top=0.5cm, bottom=0.5cm, left=1cm, right=1cm}
+   \ClearWallPaper
    \IfFileExists{./fanpaket/wallpaper.png}{
-      \ClearWallPaper
-      \ThisCenterWallPaper{1.0}{./fanpaket/wallpaper.png}
-   }{
-      \ThisULCornerWallPaper{}{./fanpaket/balken-symbole-links.png}
-      \ThisURCornerWallPaper{}{./fanpaket/balken-symbole-rechts.png}
-   }
+      % wallpaper image is bigger than actual page
+      \setlength{\wpXoffset}{-0.3cm}
+      \setlength{\wpYoffset}{-0.1cm}
+      \ThisCenterWallPaper{1.0275}{./fanpaket/wallpaper.png}
+   }{}
    
    \titleformat{\section}%
       {\dsaHeadingFont\Huge\bfseries\centering} % format
@@ -106,9 +128,10 @@
       {} % before
       [\normalfont] % after
 }{
-   \pagebreak
+   \newpage
    \restoregeometry
    \normalfont
+   \dsaSetDefaultPageBorders
 }
 
 \NewEnviron{dsaSheetBox}[1][\linewidth]{
@@ -126,6 +149,7 @@
 
 \newenvironment{dsaTitlePage}{
    \onecolumn
+   \ClearWallPaper
    \ThisULCornerWallPaper{}{./fanpaket/balken-symbole-links.png}
    \ThisURCornerWallPaper{}{./fanpaket/balken-symbole-rechts.png}
    \centering
@@ -134,8 +158,10 @@
    \dsaHeadingFont
 }{
    \vfill
-   \pagebreak
    \normalfont
+   {\tiny Dieses Dokument verwendet Grafiken aus dem DSA-Fanpaket der Ulisses Medien \& Spiel Distribution GmbH.}
+   \newpage
+   \dsaSetDefaultPageBorders
 }
 
 \newlength{\dsaBoxLeftPadding}
