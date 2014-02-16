@@ -49,56 +49,26 @@
    
    Die Schriftart der Überschriften heißt \textit{Mason} und ist
    kostenpflichtig. Es gibt jedoch einen Klon namens \textit{Manson}, der
-   kostenlos verfügbar ist. Installiere zumindest die Variante
-   \textit{Manson Bold} auf deinem System (auf Windows und OSX kannst du auf
-   die heruntergeladene Schriftart doppelklicken und dort auf
+   kostenlos verfügbar ist (einfach im Internet suchen). Installiere zumindest
+   die Variante \textit{Manson Bold} auf deinem System (auf Windows und OSX
+   kannst du auf die heruntergeladene Schriftart doppelklicken und dort auf
    \textit{installieren} klicken). Für normale Schrift wird die freie Schriftart
    \textit{GaramondNo8} verwendet, die du \href{http://garamond.org}{hier}
    herunterladen kannst.
    
-   Das Fanpaket, das die Grafiken beinhaltet, wird von der Makefile automatisch
-   heruntergeladen (für mehr Informationen zum Makefile, siehe den Abschnitt
-   \textit{Benutzung}). Da die Dateinamen Leerzeichen beinhalten, werden sie
-   nach dem Herunterladen umbenannt. Falls du Windows benutzt und mit der
-   Makefile nichts anfangen kannst, beachte die Anweisungen im Kasten unten.
-   
-   \vspace{12pt}
-   
-   \begin{dsaBoxPortrait}
-      \subsection*{Windows: Manuelles Setup}
-      Lade das Fanpaket
-      \href{http://www.ulisses-spiele.de/download/889/}{hier} herunter und
-      entpacke es in das Verzeichnis, wo \texttt{dsa.cls} sich befindet. Den
-      Ordner, der die Bilder enthält, musst du in \texttt{fanpaket} umbenennen.
-      
-      Nach dem Entpacken müssen folgende Dateien wiefolgt umbenannt werden:
-      
-      \scriptsize
-      \begin{itemize} \itemsep0em
-         \item \texttt{Balken - Seite - links.png} $\Rightarrow$ \texttt{balken-links.png}
-         \item \texttt{Balken - Seite - rechts.png} $\Rightarrow$ \texttt{balken-rechts.png}
-         \item \texttt{Balken - Seite (Symbole) - links.png} \\ $\Rightarrow$ \texttt{balken-symbole-links.png}
-         \item \texttt{Balken - Seite (Symbole) - rechts.png} \\ $\Rightarrow$ \texttt{balken-symbole-rechts.png}
-         \item \texttt{Logo - Fanprodukt.png} $\Rightarrow$ \texttt{logo-fanprodukt.png}
-         \item \texttt{Logo - Fanprojekt.png} $\Rightarrow$ \texttt{logo-fanprojekt.png}
-         \item \texttt{Kasten - Halbseiter.png} \\ $\Rightarrow$ \texttt{kasten-halbseiter.png}
-         \item \texttt{Kasten - Viertelseiter.png} \\ $\Rightarrow$ \texttt{kasten-viertelseiter.png}
-         \item \texttt{Kasten - Achtelseiter.png} \\ $\Rightarrow$ \texttt{kasten-achtelseiter.png}
-      \end{itemize}
-   \end{dsaBoxPortrait}
+   Der Klasse liegen zwei Skripte bei, die das Fanpaket von Ulisses Spiele
+   herunterladen und die Dateien darin umbenennen. Bevor du die Klasse benutzen
+   kannst, musst du auf Windows das Skript mit der Endung \texttt{.ps1}, oder
+   auf OSX und Linux das Skript mit der Endung \texttt{.sh} ausführen. Näheres
+   steht in der \texttt{README.html}.
    
    Das Hintergrundbild für Charakterbögen ist nicht Bestandteil des Fanpakets.
-   Standardmäßig verwendet die \LaTeX-Klasse statt dessen die Seitenränder mit
-   Symbolen für Charakterbögen. Wenn du Charakterbögen mit Hintergrundbild
-   erstellen möchtest, lege dein Hintergrundbild in den Ordner \texttt{fanpaket}
-   und nenne es \texttt{wallpaper.png}. Das Original-Hintergrundbild lässt sich
-   aus der PDF des Kampfprotokolls von \textit{Wege des Schwerts} extrahieren.
-   Extrahieren lassen sich Bilder aus einem PDF zum Beispiel mit dem Adobe
-   Acrobat - es existieren auch kostenlose Werkzeuge, etwa
-   \href{http://sourceforge.net/projects/pdf-images/}{PDF-Images} für OSX.
-   Dieses Programm extrahiert die Bilder im \texttt{.ppm}-Format. Dieses kann
-   zum Beispiel mit \href{http://www.gimp.org}{GIMP} geladen und als
-   \texttt{.png} exportiert werden.
+   Standardmäßig erstellt die \LaTeX-Klasse Charakterbögen auf weißem Hintergrund
+   (also auch ohne den Rand). Du kannst jedoch das Original-Hintergrundbild der
+   DSA-Charakterbögen verwenden; eine Anleitung findest du im
+   \texttt{README.html}. Hast die das Hintergrundbild in den Ordner 
+   \texttt{fanpaket} gelegt, wird es automatisch als Hintergrundbild für deine
+   Charakterbögen verwendet.
    
    Zum Erstellen der Dokumente wird eine TeX-Distribution benötigt, die
    \texttt{xelatex} beinhaltet (das trifft auf alle derzeit verbreiteten
@@ -106,50 +76,77 @@
    \texttt{polyglossia, xunicode, fontspec, titlesec, xcolor, pgf, graphics
     wallpaper, environ}.
    
-   Des Weiteren benötigst du \texttt{eforms} für editierbare Textfelder und so.
+   Des Weiteren benötigst du \texttt{eforms} für editierbare Textfelder.
    Im Gegensatz zu den anderen Paketen musst du dieses manuell
    \href{http://www.ctan.org/pkg/eforms}{hier} herunterladen und dann in deine
    Distribution installieren (wie genau das geht, hängt von der Distribution ab).
    
    \subsection*{Mitgelieferte Dokumente}
    
-   Der Klasse liegen bereits einige Dokumente bei, die mit der Makefile oder
-   von Hand erzeugt werden können. Zur Erzeugung einfach folgendes Kommando
-   eingeben (hier beispielhaft für dieses Dokument):
-   
-   \hspace{30pt}\texttt{make dokumentation.pdf}
-   
-   Beim ersten Aufruf wird dieses Kommando das Fanpaket herunterladen. Auf
-   Windows kann statt dessen folgendes Kommando verwendet werden, nachdem
-   das Fanpaket manuell heruntergeladen wurde:
-   
-   \hspace{30pt}\texttt{xelatex dokumentation.tex}
-   
-   Die Dokumente sind im Einzelnen:
+   Der Klasse liegen bereits einige Dokumente bei:
    
    \begin{itemize}
-      \item \textbf{dokumentation.tex:} Dieses Dokument.
-      \item \textbf{vertrautendokument.tex:} Ein Charakterbogen für
+      \item \textbf{dokumentation.pdf:} Dieses Dokument.
+      \item \textbf{vertrautendokument.pdf:} Ein Charakterbogen für
             Vertrautentiere von Hexen und Geoden.
    \end{itemize}
+   
+   Wenn du das Vertrautendokument mit Hintergrundbild haben möchtest, kannst du
+   es mit der beiliegenden Quelldatei \texttt{vertrautendokument.tex} selbst
+   erstellen, nachdem du das Hintergrundbild in den \texttt{fanpaket}-Ordner
+   gelegt hast.
+   
+   \subsection*{Dateimanagement}
+   
+   Üblicherweise werden \LaTeX-Pakete installiert, und von überall her
+   verfügbar zu sein. Dies kannst du mit der DSA-Klasse ebenfalls machen;
+   alternativ kannst du aber auch einfach \texttt{dsa.cls} und den Ordner
+   \texttt{fanpaket} dorthin kopieren, wo auch dein Dokument liegt. Der
+   Vorteil ist, dass du dann direkt Grafiken aus dem Fanpaket über relative
+   Pfadangaben verwenden kannst.
+   
+   \begin{dsaBoxPortrait}
+      \subsection*{\normalsize Informationen für Entwickler}
+      
+      Diese LaTeX-Klasse wird auf GitHub gehostet, das Repository befindet sich
+      hier:
+      
+      \url{https://github.com/flyx/DSA-LaTeX}
+      
+      Wenn du den Code aus dem Repository aus\-checkst, statt das neueste
+      Release zu nehmen, bist du auf dem neuesten Stand, allerdings hast du
+      dann die Skripte zum Herunterladen des Fanpakets nicht, denn die werden
+      erst beim Bauen eines Releases erzeugt. Die beiliegende \texttt{Makefile}
+      nimmt dir die Arbeit ab, ein Release zu bauen. Um sie auszuführen, brauchst
+      du \texttt{make}, \texttt{Python 2}, sowie die Python-Pakete
+      \texttt{pyyaml}, \texttt{pystache} und \texttt{Markdown}. Ich teste das
+      Makefile nicht auf Windows, aber man kann es dort vermutlich mit
+      Cygwin zum Laufen kriegen. 
+      
+      Das Makefile ist nicht dafür gedacht, während der Entwicklung eingesetzt
+      zu werden - es lädt bei jedem Aufruf das Fanpaket neu herunter!
+      
+   \end{dsaBoxPortrait}
+   
+   \begin{center}
+      \includegraphics{./fanpaket/symbol-nandus.png}
+   \end{center}
    
    \onecolumn
    
    \section*{Benutzung}
    
    \begin{multicols}{2}
-   
-      \subsection*{Vorbereitung}
+      \subsection*{Grundsätzliches}
       
-      Auf OSX und Linux kann das Fanpaket mit folgendem Kommando herundergeladen
-      und in einen benutzbaren Zustand gebracht werden:
-      
-      \hspace{30pt}\texttt{make fanpaket-anpassung}
-      
-      Auf Windows muss die Anleitung im Kasten auf der vorherigen Seite
-      ausgeführt werden. Optional kann nun noch ein \texttt{wallpaper.png}
-      in den Ordner \texttt{fanpaket} gelegt werden wie im vorherigen
-      Kapitel beschrieben.
+      Diese Klasse kann nur mit XeTeX benutzt werden. Das ist vor allem
+      deshalb so, weil normales \TeX nicht die im System installierten
+      TrueType-Schriftarten verwenden kann. Außerdem hat man mit XeTeX nicht
+      das ständige Problem mit der mangelhaften Unicode-Unterstützung (im
+      Deutschen vor allem wichtig für Umlaute). Entsprechend musst du deine
+      Dokumente immer mit dem Kommando \texttt{xelatex} setzen. Wenn du einen
+      grafischen \LaTeX-Editor verwendest, sollte dieser eine entsprechende
+      Einstellung haben.
       
       \subsection*{Dokumentengerüst}
          
@@ -171,6 +168,12 @@
       Die \texttt{dsaTitlePage} ist für Charakterbögen natürlich nicht notwendig,
       ebensowenig wie die Überschriften. Das Erstellen von Charakterbögen wird
       auf der nächsten Seite beschrieben.
+      
+      \vspace{-10pt}
+      \begin{center}
+         \includegraphics{./fanpaket/symbol-aves.png}
+      \end{center}
+      \vspace{-15pt}
       
       \subsection*{Überschriften \& Layout}
 
@@ -217,6 +220,7 @@
             \item \verb|\dsaBoxTopPadding| (Standard: 7pt)
             \item \verb|\dsaBoxBottomPadding| (Standard: 14pt)
          \end{itemize}
+         \vspace{-10pt}
 
       \columnbreak
       
@@ -241,7 +245,7 @@
 \end{dsaBoxPortrait}\end{lstlisting}
          
       \end{multicols}
-      \vspace{-1pt}
+      \vspace{-8pt}
       
    \end{dsaBoxLandscape}
    
@@ -256,12 +260,12 @@
             kann. Diese Seite wird mit dem Hintergrundbild \texttt{wallpaper.png}
             im \texttt{fanpaket}-Ordner hinterlegt, sofern dieses Bild vorhanden
             ist (wie auf der ersten Seite beschrieben, ist es nicht Bestandteil
-            des Fanpakets). Ansonsten werden die Ränder mit Symbolen verwendet.
+            des Fanpakets). Ansonsten hat sie einen weißen Hintergrund.
             
             Die Seite hat weniger Rand als normale Seiten, um möglichst viel
             Platz verwenden zu können. Mit der Umgebung \textbf{dsaSheetBox}
             können schwarz umrandete Boxen wie diese hier erstellt werden.
-            Wird das Hintergrundbild verwendet, wird die Box mit
+            Wird das Hintergrundbild verwendet, so wird die Box mit
             halbtransparentem weiß gefüllt. \textbf{dsaSheetBox} nimmt als
             optionales Argument die Breite der Box, deren Standardwert
             \texttt{\textbackslash linewidth} ist.
