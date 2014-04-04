@@ -79,16 +79,19 @@
 % font selection
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\dsaSectionStyle}{\Huge\bfseries}
+\newcommand{\dsaSubsectionStyle}{\Large\bfseries}
+
 \newcommand{\dsaSetHeadingFont}[1]{
    \newfontfamily\dsaHeadingFont{#1}
    \titleformat{\section}%
-      {\dsaHeadingFont\Huge\bfseries} % format
+      {\dsaHeadingFont\dsaSectionStyle} % format
       {} % label
       {10pt} % sep
       {} % before
       [\normalfont] % after
    \titleformat{\subsection}%
-      {\dsaHeadingFont\Large\bfseries}%
+      {\dsaHeadingFont\dsaSubsectionStyle}%
       {}
       {10pt}
       {}
