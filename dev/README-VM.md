@@ -40,17 +40,19 @@ dreckigen Details haben zu müssen.
 Um die VM auf deinem System erstellen zu können, brauchst du:
 
  * [VirtualBox][1]: VirtualBox Laufzeitumgebung, in der die virtuelle Maschine
-   ausgeführt wird.
+   ausgeführt wird. Bei der Installation empfehle ich, die Option 
+   „Bridged Networking” zu deaktivieren - die installiert dir nur einen
+   unnötigen Netzwerkadapter. Auch USB-Unterstützung brauchst du nicht.
  * [Vagrant][2]: Das Tool, das die virtuelle Maschine zusammenbaut.
  * [PuTTY][3]: Nur Windows-User. Brauchst du, um auf der VM was zu machen.
    Es reicht, `putty.exe` herunterzuladen.
 
 Außerdem wird die Schriftart benötigt, die für die Überschriften benutzt wird.
 Diese heißt *Mason* und ist kostenpflichtig, im Internet findet sich allerdings
-ein Klon namens *Manson*, der kostenlos heruntergeladen kann. Wer eine andere
-Schriftart benutzen möchte, kann das natürlich auch tun. Wichtig ist, dass,
-bevor du irgendetwas anderes tust, du folgende beiden Dateien in den Ordner von
-DSA-LaTeX legst (dort, wo auch `dsa.cls` liegt):
+ein Klon namens *Manson*, der kostenlos heruntergeladen kann (frag Google). Wer
+eine andere Schriftart benutzen möchte, kann das natürlich auch tun. Wichtig ist,
+dass, bevor du irgendetwas anderes tust, du folgende beiden Dateien in den Ordner
+`dsa` legst (dort, wo auch `dsa.cls` liegt):
 
     MansonRegular.ttf
     MansonBold.ttf
@@ -61,18 +63,24 @@ funktioniert alles nicht!**
 
 ## Vorgehen
 
-Die Konfigurationsdateien liegen im Ordner `vagrant-vm`, navigiere dorthin.
+Der Ordner `dsa` sollte an einer Stelle liegen, wo allermindestens 2GB Speicher
+verfügbar sind - so viel braucht die VM.
+
+Die Konfigurationsdateien liegen im Unterordner `vagrant-vm`, navigiere dorthin.
 Windows-Nutzer doppelklicken auf `start-vm.bat`. Alle anderen geben in der
 Kommandozeile `vagrant up` ein. Nun holst du dir einen Tee/Kaffee/Bier/Tharf
 und schaust zu, wie ein Haufen Text an dir vorbeiscrollt. Je nach System kann
-die Prozedur eine viertel- bis halbe Stunde dauern.
+die Prozedur eine viertel- bis halbe Stunde dauern. Auf Windows kann es sein,
+dass ein Bestätigungsdialog kommt, weil die VM ein virtuelles Netzwerk
+einrichtet, damit sie Sachen aus dem Internet laden kann. Das musst du
+bestätigen.
 
 Wenn der Vorgang abgeschlossen ist, hast du die virtuelle Maschine laufen, und
 sie ist fertig eingerichtet. Die Maschine ist nicht sichtbar, weil sie ohne
 grafische Oberfläche läuft (die brauchst du nicht). Du musst dich jetzt per SSH
 auf die Maschine verbinden. Auf allem außer Windows geht das mit `vagrant ssh`.
 
-Auf Windows brauchst du PuTTY. Öffne es, gib als Server `127.0.0.1` and, als
+Auf Windows brauchst du PuTTY. Öffne es, gib als Host Name `127.0.0.1` and, als
 Port `2222`. Starte es, es wird nach Benutzernamen und Passwort fragen. Gib
 beides Mal `vagrant` ein.
 
@@ -80,13 +88,13 @@ Nachdem du auf der Kommandozeile der VM bist, gib folgendes ein:
 
     `cd /dsa`
 
-Der Ordner `/dsa` ist der DSA-LaTeX Ordner, der von innerhalb der VM aus
+Der Ordner `/dsa` ist der `dsa` Ordner, der von innerhalb der VM aus
 zugreifbar ist. Um nun beispielsweise das Vertrautendokument zu erstellen,
 gib folgendes ein:
 
     `xelatex vertrautendokument.tex`
 
-Wenn der Prozess durchgelaufen ist, hast du im DSA-LaTeX Ordner ein frisches
+Wenn der Prozess durchgelaufen ist, hast du im dsa Ordner ein frisches
 `vertrautendokument.pdf` - und einige Abfall-Dateien.
 
 **Wichtig:** Vergiss nicht, nach Benutzung der VM diese wieder
@@ -96,6 +104,11 @@ gibst du `vagrant halt` ein. Die VM wird damit gestoppt, nicht gelöscht. Du
 kannst sie jederzeit wieder mit `start-vm.bat` bzw. `vagrant up` starten.
 Das zweite Mal wird sie viel schneller oben sein, weil sie ja bereits
 eingerichtet ist.
+
+Die VM kann mit einem Doppelklick auf `destroy-vm.bat` bzw. mit
+`vagrant destroy` komplett gelöscht werden. Beide Male fragt Vagrant nach,
+ob du die Maschine wirklich löschen willst (du musst sie danach ganz neu
+bauen!). Mit `y` kann dies bestätigt werden.
 
   [1]: https://www.virtualbox.org/wiki/Downloads
   [2]: http://www.vagrantup.com/downloads.html

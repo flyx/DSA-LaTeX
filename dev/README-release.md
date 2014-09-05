@@ -9,7 +9,7 @@ Für diejenigen Benutzer, die selbst keine oder wenig Ahnung von LaTeX haben und
 eigentlich nur die Dokumente generieren wollen, die der Klasse beiliegen, liegt
 die Definition einer VM (virtuellen Maschine) auf der Basis von Ubuntu bei, die
 mit Vagrant erzeugt werden kann und nach der Einrichtung alle nötige Software
-installiert hat. Eine Anleitung dazu findet sich in `README-VM`.
+installiert hat. Eine Anleitung dazu findet sich in `README-VM.html`.
 
 ## TeX-Distribution installieren (sofern nicht vorhanden)
 
