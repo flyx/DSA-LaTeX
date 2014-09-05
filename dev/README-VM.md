@@ -31,9 +31,8 @@ Dateien privat machen, was er will, und an diesem Punkt setzt diese VM an:
 Sie enthält ein umfassendes Skript, das sowohl die ganze TeX-Infrastruktur
 einrichtet wie auch das Fanpaket herunterlädt und anpasst und das
 Hintergrundbild extrahiert und so umwandelt, dass es verwendet werden kann.
-Damit habt ihr, die Benutzer, mit drei einfachen Befehlen und etwas Zeit die
-Möglichkeit, die Dokumente zu erstellen, ohne irgendwelches Vorwissen um die
-dreckigen Details haben zu müssen.
+Damit hast du, der Benutzer, die Möglichkeit, die Dokumente zu erstellen, ohne
+irgendwelches Vorwissen um die dreckigen Details haben zu müssen.
 
 ## Voraussetzungen
 
@@ -82,7 +81,8 @@ auf die Maschine verbinden. Auf allem außer Windows geht das mit `vagrant ssh`.
 
 Auf Windows brauchst du PuTTY. Öffne es, gib als Host Name `127.0.0.1` and, als
 Port `2222`. Starte es, es wird nach Benutzernamen und Passwort fragen. Gib
-beides Mal `vagrant` ein.
+beides Mal `vagrant` ein. PuTTY wird eine Meldung bringen, da kannst du `Yes`
+klicken.
 
 Nachdem du auf der Kommandozeile der VM bist, gib folgendes ein:
 
