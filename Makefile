@@ -20,8 +20,10 @@ release-files: $(shell find dev) $(shell find . -name "*.tex") clean build-scrip
 	xelatex -output-directory release/dsa dokumentation.tex
 	xelatex -output-directory release/dsa vertrautendokument.tex
 	cp dsa.cls dokumentation.tex vertrautendokument.tex release/dsa
-	cp -r dokumentation-snippets release/dsa
+	cp -r dokumentation-snippets vagrant-vm release/dsa
 	cd release/dsa && rm -rf *.aux *.log *.out
+	mkdir release/dsa/vagrant-vm
+	cp vagrant-vm/provision.sh vagrant-vm/Vagrantfile release/dsa
 
 release-zip: release-files
 	cd release && zip -r dsa dsa
