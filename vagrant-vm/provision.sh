@@ -4,23 +4,28 @@
 apt-get update
 apt-get install -y --no-install-recommends texlive texlive-xetex texlive-latex-extra texlive-lang-german pgf lmodern
 apt-get install -y poppler-utils imagemagick
-apt-get install -y python2.7 python-pystache python-yaml python-markdown curl unzip
+apt-get install -y curl unzip
 
 # irgendwas braucht das
-dpkg-reconfigure locales
+locale-gen de_DE.UTF-8
 
 # Fanpaket
 mkdir -p /tmp/dsa && cd /tmp/dsa
-python /dsa/dev/build-release.py /dsa/dev .
-sh fanpaket-setup.sh
+if [ ! -f "/dsa/fanpaket-setup.sh" ]
+then
+    # Nicht Release, sondern Git-Repo: Skript muss erst generiert werden.
+    apt-get install -y python2.7 python-pystache python-yaml python-markdown
+    python /dsa/dev/build-release.py /dsa/dev /dsa 
+fi
+sh /dsa/fanpaket-setup.sh
 mkdir -p /usr/share/texmf/tex/latex/dsa
 cp /dsa/dsa.cls /usr/share/texmf/tex/latex/dsa
 mv fanpaket /usr/share/texmf/tex/latex/dsa
 
 # Charakterbogen-Hintergrund
 curl -o wds.pdf http://www.ulisses-spiele.de/download/468/
-pdfimages wds.pdf wds
-convert wds-001.ppm /usr/share/texmf/tex/latex/dsa/fanpaket/wallpaper.png
+pdfimages -f 2 -l 2 wds.pdf wds
+convert wds-000.ppm /usr/share/texmf/tex/latex/dsa/fanpaket/wallpaper.png
 
 # PDF Forms Support
 curl -o acrotex_pack.zip http://www.math.uakron.edu/~dpstory/acrotex/acrotex_pack.zip

@@ -23,7 +23,7 @@ release-files: $(shell find dev) $(shell find . -name "*.tex") clean build-scrip
 	cp -r dokumentation-snippets vagrant-vm release/dsa
 	cd release/dsa && rm -rf *.aux *.log *.out
 	mkdir release/dsa/vagrant-vm
-	cp vagrant-vm/provision.sh vagrant-vm/Vagrantfile release/dsa
+	cp vagrant-vm/provision.sh vagrant-vm/Vagrantfile vagrant-vm/start-vm.bat vagrant-vm/stop-vm.bat release/dsa
 
 release-zip: release-files
 	cd release && zip -r dsa dsa

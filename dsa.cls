@@ -51,11 +51,18 @@
 
 % eforms (optional)
 
+\usepackage[hidelinks]{hyperref}
 \IfFileExists{eforms.sty}{
    \usepackage[xetex]{eforms}
    \everyTextField{\textFont{GaramondNo8}\textSize{12}}
    \newcommand{\dsaTextInput}[3][12]{\raisebox{-0.35ex}{\textField[\textSize{##1}]{##2}{##3}{1em}}}
 }{}
+
+% font in TOC
+
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\dsaHeadingFont}
+\renewcommand{\cftsecfont}{\dsaHeadingFont}
 
 % misc
 
