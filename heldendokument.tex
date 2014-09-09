@@ -1,23 +1,60 @@
 \documentclass{dsa}
 
 \newcommand{\tabularTextInput}[1]{
-	\hspace{.5cm}\dsaTextInput{#1}{.5\textwidth-2\tabcolsep-\widthof{#1}-.5cm}
+	\dsaTextInput{#1}{.5\textwidth-4\tabcolsep-2cm}
 }
 
 \begin{document}
 
 \begin{dsaCharacterSheet}
 
+\renewcommand{\arraystretch}{1.25}
 \setlength{\fboxsep}{6pt}
 \begin{dsaSheetBox}
 	\begin{center}
 		\Huge Heldendokument
 	\end{center}
-	\renewcommand{\arraystretch}{1.25}
-	\begin{tabular}{p{\dimexpr.5\textwidth-2\tabcolsep}p{\dimexpr.5\textwidth-2\tabcolsep}}
-		\textmansontt{Name} \tabularTextInput{Name} & \textmansontt{GP-Basis} \tabularTextInput{GP-Basis} \\ \hline
-		\textmansontt{Rasse} \tabularTextInput{Rasse} & \textmansontt{Kultur} \tabularTextInput{Kultur} \\ \hline
-		\multicolumn{2}{l}{\textmansontt{Profession} \hspace{.5cm}\dsaTextInput{Profession}{\textwidth-3\tabcolsep-\widthof{Profession}-.5cm}}
+	\begin{tabular}{p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}}
+		\textmansontt{Name} & \tabularTextInput{Name} & \textmansontt{GP-Basis} & \tabularTextInput{GP-Basis} \\ \hline
+		\textmansontt{Rasse} & \tabularTextInput{Rasse} & \textmansontt{Kultur} & \tabularTextInput{Kultur} \\ \hline
+		\textmansontt{Profession} & \multicolumn{3}{l}{\dsaTextInput{Profession}{\textwidth-4\tabcolsep-2cm}}
+	\end{tabular}
+\end{dsaSheetBox}
+
+\renewcommand{\tabularTextInput}[1]{
+	\dsaTextInput{#1}{\textwidth-3\tabcolsep-2.1cm}
+}
+\begin{dsaSheetBox}[.275\textwidth]
+	\begin{tabular}{p{2.1cm}p{\dimexpr\textwidth-4\tabcolsep-2.1cm}}
+		\textmansontt{Geschlecht} & \tabularTextInput{Geschlecht} \\ \hline
+		\textmansontt{Geburtstag} & \tabularTextInput{Geburtstag} \\ \hline
+		\textmansontt{Größe} & \tabularTextInput{Groesse} \\ \hline
+		\textmansontt{Gewicht} & \tabularTextInput{Gewicht} \\ \hline
+		\textmansontt{Haarfarbe} & \tabularTextInput{Haarfarbe} \\ \hline
+		\textmansontt{Augenfarbe} & \tabularTextInput{Augenfarbe}
+	\end{tabular}
+\end{dsaSheetBox}%
+\renewcommand{\tabularTextInput}[1]{
+	\dsaTextInput{#1}{\textwidth-3\tabcolsep-2.2cm}
+}
+\begin{dsaSheetBox}[.4\textwidth]
+	\begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
+		\textmansontt{Aussehen} & \tabularTextInput{Aussehen1} \\ \hline
+		\multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Aussehen2}{\textwidth-\tabcolsep}} \\ \hline
+		\multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Aussehen3}{\textwidth-\tabcolsep}} \\ \hline
+		\textmansontt{Hintergrund} & \tabularTextInput{Hintergrund1} \\ \hline
+		\multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Hintergrund2}{\textwidth-\tabcolsep}} \\ \hline
+		\multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Hintergrund3}{\textwidth-\tabcolsep}}
+	\end{tabular}
+\end{dsaSheetBox}%
+\begin{dsaSheetBox}[.325\textwidth-2\fboxsep]
+	\begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
+		\textmansontt{Stand} & \tabularTextInput{Stand} \\ \hline
+		\textmansontt{Sozialstatus} & \tabularTextInput{Sozialstatus} \\ \hline
+		\textmansontt{Titel} & \tabularTextInput{Titel1} \\ \hline
+		\multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel2}{\textwidth-\tabcolsep}} \\ \hline
+		\multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel3}{\textwidth-\tabcolsep}} \\ \hline
+		\multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel4}{\textwidth-\tabcolsep}}
 	\end{tabular}
 \end{dsaSheetBox}
 

@@ -29,7 +29,7 @@
 
 \LoadClass[paper=a4, fontsize=11pt]{scrartcl}
 
-\usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm,showframe]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Package imports
@@ -175,10 +175,22 @@
   \noindent
   \begin{tikzpicture}
     \node[text width=#1, outer sep=0pt,inner sep=0pt](textwidth){\usebox\blockbox};
-    \draw[line width=0.5pt,black,draw opacity=0.6,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.47\pgflinewidth] (textwidth.south west) |- (textwidth.north east);
-    \draw[line width=1.5pt,black,draw opacity=0.8,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.49\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) |- ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
-    \draw[line width=1.5pt,black,draw opacity=0.8,line cap=butt,shorten <= 0.49\pgflinewidth,shorten >= -0.5\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) -| ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
-    \draw[line width=0.5pt,black,draw opacity=0.9,line cap=butt,shorten <= 0.47\pgflinewidth,shorten >= -0.5\pgflinewidth] (textwidth.south west) -| (textwidth.north east);
+    % Rahmen oben
+    \fill[black!60] (textwidth.north west) -- ($(textwidth.north west) + (0.02,-0.02)$) -- ($(textwidth.north east) - (0.02,0.02)$) -- (textwidth.north east) -- cycle;
+    \fill[black!80] ($(textwidth.north west) + (0.02,-0.02)$) -- ($(textwidth.north west) + (0.08, -0.08)$) -- ($(textwidth.north east) - (0.08, 0.08)$) -- ($(textwidth.north east) - (0.02, 0.02)$) -- cycle;
+    \fill[black!90] ($(textwidth.north west) + (0.08,-0.08)$) -- ($(textwidth.north west) + (0.1, -0.1)$) -- ($(textwidth.north east) - (0.1, 0.1)$) -- ($(textwidth.north east) - (0.08, 0.08)$) -- cycle;
+    % Rahmen links
+    \fill[black!60] (textwidth.north west) -- ($(textwidth.north west) + (0.02,-0.02)$) -- ($(textwidth.south west) + (0.02,0.02)$) -- (textwidth.south west) -- cycle;
+    \fill[black!80] ($(textwidth.north west) + (0.02,-0.02)$) -- ($(textwidth.north west) + (0.08, -0.08)$) -- ($(textwidth.south west) + (0.08, 0.08)$) -- ($(textwidth.south west) + (0.02, 0.02)$) -- cycle;
+    \fill[black!90] ($(textwidth.north west) + (0.08,-0.08)$) -- ($(textwidth.north west) + (0.1, -0.1)$) -- ($(textwidth.south west) + (0.1, 0.1)$) -- ($(textwidth.south west) + (0.08, 0.08)$) -- cycle;
+    % Rahmen rechts
+    \fill[black!90] (textwidth.south east) -- ($(textwidth.south east) - (0.02,-0.02)$) -- ($(textwidth.north east) - (0.02,0.02)$) -- (textwidth.north east) -- cycle;
+    \fill[black!80] ($(textwidth.south east) - (0.02,-0.02)$) -- ($(textwidth.south east) - (0.08, -0.08)$) -- ($(textwidth.north east) - (0.08, 0.08)$) -- ($(textwidth.north east) - (0.02, 0.02)$) -- cycle;
+    \fill[black!60] ($(textwidth.south east) - (0.08,-0.08)$) -- ($(textwidth.south east) - (0.1, -0.1)$) -- ($(textwidth.north east) - (0.1, 0.1)$) -- ($(textwidth.north east) - (0.08, 0.08)$) -- cycle;
+    % Rahmen unten
+    \fill[black!90] (textwidth.south east) -- ($(textwidth.south east) - (0.02,-0.02)$) -- ($(textwidth.south west) + (0.02,0.02)$) -- (textwidth.south west) -- cycle;
+    \fill[black!80] ($(textwidth.south east) - (0.02,-0.02)$) -- ($(textwidth.south east) - (0.08, -0.08)$) -- ($(textwidth.south west) + (0.08, 0.08)$) -- ($(textwidth.south west) + (0.02, 0.02)$) -- cycle;
+    \fill[black!60] ($(textwidth.south east) - (0.08,-0.08)$) -- ($(textwidth.south east) - (0.1, -0.1)$) -- ($(textwidth.south west) + (0.1, 0.1)$) -- ($(textwidth.south west) + (0.08, 0.08)$) -- cycle;
   \end{tikzpicture}
 }
 
