@@ -1,0 +1,52 @@
+\documentclass{dsa}
+
+\newcommand{\currentsidemargin}{%
+  \ifodd\value{page}%
+    \oddsidemargin%
+  \else%
+    \evensidemargin%
+  \fi%
+}
+\newlength{\whatsleft}
+\newcommand{\measureremainder}[1]{%
+\begin{tikzpicture}[overlay,remember picture]
+    % Helper nodes
+    \path (current page.north west) ++(\hoffset, -\voffset)
+        node[anchor=north west, shape=rectangle, inner sep=0, minimum width=\paperwidth, minimum height=\paperheight]
+        (pagearea) {};
+
+
+    \path (pagearea.north west) ++(1in+\currentsidemargin,-1in-\topmargin-\headheight-\headsep)
+        node[anchor=north west, shape=rectangle, inner sep=0, minimum width=\textwidth, minimum height=\textheight]
+        (textarea) {};
+
+    % Measure distance to right text border
+    \path let \p0 = (0,0), \p1 = (textarea.east) in
+        [/utils/exec={\pgfmathsetlength#1{\x1-\x0}\global#1=#1}];
+
+\end{tikzpicture}%
+}
+
+\newcommand{\tabularTextInput}[1]{
+	\hspace{.5cm}\dsaTextInput{#1}{.5\textwidth-2\tabcolsep-\widthof{#1}-.5cm}
+}
+
+\begin{document}
+
+\begin{dsaCharacterSheet}
+
+\begin{dsaSheetBox}
+	\begin{center}
+		\Huge Heldendokument
+	\end{center}
+	\renewcommand{\arraystretch}{1.25}
+	\begin{tabular}{p{\dimexpr.5\textwidth-2\tabcolsep}p{\dimexpr.5\textwidth-2\tabcolsep}}
+		\textmansontt{Name} \tabularTextInput{Name} & \textmansontt{GP-Basis} \tabularTextInput{GP-Basis} \\ \hline
+		\textmansontt{Rasse} \tabularTextInput{Rasse} & \textmansontt{Kultur} \tabularTextInput{Kultur} \\ \hline
+		\multicolumn{2}{l}{\textmansontt{Profession} \tabularTextInput{Profession}}
+	\end{tabular}
+\end{dsaSheetBox}
+
+\end{dsaCharacterSheet}
+
+\end{document}

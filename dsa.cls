@@ -76,10 +76,16 @@
 \usepackage{environ}
 \usepackage{multicol}
 
-%
+% tabulars
 
 \usepackage{makecell}
 \usepackage{tabu}
+
+% graphics
+
+\usepackage{tikz}
+\usepackage{calc}
+\usetikzlibrary{positioning,fit,calc}
 
 % default side images
 
@@ -114,6 +120,8 @@
 
 \setmainfont{GaramondNo8}
 \dsaSetHeadingFont{Manson}
+\newfontfamily{\mansontt}{Manson}
+\DeclareTextFontCommand{\textmansontt}{\mansontt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % environments
@@ -155,18 +163,35 @@
    \setlength{\parindent}{\dsaOldParindent}
 }
 
-\NewEnviron{dsaSheetBox}[1][\linewidth]{
-   \begin{center}
-      \pgfsetfillopacity{0.5}
-      \setlength\fboxrule{2pt}
-      \fcolorbox{black}{white}{
-         \pgfsetfillopacity{1.0}
-         \begin{minipage}{#1}
-            \BODY
-         \end{minipage}
-      }
-   \end{center}
+\newsavebox\blockbox
+\NewEnviron{dsaSheetBox}[1][\linewidth-0.5cm]{%
+  \begin{lrbox}{\blockbox}%
+    \begin{minipage}{#1}
+      \BODY
+    \end{minipage}
+  \end{lrbox}
+  \begin{tikzpicture}
+    \node[text width=#1, outer sep=0pt](textwidth){\usebox\blockbox};
+    \draw[line width=0.5pt,black,draw opacity=0.7,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.47\pgflinewidth] (textwidth.south west) |- (textwidth.north east);
+    \draw[line width=1.5pt,black,draw opacity=0.9,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.49\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) |- ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
+    \draw[line width=1.5pt,black,draw opacity=0.9,line cap=butt,shorten <= 0.49\pgflinewidth,shorten >= -0.5\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) -| ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
+    \draw[line width=0.5pt,black,line cap=butt,shorten <= 0.47\pgflinewidth,shorten >= -0.5\pgflinewidth] (textwidth.south west) -| (textwidth.north east);
+  \end{tikzpicture}
 }
+
+
+%\NewEnviron{dsaSheetBox}[1][\linewidth]{
+%   \begin{center}
+%      \pgfsetfillopacity{0.5}
+%      \setlength\fboxrule{2pt}
+%      \fcolorbox{black}{white}{
+%         \pgfsetfillopacity{1.0}
+%         \begin{minipage}{#1}
+%            \BODY
+%         \end{minipage}
+%      }
+%   \end{center}
+%}
 
 \newenvironment{dsaTitlePage}{
    \onecolumn
