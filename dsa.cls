@@ -112,11 +112,14 @@
 % environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newlength\dsaOldParindent
 \newenvironment{dsaCharacterSheet}{
    \pagebreak
    \onecolumn
    \dsaHeadingFont\bfseries
    \newgeometry{top=0.5cm, bottom=0.5cm, left=1cm, right=1cm}
+   \setlength{\dsaOldParindent}{\parindent}
+   \setlength{\parindent}{0pt}
    \ClearWallPaper
    \IfFileExists{fanpaket/wallpaper.png}{
       % wallpaper image is bigger than actual page
@@ -142,6 +145,7 @@
    \restoregeometry
    \normalfont
    \dsaSetDefaultPageBorders
+   \setlength{\parindent}{\dsaOldParindent}
 }
 
 \NewEnviron{dsaSheetBox}[1][\linewidth]{
