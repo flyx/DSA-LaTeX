@@ -164,34 +164,23 @@
 }
 
 \newsavebox\blockbox
-\NewEnviron{dsaSheetBox}[1][\linewidth-0.5cm]{%
+\NewEnviron{dsaSheetBox}[1][\textwidth]{%
   \begin{lrbox}{\blockbox}%
-    \begin{minipage}{#1}
+    \noindent\hspace{\fboxsep}\begin{minipage}{#1-2\fboxsep}
+      \vspace{\fboxsep}
       \BODY
+      \vspace{\fboxsep}
     \end{minipage}
   \end{lrbox}
+  \noindent
   \begin{tikzpicture}
-    \node[text width=#1, outer sep=0pt](textwidth){\usebox\blockbox};
-    \draw[line width=0.5pt,black,draw opacity=0.7,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.47\pgflinewidth] (textwidth.south west) |- (textwidth.north east);
-    \draw[line width=1.5pt,black,draw opacity=0.9,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.49\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) |- ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
-    \draw[line width=1.5pt,black,draw opacity=0.9,line cap=butt,shorten <= 0.49\pgflinewidth,shorten >= -0.5\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) -| ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
-    \draw[line width=0.5pt,black,line cap=butt,shorten <= 0.47\pgflinewidth,shorten >= -0.5\pgflinewidth] (textwidth.south west) -| (textwidth.north east);
+    \node[text width=#1, outer sep=0pt,inner sep=0pt](textwidth){\usebox\blockbox};
+    \draw[line width=0.5pt,black,draw opacity=0.6,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.47\pgflinewidth] (textwidth.south west) |- (textwidth.north east);
+    \draw[line width=1.5pt,black,draw opacity=0.8,line cap=butt,shorten <= -0.5\pgflinewidth,shorten >= 0.49\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) |- ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
+    \draw[line width=1.5pt,black,draw opacity=0.8,line cap=butt,shorten <= 0.49\pgflinewidth,shorten >= -0.5\pgflinewidth] ([xshift=0.98pt,yshift=0.98pt]textwidth.south west) -| ([xshift=-0.98pt,yshift=-0.98pt]textwidth.north east);
+    \draw[line width=0.5pt,black,draw opacity=0.9,line cap=butt,shorten <= 0.47\pgflinewidth,shorten >= -0.5\pgflinewidth] (textwidth.south west) -| (textwidth.north east);
   \end{tikzpicture}
 }
-
-
-%\NewEnviron{dsaSheetBox}[1][\linewidth]{
-%   \begin{center}
-%      \pgfsetfillopacity{0.5}
-%      \setlength\fboxrule{2pt}
-%      \fcolorbox{black}{white}{
-%         \pgfsetfillopacity{1.0}
-%         \begin{minipage}{#1}
-%            \BODY
-%         \end{minipage}
-%      }
-%   \end{center}
-%}
 
 \newenvironment{dsaTitlePage}{
    \onecolumn
