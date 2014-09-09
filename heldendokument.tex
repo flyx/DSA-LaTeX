@@ -36,7 +36,7 @@
 \end{dsaSheetBox}%
 \renewcommand{\tabularTextInput}[1]{
 	\dsaTextInput{#1}{\textwidth-3\tabcolsep-2.2cm}
-}
+}%
 \begin{dsaSheetBox}[.4\textwidth]
 	\begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
 		\textmansontt{Aussehen} & \tabularTextInput{Aussehen1} \\ \hline
@@ -58,6 +58,37 @@
 	\end{tabular}
 \end{dsaSheetBox}
 
+\begin{multicols}{2}
+\begin{center}
+	\huge Vorteile%
+\end{center}%
+\vspace{-10pt}%
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+	\begin{tabular}{p{\dimexpr\textwidth-2\tabcolsep}}
+		\dsaTextInput{Vorteile1}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Vorteile2}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Vorteile3}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Vorteile4}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Vorteile5}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Vorteile6}{\textwidth-\tabcolsep}
+	\end{tabular}
+\end{dsaSheetBox}
+\columnbreak
+\begin{center}
+	\huge Nachteile%
+\end{center}%
+\vspace{-10pt}%
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+	\begin{tabular}{p{\dimexpr\textwidth-2\tabcolsep}}
+		\dsaTextInput{Nachteile1}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Nachteile2}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Nachteile3}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Nachteile4}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Nachteile5}{\textwidth-\tabcolsep} \\ \hline
+		\dsaTextInput{Nachteile6}{\textwidth-\tabcolsep}
+	\end{tabular}
+\end{dsaSheetBox}
+\end{multicols}
 \end{dsaCharacterSheet}
 
 \end{document}
