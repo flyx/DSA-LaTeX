@@ -5,6 +5,12 @@
 Dies ist die Installationsanleitung der DSA-Klasse für das LaTeX-Textsatzsystem.
 Die Benutzung der Klasse wird im Dokument `dokumentation.pdf` erläutert.
 
+Für diejenigen Benutzer, die selbst keine oder wenig Ahnung von LaTeX haben und
+eigentlich nur die Dokumente generieren wollen, die der Klasse beiliegen, liegt
+die Definition einer VM (virtuellen Maschine) auf der Basis von Ubuntu bei, die
+mit Vagrant erzeugt werden kann und nach der Einrichtung alle nötige Software
+installiert hat. Eine Anleitung dazu findet sich in `README-VM.html`.
+
 ## TeX-Distribution installieren (sofern nicht vorhanden)
 
 ### Windows
@@ -75,7 +81,7 @@ inoffizielle kann [hier][4] heruntergeladen werden. Legt `pdfimages.exe` im
 selben Ordner wie die PDF-Datei ab, öffnet eine Kommandozeile, navigiert zu dem
 Ordner und führt folgendes Kommando aus:
 
-    pdfimages.exe Wege-des-Schwerts_Handouts_fee3.pdf
+    pdfimages.exe Wege-des-Schwerts_Handouts_fee3.pdf wds
 
 ### OSX
 
@@ -89,13 +95,13 @@ das Fenster, das sich öffnet.
 `pdfimages` gehört zu der `poppler`-Bibliothek. Konsultiere deinen Paketmanager,
 um es zu installieren. Danach kannst du wie auf Windows diesen Befehl ausführen:
 
-    pdfimages Wege-des-Schwerts_Handouts._fee3.pdf
+    pdfimages Wege-des-Schwerts_Handouts._fee3.pdf wds
 
 ### Umwandlung und Einbindung
 
 Nachdem du das Kommando ausgeführt hast, hast du folgende Datei erstellt:
 
-    Wege-des-Schwerts_Handouts_fee3-001.ppm
+    wds-001.ppm
 
 Diese kannst du in einem Bildbearbeitungsprogramm wie [GIMP][6] öffnen und als
 PNG exportieren. Lege sie als `wallpaper.png` im Ordner `fanpaket` ab. Damit

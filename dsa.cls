@@ -58,11 +58,18 @@
 
 % eforms (optional)
 
+\usepackage[hidelinks]{hyperref}
 \IfFileExists{eforms.sty}{
    \usepackage[xetex]{eforms}
    \everyTextField{\textFont{GaramondNo8}\textSize{12}}
    \newcommand{\dsaTextInput}[3][12]{\raisebox{-0.35ex}{\textField[\textSize{##1}]{##2}{##3}{1em}}}
 }{}
+
+% font in TOC
+
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\dsaHeadingFont}
+\renewcommand{\cftsecfont}{\dsaHeadingFont}
 
 % misc
 
@@ -77,8 +84,8 @@
 % default side images
 
 \newcommand{\dsaSetDefaultPageBorders}{
-   \ULCornerWallPaper{}{./fanpaket/balken-links.png}
-   \URCornerWallPaper{}{./fanpaket/balken-rechts.png}
+   \ULCornerWallPaper{}{fanpaket/balken-links.png}
+   \URCornerWallPaper{}{fanpaket/balken-rechts.png}
 }
 \dsaSetDefaultPageBorders
 
@@ -112,17 +119,20 @@
 % environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newlength\dsaOldParindent
 \newenvironment{dsaCharacterSheet}{
    \pagebreak
    \onecolumn
    \dsaHeadingFont\bfseries
    \newgeometry{top=0.5cm, bottom=0.5cm, left=1cm, right=1cm}
+   \setlength{\dsaOldParindent}{\parindent}
+   \setlength{\parindent}{0pt}
    \ClearWallPaper
-   \IfFileExists{./fanpaket/wallpaper.png}{
+   \IfFileExists{fanpaket/wallpaper.png}{
       % wallpaper image is bigger than actual page
       \setlength{\wpXoffset}{-0.3cm}
       \setlength{\wpYoffset}{-0.1cm}
-      \ThisCenterWallPaper{1.0275}{./fanpaket/wallpaper.png}
+      \ThisCenterWallPaper{1.0275}{fanpaket/wallpaper.png}
    }{}
    
    \titleformat{\section}%
@@ -142,6 +152,7 @@
    \restoregeometry
    \normalfont
    \dsaSetDefaultPageBorders
+   \setlength{\parindent}{\dsaOldParindent}
 }
 
 \NewEnviron{dsaSheetBox}[1][\linewidth]{
@@ -160,10 +171,10 @@
 \newenvironment{dsaTitlePage}{
    \onecolumn
    \ClearWallPaper
-   \ThisULCornerWallPaper{}{./fanpaket/balken-symbole-links.png}
-   \ThisURCornerWallPaper{}{./fanpaket/balken-symbole-rechts.png}
+   \ThisULCornerWallPaper{}{fanpaket/balken-symbole-links.png}
+   \ThisURCornerWallPaper{}{fanpaket/balken-symbole-rechts.png}
    \centering
-   \includegraphics[width=12cm]{./fanpaket/logo-fanprodukt.png}
+   \includegraphics[width=12cm]{fanpaket/logo-fanprodukt.png}
    \vfill
    \dsaHeadingFont
 }{
