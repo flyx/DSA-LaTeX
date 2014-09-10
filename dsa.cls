@@ -60,7 +60,7 @@
 
 \usepackage[hidelinks]{hyperref}
 \IfFileExists{eforms.sty}{
-   \usepackage[xetex]{eforms}
+   \usepackage[xetex,useui]{eforms}
    \everyTextField{\textFont{GaramondNo8}\textSize{12}}
    \newcommand{\dsaTextInput}[3][12]{\raisebox{-0.35ex}{\textField[\textSize{##1}]{##2}{##3}{1em}}}
 }{}
@@ -174,7 +174,7 @@
   \end{lrbox}
   \noindent
   \begin{tikzpicture}
-    \node[text width=#1, outer sep=0pt,inner sep=0pt](textwidth){\usebox\blockbox};
+    \node[text width=#1,fill=white,fill opacity=0.4,text opacity=1,outer sep=0pt,inner sep=0pt](textwidth){\usebox\blockbox};
     % Rahmen oben
     \fill[black!60] (textwidth.north west) -- ($(textwidth.north west) + (0.02,-0.02)$) -- ($(textwidth.north east) - (0.02,0.02)$) -- (textwidth.north east) -- cycle;
     \fill[black!80] ($(textwidth.north west) + (0.02,-0.02)$) -- ($(textwidth.north west) + (0.08, -0.08)$) -- ($(textwidth.north east) - (0.08, 0.08)$) -- ($(textwidth.north east) - (0.02, 0.02)$) -- cycle;
