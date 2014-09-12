@@ -298,15 +298,15 @@
         \tiny
         \ifcase#4\relax
             \ifcase#5\relax
-                \begin{tabular}{p{0.2cm}|p{5.8cm}|p{0.5cm}!{\footnotesize •}p{0.5cm}!{\footnotesize •}p{0.5cm}|p{0.8cm}}
+                \begin{tabular}{p{0.2cm}|p{5.8cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{0.8cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{5.8cm} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm}%
                     } \\ \hline
                 \end{tabular}
@@ -317,9 +317,9 @@
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{4.7cm} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
                         \smalltext[centered]{#1-BE\thect}{1cm} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm}%
                     } \\ \hline
@@ -333,9 +333,9 @@
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{5.4cm} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm} &
                         \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}}%
                     } \\ \hline
@@ -347,9 +347,9 @@
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{4.3cm} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
                         \smalltext[centered]{#1-BE\thect}{1cm} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm} &
                         \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}}%
