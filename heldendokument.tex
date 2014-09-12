@@ -1,6 +1,7 @@
 \documentclass{dsa}
 
 \usepackage{shadowtext}
+\usepackage{forloop}
 
 \newcommand{\tabularTextInput}[1]{
     \dsaTextInput{#1}{.5\textwidth-4\tabcolsep-2cm}
@@ -23,15 +24,36 @@
     \dsaExtProp{#1}{#2}{#3} & \num{#3bought} & \num{#3perm}%
 }
 \newcommand{\smallnum}[1]{
-    \hspace{-6pt}\raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}]{#1}{0.8cm}{1em}}\hspace{-4pt}%
+    \hspace{-6pt}\raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{#1}{0.8cm}{1em}}\hspace{-4pt}%
+}
+\newcommand{\smalltext}[3][\empty]{%
+    \ifthenelse{\equal{#1}{\empty}}{%
+        \textField[\textSize{8}]{#2}{#3}{10pt}%
+    }{%
+        \textField[\ui{align={#1}}\textSize{8}]{#2}{#3}{10pt}%
+    }%
 }
 
+\makeatletter
+\newcommand{\roystreqtest}[2]{%
+  \ifnum\pdfstrcmp{#1}{#2}=\z@
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+\newcommand*{\shifttext}[2]{%
+  \settowidth{\@tempdima}{#2}%
+  \makebox[\@tempdima]{\hspace*{#1}#2}%
+}
+\makeatother
+
 \begin{document}
+
+\setlength{\fboxsep}{6pt}
 
 \begin{dsaCharacterSheet}
 \vspace*{10pt}
 \renewcommand{\arraystretch}{1.25}
-\setlength{\fboxsep}{6pt}
 \begin{dsaSheetBox}
     
     \vspace{8pt}
@@ -154,8 +176,8 @@
         \dsaExtProp{INI-Basiswert}{(MU+MU+IN+GE)/5}{INI} & \multicolumn{2}{l}{
             \hspace{5pt}\begin{minipage}{2.4cm}\tiny\normalfont
                 \vspace{-1pt}
-                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{star}]{Kampfreflexe}{0.13cm}{0.09cm}{Kampfreflexe} \raisebox{0.45ex}{Kampfreflexe} \\[1.5pt]
-                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{star}]{Kampfgespür}{0.13cm}{0.09cm}{Kampfgespuer} \raisebox{0.45ex}{Kampfgespür}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{star}]{Kampfreflexe}{0.13cm}{0.09cm}{Kampfreflexe} \raisebox{0.45ex}{Kampfreflexe (INI+4)} \\[1.5pt]
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{star}]{Kampfgespür}{0.13cm}{0.09cm}{Kampfgespuer} \raisebox{0.45ex}{Kampfgespür (INI+2)}
             \end{minipage}
         } \\ \hline
         \dsaExtProp{AT-Basiswert}{(MU+GE+KK)/5}{AT} & \multicolumn{2}{c}{\scriptsize \raisebox{-0.45ex}{Wundschwelle}} \\ \cline{1-4}
@@ -185,10 +207,176 @@
 
 \begin{dsaCharacterSheet}
 
+\vspace*{8pt}
 \begin{dsaSheetBox}[\textwidth]
-    \begin{tabular}{llllllllllllllll!{\vrule width 4\arrayrulewidth}ll}
+    \vspace{1pt}
+    \begin{tabular}{llllllllllllllllll}
         MU: & \smallnum{MUakt} & KL: & \smallnum{KLakt} & IN: & \smallnum{INakt} & CH: & \smallnum{CHakt} & FF: & \smallnum{FFakt} & GE: & \smallnum{GEakt} & KO: & \smallnum{KOakt} & KK: & \smallnum{KKakt} & BE: & \smallnum{BE}
     \end{tabular}
+    \vspace{-1pt}
+\end{dsaSheetBox}
+
+\vspace{-16pt}
+\begin{center}
+    \huge \shadowtext{Sonderfertigkeiten \& Talente}%
+\end{center}%
+\vspace{-8pt}
+
+\newcounter{ct}
+
+\begin{dsaSheetBox}[\textwidth]
+
+    \renewcommand{\arraystretch}{1}
+    \setlength{\tabcolsep}{1pt}
+    \normalfont\bfseries
+    \newcommand{\Sonderfertigkeiten}[1]{
+        \raisebox{0.45ex}{\textmansontt{\Large Sonderfertigkeiten (außer Kampf)}}
+
+        \tiny
+        \begin{tabular}{p{.5\textwidth-.5\columnsep-.5\fboxsep}} \hline
+            \forloop{ct}{0}{\value{ct} < #1}%
+            {%
+              \smalltext{Sonderfertigkeiten-Allgemein\thect}{.5\textwidth-.5\columnsep-.5\fboxsep} \\ \hline
+            }
+        \end{tabular}
+    }
+    \newcommand{\Kampftechniken}[1]{
+        \tiny
+        \ifcase\MSpalte\relax
+            \begin{tabular}{p{0.2cm}|p{4.6cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize •}p{0.7cm}|p{0.8cm}}
+                \multicolumn{3}{l|}{\Large \raisebox{0.35ex}{\textmansontt{Kampftechniken}}} & \footnotesize\centering BE & \footnotesize\centering AT & \footnotesize\centering PA & \footnotesize\hspace{0.5pt} TaW
+                \forloop{ct}{0}{\value{ct} < #1}%
+                {%
+                    \\ \hline
+                    \checkBox[\symbolchoice{star}\BC{}]{Kampftechniken-SE\thect}{0.2cm}{0.2cm} &
+                    \smalltext{Kampftechniken-Name\thect}{4.6cm} &
+                    \smalltext[centered]{Kampftechniken-Spalte\thect}{0.4cm} &
+                    \smalltext[centered]{Kampftechniken-BE\thect}{1cm} &
+                    \smalltext[centered]{Kampftechniken-AT\thect}{0.7cm} &
+                    \smalltext[centered]{Kampftechniken-PA\thect}{0.7cm} &
+                    \smalltext[centered]{Kampftechniken-TaW\thect}{0.8cm}%
+                } \\ \hline
+            \end{tabular}
+        \else
+            \begin{tabular}{p{0.2cm}|p{4.15cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.7cm}|p{0.8cm}|p{0.4cm}}
+                \multicolumn{3}{l|}{\Large \raisebox{0.35ex}{\textmansontt{Kampftechniken}}} & \footnotesize\centering BE & \footnotesize\centering AT & \footnotesize\centering PA & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
+                \forloop{ct}{0}{\value{ct} < #1}%
+                {%
+                    \\ \hline
+                    \checkBox[\symbolchoice{star}\BC{}]{Kampftechniken-SE\thect}{0.2cm}{0.2cm} &
+                    \smalltext{Kampftechniken-Name\thect}{4.15cm} &
+                    \smalltext[centered]{Kampftechniken-Spalte\thect}{0.4cm} &
+                    \smalltext[centered]{Kampftechniken-BE\thect}{1cm} &
+                    \smalltext[centered]{Kampftechniken-AT\thect}{0.7cm} &
+                    \smalltext[centered]{Kampftechniken-PA\thect}{0.7cm} &
+                    \smalltext[centered]{Kampftechniken-TaW\thect}{0.8cm} &
+                    \shifttext{-0.1cm}{\smalltext[centered]{Kampftechniken-M\thect}{0.6cm}}%
+                } \\ \hline
+            \end{tabular}
+        \fi
+
+        \vspace{8pt}
+    }
+
+    \newcommand{\SprachenSchriften}[1]{
+        \begin{tabular}{p{0.2cm}|p{6.85cm}|p{1cm}|p{0.8cm}}
+            \multicolumn{2}{l|}{\Large \raisebox{0.35ex}{\textmansontt{Sprachen \& Schriften}}} &
+            \footnotesize\centering Komp. & \footnotesize\hspace{0.5pt} TaW
+            \forloop{ct}{0}{\value{ct} < #1}{%
+                \\ \hline
+                \checkBox[\symbolchoice{star}\BC{}]{Kampftechniken-SE\thect}{0.2cm}{0.2cm} &
+                \smalltext{Sprachen-Name\thect}{6.85cm} &
+                \smalltext[centered]{Sprachen-Komp\thect}{1cm} &
+                \smalltext[centered]{Sprachen-TaW\thect}{0.8cm}%
+            } \\ \hline
+        \end{tabular}
+
+        \vspace{8pt}
+    }
+
+    \newcommand{\Talentliste}[5]{% #1=Feldname-Präfix, #2=Anzeigename, #3=Anzahl, #4=Mirakel?, #5=BE?
+        \tiny
+        \ifcase#4\relax
+            \ifcase#5\relax
+                \begin{tabular}{p{0.2cm}|p{5.8cm}|p{0.5cm}!{\footnotesize •}p{0.5cm}!{\footnotesize •}p{0.5cm}|p{0.8cm}}
+                    \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW
+                    \forloop{ct}{0}{\value{ct} < #3}{%
+                        \\ \hline
+                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \smalltext{#1-Name\thect}{5.8cm} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \smalltext[centered]{#1-TaW\thect}{0.8cm}%
+                    } \\ \hline
+                \end{tabular}
+            \else
+                \begin{tabular}{p{0.2cm}|p{4.7cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
+                    \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW
+                    \forloop{ct}{0}{\value{ct} < #3}{%
+                        \\ \hline
+                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \smalltext{#1-Name\thect}{4.7cm} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \smalltext[centered]{#1-BE\thect}{1cm} &
+                        \smalltext[centered]{#1-TaW\thect}{0.8cm}%
+                    } \\ \hline
+                \end{tabular}
+            \fi
+        \else
+            \ifcase#5
+                \begin{tabular}{p{0.2cm}|p{5.4cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{0.8cm}|p{0.4cm}}
+                    \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
+                    \forloop{ct}{0}{\value{ct} < #3}{%
+                        \\ \hline
+                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \smalltext{#1-Name\thect}{5.4cm} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \smalltext[centered]{#1-TaW\thect}{0.8cm} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}}%
+                    } \\ \hline
+                \end{tabular}
+            \else
+                \begin{tabular}{p{0.2cm}|p{4.3cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
+                    \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
+                    \forloop{ct}{0}{\value{ct} < #3}{%
+                        \\ \hline
+                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \smalltext{#1-Name\thect}{4.3cm} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}} &
+                        \smalltext[centered]{#1-BE\thect}{1cm} &
+                        \smalltext[centered]{#1-TaW\thect}{0.8cm} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}}%
+                    } \\ \hline
+                \end{tabular}
+            \fi
+        \fi
+
+        \vspace{8pt}
+    }
+    \newcommand{\Gaben}[2][Gaben]{\Talentliste{Gaben}{#1}{#2}{0}{0}}
+    \newcommand{\KoerperlicheTalente}[1]{\Talentliste{Koerper}{Körperliche Talente}{#1}{\MSpalte}{1}}
+    \newcommand{\GesellschaftlicheTalente}[1]{\Talentliste{Gesellschaft}{Gesellschaftliche Talente}{#1}{\MSpalte}{0}}
+    \newcommand{\NaturTalente}[1]{\Talentliste{Natur}{Naturtalente}{#1}{\MSpalte}{0}}
+    \newcommand{\WissensTalente}[1]{\Talentliste{Wissen}{Wissenstalente}{#1}{\MSpalte}{0}}
+    \newcommand{\HandwerklicheTalente}[1]{\Talentliste{Handwerk}{Handwerkliche Talente}{#1}{\MSpalte}{0}}
+
+    \input{talentbogen.tex}
+    
+    \setlength{\columnseprule}{1pt}
+    \setlength{\columnsep}{4pt}
+    \begin{multicols}{2}
+        \TalenteLinks
+
+    \columnbreak
+        \TalenteRechts
+    \end{multicols}
 \end{dsaSheetBox}
 
 %
