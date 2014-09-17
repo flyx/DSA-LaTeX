@@ -15,13 +15,13 @@
     }%
 }
 \newcommand{\dsaPropline}[2]{
-    \small #1 & \num{#2modif} & \num{#2orig} & \cellcolor{white} \num{#2akt}%
+    \small #1 & \num{#2-modif} & \num{#2-orig} & \cellcolor{white} \num{#2-akt}%
 }
 \newcommand{\dsaExtProp}[3]{
-    \small #1 \hfill \tiny\normalfont\bfseries #2 \hspace{3pt} & \num{#3modif} & \num{#3orig} & \cellcolor{white}\num{#3akt}
+    \small #1 \hfill \tiny\normalfont\bfseries #2 \hspace{3pt} & \num{#3-modif} & \num{#3-orig} & \cellcolor{white}\num{#3-akt}
 }
 \newcommand{\dsaExtPropline}[3]{
-    \dsaExtProp{#1}{#2}{#3} & \num{#3bought} & \num{#3perm}%
+    \dsaExtProp{#1}{#2}{#3} & \num{#3-bought} & \num{#3-perm}%
 }
 \newcommand{\smallnum}[1]{
     \hspace{-6pt}\raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{#1}{0.8cm}{1em}}\hspace{-4pt}%
@@ -33,6 +33,8 @@
         \textField[\ui{align={#1}}\textSize{8}]{#2}{#3}{10pt}%
     }%
 }
+
+\newcommand{\dsaTHeading}[2][1]{\ifthenelse{\equal{#1}{1}}{\centering}{}\raisebox{0.35ex}{\small #2}}
 
 \makeatletter
 \newcommand{\roystreqtest}[2]{%
@@ -176,8 +178,8 @@
         \dsaExtProp{INI-Basiswert}{(MU+MU+IN+GE)/5}{INI} & \multicolumn{2}{l}{
             \hspace{5pt}\begin{minipage}{2.4cm}\tiny\normalfont
                 \vspace{-1pt}
-                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{star}]{Kampfreflexe}{0.13cm}{0.09cm}{Kampfreflexe} \raisebox{0.45ex}{Kampfreflexe (INI+4)} \\[1.5pt]
-                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{star}]{Kampfgespür}{0.13cm}{0.09cm}{Kampfgespuer} \raisebox{0.45ex}{Kampfgespür (INI+2)}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Kampfreflexe}{0.13cm}{0.09cm}{Kampfreflexe} \raisebox{0.45ex}{Kampfreflexe (INI+4)} \\[1.5pt]
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Kampfgespür}{0.13cm}{0.09cm}{Kampfgespuer} \raisebox{0.45ex}{Kampfgespür (INI+2)}
             \end{minipage}
         } \\ \hline
         \dsaExtProp{AT-Basiswert}{(MU+GE+KK)/5}{AT} & \multicolumn{2}{c}{\scriptsize \raisebox{-0.45ex}{Wundschwelle}} \\ \cline{1-4}
@@ -205,13 +207,17 @@
 
 \end{dsaCharacterSheet}
 
+%==============================================================================
+% Sonderfertigkeiten & Talente
+%==============================================================================
+
 \begin{dsaCharacterSheet}
 
-\vspace*{8pt}
+\vspace*{4pt}
 \begin{dsaSheetBox}[\textwidth]
     \vspace{1pt}
     \begin{tabular}{llllllllllllllllll}
-        MU: & \smallnum{MUakt} & KL: & \smallnum{KLakt} & IN: & \smallnum{INakt} & CH: & \smallnum{CHakt} & FF: & \smallnum{FFakt} & GE: & \smallnum{GEakt} & KO: & \smallnum{KOakt} & KK: & \smallnum{KKakt} & BE: & \smallnum{BE}
+        MU: & \smallnum{MU-akt} & KL: & \smallnum{KL-akt} & IN: & \smallnum{IN-akt} & CH: & \smallnum{CH-akt} & FF: & \smallnum{FF-akt} & GE: & \smallnum{GE-akt} & KO: & \smallnum{KO-akt} & KK: & \smallnum{KK-akt} & BE: & \smallnum{BE}
     \end{tabular}
     \vspace{-1pt}
 \end{dsaSheetBox}
@@ -380,6 +386,255 @@
 \end{dsaSheetBox}
 
 %
+\end{dsaCharacterSheet}
+
+%==============================================================================
+% Kampfbogen
+%==============================================================================
+
+\begin{dsaCharacterSheet}
+
+\renewcommand{\arraystretch}{1}
+ \setlength{\tabcolsep}{1pt}
+
+\vspace*{4pt}
+\begin{dsaSheetBox}[\textwidth]
+    \vspace{1pt}
+    \begin{tabular}{llllllll}
+        Attacke-Basiswert: & \smallnum{AT-akt} & Parade-Basiswert: & \smallnum{PA-akt} & Fernkampf-Basiswert: & \smallnum{FK-akt} & Initiative-Basiswert: & \smallnum{INI-akt}
+    \end{tabular}
+    \vspace{-1pt}
+\end{dsaSheetBox}
+
+\vspace{-16pt}
+\begin{center}
+    \huge \shadowtext{Waffen \& Kampfwerte}%
+\end{center}%
+\vspace{-8pt}
+
+\newcommand{\Nahkampfwaffen}[2]{%
+    \begin{dsaSheetBox}[\textwidth]
+        \tiny
+        \begin{tabu}{p{4.8cm}|p{2.4cm}|p{1cm}|p{1.4cm}|p{1.6cm}|p{1cm}|p{1.4cm}|p{0.8cm}|p{0.8cm}|p{1.4cm}|p{0.5cm}|p{0.5cm}}
+        \dsaTHeading[0]{Nahkampfwaffe} &
+        \dsaTHeading{Typ/eBE} &
+        \dsaTHeading{DK} &
+        \dsaTHeading{TP} &
+        \dsaTHeading{TP/KK} &
+        \dsaTHeading{INI} &
+        \dsaTHeading{WM} &
+        \dsaTHeading{AT} &
+        \dsaTHeading{PA} &
+        \dsaTHeading{TP} &
+        \multicolumn{2}{c}{\dsaTHeading[0]{BF}}
+        \forloop{ct}{0}{\value{ct} < #1}{%
+            \ifcase\value{ct}%
+                \\ \Xhline{2\arrayrulewidth}
+            \else
+                \\ \hline
+            \fi
+            \smalltext{Nahkampfwaffe-\thect}{4.8cm} &
+            \smalltext[centered]{NK--Typ-eBE-\thect}{2.4cm} &
+            \smalltext[centered]{NK-DK-\thect}{1cm} &
+            \smalltext[centered]{NK-TPbase-\thect}{1.4cm} &
+            \smalltext[centered]{NK-TP-KK-\thect}{1.6cm} &
+            \smalltext[centered]{NK-INI-\thect}{1cm} &
+            \smalltext[centered]{NK-WM-\thect}{1.4cm} &
+            \smalltext[centered]{NK-AT-\thect}{0.8cm} &
+            \smalltext[centered]{NK-PA-\thect}{0.8cm} &
+            \smalltext[centered]{NK-TP-\thect}{1.4cm} &
+            \smalltext[centered]{NK-BFa-\thect}{0.5cm} &
+            \smalltext[centered]{NK-BFb-\thect}{0.5cm}
+        } \\ \Xhline{3\arrayrulewidth}
+        \end{tabu}
+
+        \vspace{2pt}
+        \ifthenelse{\equal{#2}{0}}{}{
+            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \smalltext{NK-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
+                \forloop{ct}{1}{\value{ct} < #2}{%
+                    \\ \hline
+                    \multicolumn{2}{l}{\smalltext{NK-SF-\thect}{\textwidth-\fboxsep}}
+                } \\ \hline
+            \end{tabular}
+        }
+    \end{dsaSheetBox}
+}
+
+\newcommand{\Fernkampfwaffen}[2]{%
+    \begin{dsaSheetBox}[\textwidth]
+        \tiny
+        \begin{tabu}{p{4.8cm}|p{2.4cm}|p{1.4cm}|p{3.2cm}|p{3.2cm}|p{0.8cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}}
+            \dsaTHeading[0]{Fernkampfwaffe} &
+            \dsaTHeading{Typ/eBE} &
+            \dsaTHeading{TP} &
+            \dsaTHeading{Entfernungen} &
+            \dsaTHeading{TP/Entfernung} &
+            \dsaTHeading{FK} &
+            \multicolumn{4}{c}{dsaTHeading[0]{Geschosse}}
+            \forloop{ct}{0}{\value{ct} < #1}{%
+                \ifcase\value{ct}%
+                    \\ \Xhline{2\arrayrulewidth}
+                \else
+                    \\ \hline
+                \fi
+                \smalltext{Fernkampfwaffe-\thect}{4.8cm} &
+                \smalltext[centered]{FK-Typ-eBE-\thect}{2.4cm} &
+                \smalltext[centered]{FK-TP-\thect}{1.4cm} &
+                \smalltext[centered]{FK-Entfernungen-\thect}{3.2cm} &
+                \smalltext[centered]{FK-TP-Entfernung-\thect}{3.2cm} &
+                \smalltext[centered]{FK-FK-\thect}{0.8cm} &
+                \smalltext[centered]{FK-Geschosse-a-\thect}{0.5cm} &
+                \smalltext[centered]{FK-Geschosse-b-\thect}{0.5cm} &
+                \smalltext[centered]{FK-Geschosse-c-\thect}{0.5cm} &
+                \smalltext[centered]{FK-Geschosse-d-\thect}{0.5cm}
+            } \\ \Xhline{3\arrayrulewidth}
+        \end{tabu}
+
+        \vspace{2pt}
+        \ifthenelse{\equal{#1}{0}}{}{
+            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \smalltext{FK-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
+                \forloop{ct}{1}{\value{ct} < #2}{%
+                    \\ \hline
+                    \multicolumn{2}{l}{\smalltext{FK-SF-\thect}{\textwidth-\fboxsep}}
+                } \\ \hline
+            \end{tabular}
+        }
+    \end{dsaSheetBox}
+}
+
+\newcommand{\Waffenlos}[1]{%
+    \begin{dsaSheetBox}[\textwidth]
+
+        \tiny
+        \begin{tabu}{p{4.8cm}|p{1.4cm}|p{1cm}|p{1cm}|p{1cm}|p{1.9cm}}
+            \dsaTHeading[0]{Waffenloser Kampf} &
+            \dsaTHeading{TP/KK} &
+            \dsaTHeading{INI} &
+            \dsaTHeading{AT} &
+            \dsaTHeading{PA} &
+            \dsaTHeading{TP(A)} \\ \Xhline{2\arrayrulewidth}
+            \normalfont\small Raufen &
+            \normalfont\small\centering 10/3 &
+            \normalfont\small\centering +0 & \smalltext[centered]{Raufen-AT}{1cm} &
+            \smalltext[centered]{Raufen-PA}{1cm} &
+            \smalltext[centered]{Raufen-TPa}{1.4cm} \\ \hline
+            \normalfont\small Ringen &
+            \normalfont\small\centering 10/3 &
+            \normalfont\small\centering +0 &
+            \smalltext[centered]{Ringen-AT}{1cm} &
+            \smalltext[centered]{Ringen-PA}{1cm} &
+            \smalltext[centered]{Ringen-TPa}{1.9cm} \\ \Xhline{3\arrayrulewidth}
+        \end{tabu}
+
+        \vspace{2pt}
+        \ifthenelse{\equal{#1}{0}}{}{
+            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \smalltext{WL-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
+                \forloop{ct}{1}{\value{ct} < #1}{%
+                    \\ \hline
+                    \multicolumn{2}{l}{\smalltext{WL-SF-\thect}{\textwidth-\fboxsep}}
+                } \\ \hline
+            \end{tabular}
+        }
+    \end{dsaSheetBox}
+}
+
+\newcommand{\SchildParierwaffen}[1]{%
+    \vspace{-28pt}
+    \begin{center}
+        \LARGE \shadowtext{Schild / Parierwaffe}%
+    \end{center}%
+    \vspace{-4pt}
+
+    \begin{dsaSheetBox}
+        \tiny
+        \begin{tabu}{p{4.8cm}|p{2cm}|p{1cm}|p{1.4cm}|p{0.8cm}|p{0.5cm}|p{0.5cm}}
+            \dsaTHeading[0]{Name} &
+            \dsaTHeading{Typ} &
+            \dsaTHeading{INI} &
+            \dsaTHeading{WM} &
+            \dsaTHeading{PA} &
+            \multicolumn{2}{c}{\dsaTHeading[0]{BF}}
+            \forloop{ct}{0}{\value{ct} < #1}{%
+                \ifcase\value{ct}%
+                    \\ \Xhline{2\arrayrulewidth}
+                \else
+                    \\ \hline
+                \fi
+                \smalltext{Schild-\thect}{4.8cm} &
+                \smalltext[centered]{PW-Typ-\thect}{2cm} &
+                \smalltext[centered]{PW-INI-\thect}{1cm} &
+                \smalltext[centered]{PW-WM-\thect}{1.4cm} &
+                \smalltext[centered]{PW-PA-\thect}{0.8cm} &
+                \smalltext[centered]{PW-BF-a-\thect}{0.5cm} &
+                \smalltext[centered]{PW-BF-b-\thect}{0.5cm}
+            } \\ \Xhline{3\arrayrulewidth}%
+        \end{tabu}
+
+        \vspace{2pt}
+        \footnotesize\normalfont\bfseries
+        \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Linkhand}{0.13cm}{0.09cm}{Linkhand} Linkhand (PA+1),\hspace{5pt}
+        \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{SchildkampfI}{0.13cm}{0.09cm}{SchildkampfI} Schildkampf I (PA+2)/
+        \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{SchildkampfII}{0.13cm}{0.09cm}{SchildkampfII} II (PA+2),\hspace{5pt}
+        \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{ParierwaffenI}{0.13cm}{0.09cm}{ParierwaffenI} Parierwaffen I/
+        \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{ParierwaffenII}{0.13cm}{0.09cm}{ParierwaffenII} II
+    \end{dsaSheetBox}
+}
+
+\newcommand{\Ruestung}[1]{%
+    \begin{center}
+        \LARGE \shadowtext{Rüstung}%
+    \end{center}%
+    \vspace{-4pt}
+
+    \begin{dsaSheetBox}
+        \tiny
+        \begin{tabu}{p{3.8cm}|p{0.8cm}|p{0.8cm}}
+            \dsaTHeading[0]{Rüstungsstück} &
+            \dsaTHeading{RS} &
+            \dsaTHeading{BE}
+            \forloop{ct}{0}{\value{ct} < #1}{%
+                \ifcase\value{ct}%
+                    \\ \Xhline{2\arrayrulewidth}
+                \else
+                    \\ \hline
+                \fi
+                \smalltext{RS-\thect}{4cm} &
+                \smalltext[centered]{RS-RS-\thect}{0.8cm} &
+                \smalltext[centered]{RS-BE-\thect}{0.8cm}
+            } \\ \Xhline{2\arrayrulewidth}
+            \normalfont\bfseries\scriptsize Summe & \smalltext[centered]{RS-RS-Sum}{0.8cm} & \smalltext[centered]{RS-BE-Sum}{0.8cm} \\ \Xhline{2\arrayrulewidth}
+            \multicolumn{2}{l|}{
+                \normalfont\scriptsize\bfseries Rüstungsgewöhnung
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Rüstungsgewöhnung I}{0.13cm}{0.09cm}{RuestungsgewoehnungI} I \hspace{1pt}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Rüstungsgewöhnung II}{0.13cm}{0.09cm}{RuestungsgewoehnungII} II \hspace{1pt}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Rüstungsgewöhnung III}{0.13cm}{0.09cm}{RuestungsgewoehnungIII} III
+            } & \smalltext[centered]{BE}{0.8cm}
+        \end{tabu}
+    \end{dsaSheetBox}
+}
+
+\newcommand{\Ausweichen}{%
+    \vspace{-28pt}
+    \begin{center}
+        \LARGE \shadowtext{Ausweichen}%
+    \end{center}%
+    \vspace{-4pt}
+
+    \begin{dsaSheetBox}
+        \setlength{\tabcolsep}{0pt}
+        \tiny\normalfont\bfseries
+        \begin{tabular}{p{1.2cm}p{0.3cm}p{0.5cm}p{0.3cm}p{2cm}p{0.3cm}p{1cm}}
+            \scriptsize PA-Basis & & \scriptsize BE & & \scriptsize Sonderfertigkeit & & \scriptsize Summe \\
+            \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{PA-akt}{1cm}{1em}} &
+            \normalsize - &
+            \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{BE}{0.5cm}{1em}} &
+            \normalsize + & TODO & = & \smalltext{Ausweichen}{1cm}
+        \end{tabular}
+    \end{dsaSheetBox}
+}
+
+\input{kampfbogen.tex}
+
 \end{dsaCharacterSheet}
 
 \end{document}
