@@ -33,6 +33,13 @@
         \textField[\ui{align={#1}}\textSize{8}]{#2}{#3}{10pt}%
     }%
 }
+\newcommand{\mediumtext}[3][\empty]{%
+    \ifthenelse{\equal{#1}{\empty}}{%
+        \raisebox{-0.6ex}{\textField[\textSize{9}]{#2}{#3}{10pt}}%
+    }{%
+        \raisebox{-0.6ex}{\textField[\ui{align={#1}}\textSize{9}]{#2}{#3}{10pt}}%
+    }%
+}
 
 \newcommand{\dsaTHeading}[2][1]{\ifthenelse{\equal{#1}{1}}{\centering}{}\raisebox{0.35ex}{\small #2}}
 
@@ -433,27 +440,27 @@
             \else
                 \\ \hline
             \fi
-            \smalltext{Nahkampfwaffe-\thect}{4.8cm} &
-            \smalltext[centered]{NK--Typ-eBE-\thect}{2.4cm} &
-            \smalltext[centered]{NK-DK-\thect}{1cm} &
-            \smalltext[centered]{NK-TPbase-\thect}{1.4cm} &
-            \smalltext[centered]{NK-TP-KK-\thect}{1.6cm} &
-            \smalltext[centered]{NK-INI-\thect}{1cm} &
-            \smalltext[centered]{NK-WM-\thect}{1.4cm} &
-            \smalltext[centered]{NK-AT-\thect}{0.8cm} &
-            \smalltext[centered]{NK-PA-\thect}{0.8cm} &
-            \smalltext[centered]{NK-TP-\thect}{1.4cm} &
-            \smalltext[centered]{NK-BFa-\thect}{0.5cm} &
-            \smalltext[centered]{NK-BFb-\thect}{0.5cm}
+            \mediumtext{Nahkampfwaffe-\thect}{4.8cm} &
+            \mediumtext[centered]{NK--Typ-eBE-\thect}{2.4cm} &
+            \mediumtext[centered]{NK-DK-\thect}{1cm} &
+            \mediumtext[centered]{NK-TPbase-\thect}{1.4cm} &
+            \mediumtext[centered]{NK-TP-KK-\thect}{1.6cm} &
+            \mediumtext[centered]{NK-INI-\thect}{1cm} &
+            \mediumtext[centered]{NK-WM-\thect}{1.4cm} &
+            \mediumtext[centered]{NK-AT-\thect}{0.8cm} &
+            \mediumtext[centered]{NK-PA-\thect}{0.8cm} &
+            \mediumtext[centered]{NK-TP-\thect}{1.4cm} &
+            \mediumtext[centered]{NK-BFa-\thect}{0.5cm} &
+            \mediumtext[centered]{NK-BFb-\thect}{0.5cm}
         } \\ \Xhline{3\arrayrulewidth}
         \end{tabu}
 
         \vspace{2pt}
         \ifthenelse{\equal{#2}{0}}{}{
-            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \smalltext{NK-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
+            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \mediumtext{NK-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
                 \forloop{ct}{1}{\value{ct} < #2}{%
                     \\ \hline
-                    \multicolumn{2}{l}{\smalltext{NK-SF-\thect}{\textwidth-\fboxsep}}
+                    \multicolumn{2}{l}{\mediumtext{NK-SF-\thect}{\textwidth-\fboxsep}}
                 } \\ \hline
             \end{tabular}
         }
@@ -470,32 +477,32 @@
             \dsaTHeading{Entfernungen} &
             \dsaTHeading{TP/Entfernung} &
             \dsaTHeading{FK} &
-            \multicolumn{4}{c}{dsaTHeading[0]{Geschosse}}
+            \multicolumn{4}{c}{\dsaTHeading[0]{Geschosse}}
             \forloop{ct}{0}{\value{ct} < #1}{%
                 \ifcase\value{ct}%
                     \\ \Xhline{2\arrayrulewidth}
                 \else
                     \\ \hline
                 \fi
-                \smalltext{Fernkampfwaffe-\thect}{4.8cm} &
-                \smalltext[centered]{FK-Typ-eBE-\thect}{2.4cm} &
-                \smalltext[centered]{FK-TP-\thect}{1.4cm} &
-                \smalltext[centered]{FK-Entfernungen-\thect}{3.2cm} &
-                \smalltext[centered]{FK-TP-Entfernung-\thect}{3.2cm} &
-                \smalltext[centered]{FK-FK-\thect}{0.8cm} &
-                \smalltext[centered]{FK-Geschosse-a-\thect}{0.5cm} &
-                \smalltext[centered]{FK-Geschosse-b-\thect}{0.5cm} &
-                \smalltext[centered]{FK-Geschosse-c-\thect}{0.5cm} &
-                \smalltext[centered]{FK-Geschosse-d-\thect}{0.5cm}
+                \mediumtext{Fernkampfwaffe-\thect}{4.8cm} &
+                \mediumtext[centered]{FK-Typ-eBE-\thect}{2.4cm} &
+                \mediumtext[centered]{FK-TP-\thect}{1.4cm} &
+                \mediumtext[centered]{FK-Entfernungen-\thect}{3.2cm} &
+                \mediumtext[centered]{FK-TP-Entfernung-\thect}{3.2cm} &
+                \mediumtext[centered]{FK-FK-\thect}{0.8cm} &
+                \mediumtext[centered]{FK-Geschosse-a-\thect}{0.5cm} &
+                \mediumtext[centered]{FK-Geschosse-b-\thect}{0.5cm} &
+                \mediumtext[centered]{FK-Geschosse-c-\thect}{0.5cm} &
+                \mediumtext[centered]{FK-Geschosse-d-\thect}{0.5cm}
             } \\ \Xhline{3\arrayrulewidth}
         \end{tabu}
 
         \vspace{2pt}
         \ifthenelse{\equal{#1}{0}}{}{
-            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \smalltext{FK-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
+            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \mediumtext{FK-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
                 \forloop{ct}{1}{\value{ct} < #2}{%
                     \\ \hline
-                    \multicolumn{2}{l}{\smalltext{FK-SF-\thect}{\textwidth-\fboxsep}}
+                    \multicolumn{2}{l}{\mediumtext{FK-SF-\thect}{\textwidth-\fboxsep}}
                 } \\ \hline
             \end{tabular}
         }
@@ -506,7 +513,7 @@
     \begin{dsaSheetBox}[\textwidth]
 
         \tiny
-        \begin{tabu}{p{4.8cm}|p{1.4cm}|p{1cm}|p{1cm}|p{1cm}|p{1.9cm}}
+        \begin{tabu}{p{4.8cm}|p{1.4cm}|p{1cm}|p{1cm}|p{1cm}|p{2.5cm}}
             \dsaTHeading[0]{Waffenloser Kampf} &
             \dsaTHeading{TP/KK} &
             \dsaTHeading{INI} &
@@ -515,23 +522,23 @@
             \dsaTHeading{TP(A)} \\ \Xhline{2\arrayrulewidth}
             \normalfont\small Raufen &
             \normalfont\small\centering 10/3 &
-            \normalfont\small\centering +0 & \smalltext[centered]{Raufen-AT}{1cm} &
-            \smalltext[centered]{Raufen-PA}{1cm} &
-            \smalltext[centered]{Raufen-TPa}{1.4cm} \\ \hline
+            \normalfont\small\centering +0 & \mediumtext[centered]{Raufen-AT}{1cm} &
+            \mediumtext[centered]{Raufen-PA}{1cm} &
+            \mediumtext[centered]{Raufen-TPa}{1.4cm} \\ \hline
             \normalfont\small Ringen &
             \normalfont\small\centering 10/3 &
             \normalfont\small\centering +0 &
-            \smalltext[centered]{Ringen-AT}{1cm} &
-            \smalltext[centered]{Ringen-PA}{1cm} &
-            \smalltext[centered]{Ringen-TPa}{1.9cm} \\ \Xhline{3\arrayrulewidth}
+            \mediumtext[centered]{Ringen-AT}{1cm} &
+            \mediumtext[centered]{Ringen-PA}{1cm} &
+            \mediumtext[centered]{Ringen-TPa}{2.5cm} \\ \Xhline{3\arrayrulewidth}
         \end{tabu}
 
         \vspace{2pt}
         \ifthenelse{\equal{#1}{0}}{}{
-            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \smalltext{WL-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
+            \begin{tabular}{p{4cm}p{\textwidth-\fboxsep-\tabcolsep-4cm}} \dsaTHeading[0]{Sonderfertigkeiten} & \mediumtext{WL-SF-0}{\textwidth-\fboxsep-\tabcolsep-4cm}
                 \forloop{ct}{1}{\value{ct} < #1}{%
                     \\ \hline
-                    \multicolumn{2}{l}{\smalltext{WL-SF-\thect}{\textwidth-\fboxsep}}
+                    \multicolumn{2}{l}{\mediumtext{WL-SF-\thect}{\textwidth-\fboxsep}}
                 } \\ \hline
             \end{tabular}
         }
@@ -547,7 +554,7 @@
 
     \begin{dsaSheetBox}
         \tiny
-        \begin{tabu}{p{4.8cm}|p{2cm}|p{1cm}|p{1.4cm}|p{0.8cm}|p{0.5cm}|p{0.5cm}}
+        \begin{tabu}{p{4.8cm}|p{2.6cm}|p{1cm}|p{1.4cm}|p{0.8cm}|p{0.5cm}|p{0.5cm}}
             \dsaTHeading[0]{Name} &
             \dsaTHeading{Typ} &
             \dsaTHeading{INI} &
@@ -560,18 +567,18 @@
                 \else
                     \\ \hline
                 \fi
-                \smalltext{Schild-\thect}{4.8cm} &
-                \smalltext[centered]{PW-Typ-\thect}{2cm} &
-                \smalltext[centered]{PW-INI-\thect}{1cm} &
-                \smalltext[centered]{PW-WM-\thect}{1.4cm} &
-                \smalltext[centered]{PW-PA-\thect}{0.8cm} &
-                \smalltext[centered]{PW-BF-a-\thect}{0.5cm} &
-                \smalltext[centered]{PW-BF-b-\thect}{0.5cm}
+                \mediumtext{Schild-\thect}{4.8cm} &
+                \mediumtext[centered]{PW-Typ-\thect}{2cm} &
+                \mediumtext[centered]{PW-INI-\thect}{1cm} &
+                \mediumtext[centered]{PW-WM-\thect}{1.4cm} &
+                \mediumtext[centered]{PW-PA-\thect}{0.8cm} &
+                \mediumtext[centered]{PW-BF-a-\thect}{0.5cm} &
+                \mediumtext[centered]{PW-BF-b-\thect}{0.5cm}
             } \\ \Xhline{3\arrayrulewidth}%
         \end{tabu}
 
         \vspace{2pt}
-        \footnotesize\normalfont\bfseries
+        \footnotesize\normalfont\bfseries\centering
         \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Linkhand}{0.13cm}{0.09cm}{Linkhand} Linkhand (PA+1),\hspace{5pt}
         \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{SchildkampfI}{0.13cm}{0.09cm}{SchildkampfI} Schildkampf I (PA+2)/
         \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{SchildkampfII}{0.13cm}{0.09cm}{SchildkampfII} II (PA+2),\hspace{5pt}
@@ -598,23 +605,22 @@
                 \else
                     \\ \hline
                 \fi
-                \smalltext{RS-\thect}{4cm} &
-                \smalltext[centered]{RS-RS-\thect}{0.8cm} &
-                \smalltext[centered]{RS-BE-\thect}{0.8cm}
+                \mediumtext{RS-\thect}{4cm} &
+                \mediumtext[centered]{RS-RS-\thect}{0.8cm} &
+                \mediumtext[centered]{RS-BE-\thect}{0.8cm}
             } \\ \Xhline{2\arrayrulewidth}
-            \normalfont\bfseries\scriptsize Summe & \smalltext[centered]{RS-RS-Sum}{0.8cm} & \smalltext[centered]{RS-BE-Sum}{0.8cm} \\ \Xhline{2\arrayrulewidth}
+            \normalfont\bfseries\scriptsize Summe & \mediumtext[centered]{RS-RS-Sum}{0.8cm} & \mediumtext[centered]{RS-BE-Sum}{0.8cm} \\ \Xhline{2\arrayrulewidth}
             \multicolumn{2}{l|}{
                 \normalfont\scriptsize\bfseries Rüstungsgewöhnung
                 \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Rüstungsgewöhnung I}{0.13cm}{0.09cm}{RuestungsgewoehnungI} I \hspace{1pt}
                 \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Rüstungsgewöhnung II}{0.13cm}{0.09cm}{RuestungsgewoehnungII} II \hspace{1pt}
                 \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Rüstungsgewöhnung III}{0.13cm}{0.09cm}{RuestungsgewoehnungIII} III
-            } & \smalltext[centered]{BE}{0.8cm}
+            } & \mediumtext[centered]{BE}{0.8cm}
         \end{tabu}
     \end{dsaSheetBox}
 }
 
 \newcommand{\Ausweichen}{%
-    \vspace{-28pt}
     \begin{center}
         \LARGE \shadowtext{Ausweichen}%
     \end{center}%
@@ -623,13 +629,72 @@
     \begin{dsaSheetBox}
         \setlength{\tabcolsep}{0pt}
         \tiny\normalfont\bfseries
-        \begin{tabular}{p{1.2cm}p{0.3cm}p{0.5cm}p{0.3cm}p{2cm}p{0.3cm}p{1cm}}
-            \scriptsize PA-Basis & & \scriptsize BE & & \scriptsize Sonderfertigkeit & & \scriptsize Summe \\
-            \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{PA-akt}{1cm}{1em}} &
-            \normalsize - &
-            \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{BE}{0.5cm}{1em}} &
-            \normalsize + & TODO & = & \smalltext{Ausweichen}{1cm}
+        \begin{tabular}{p{1cm}p{0.3cm}p{0.7cm}p{0.3cm}p{2.5cm}p{0.3cm}p{1cm}}
+            \multicolumn{2}{l}{\scriptsize PA-Basis} & \scriptsize\centering BE & & \scriptsize\centering SF Ausweichen & & \scriptsize Summe \\
+            \raisebox{-1.5ex}{\textField[\ui{align={centered},textsize={14}}\Ff{\FfReadOnly}]{PA-akt}{1cm}{2em}} &
+            \normalsize $-$ &
+            \raisebox{-1.5ex}{\textField[\ui{align={centered},textsize={14}}\Ff{\FfReadOnly}]{BE}{0.7cm}{2em}} &
+            \normalsize $+$ &
+            \begin{minipage}{2.5cm}
+                \centering
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Ausweichen I}{0.13cm}{0.09cm}{AusweichenI} I \hspace{1pt}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Ausweichen II}{0.13cm}{0.09cm}{AusweichenII} II \hspace{1pt}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Ausweichen III}{0.13cm}{0.09cm}{AusweichenIII} III \hspace{1pt} \\
+                jeweils +3 \\
+                Flink (+1) / Behäbig (-1)?
+            \end{minipage}
+             & \normalsize $=$ &
+            \raisebox{-1.5ex}{\textField[\ui{align={centered},textsize={14}}]{Ausweichen}{0.9cm}{2em}} \\ \Xcline{1-1}{3\arrayrulewidth} \Xcline{3-3}{3\arrayrulewidth} \Xcline{7-7}{3\arrayrulewidth}
+             & & & \multicolumn{3}{c}{Akrobatik (+$\lfloor(\mathrm{TaW}-9) / 3 \rfloor $)?} &
         \end{tabular}
+    \end{dsaSheetBox}
+}
+
+\newcommand{\Wunden}{%
+    \begin{center}
+        \LARGE \shadowtext{Wunden}%
+    \end{center}%
+    \vspace{-4pt}
+
+    \begin{dsaSheetBox}
+        \centering
+        \begin{tikzpicture}
+            \filldraw[fill=white, draw=black, thick] (1,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (1.65,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (2.3,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (2.95,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (3.6,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (4.25,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (4.9,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (5.55,1) circle (0.25cm);
+            \filldraw[fill=white, draw=black, thick] (6.2,1) circle (0.25cm);
+        \end{tikzpicture} \\
+        \scriptsize\normalfont\bfseries je Wunde AT, PA, FK, GE, INI - 2, GS - 1
+    \end{dsaSheetBox}
+}
+
+\newcommand{\dsaTSHeading}[1]{\centering\normalfont\bfseries\scriptsize #1}
+
+\newcommand{\LebensenergieAusdauerEtc}[2]{
+    \begin{center}%
+        \LARGE \shadowtext{Lebensenergie, Ausdauer, etc.}%
+    \end{center}%
+    \vspace{-12pt}
+
+    \begin{dsaSheetBox}
+        \tiny
+        \begin{tabular}{p{3cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{11.1cm}}
+            & \dsaTSHeading{max.} & \dsaTSHeading{1/2} & \dsaTSHeading{1/3} & \dsaTSHeading{1/4} & \normalfont\bfseries\scriptsize\hspace{2pt} aktuell \\ \Xhline{2\arrayrulewidth}
+            \footnotesize Lebensenergie & \textField[\ui{align={centered}}\textSize{9}\Ff{\FfReadOnly}]{LE-akt}{1cm}{10pt} & \mediumtext{LEdiv2}{1cm} & \mediumtext{LEdiv3}{1cm} & \mediumtext{LEdiv4}{1cm} & \\ \hline
+            \footnotesize Ausdauer & \textField[\ui{align={centered}}\textSize{9}\Ff{\FfReadOnly}]{AU-akt}{1cm}{10pt} & \mediumtext{AUdiv2}{1cm} & \mediumtext{AUdiv3}{1cm} & \mediumtext{AUdiv4}{1cm} & \\ \hline
+            \ifthenelse{\equal{#1}{1}}{
+                \footnotesize Karmaenergie & \textField[\ui{align={centered}}\textSize{9}\Ff{\FfReadOnly}]{KE-akt}{1cm}{11.5pt} & \multicolumn{4}{l}{} \\ \hline
+            }{}
+            \ifthenelse{\equal{#2}{1}}{
+                \footnotesize Astralenergie & \textField[\ui{align={centered}}\textSize{9}\Ff{\FfReadOnly}]{AE-akt}{1cm}{11.5pt} & \multicolumn{4}{l}{} \\ \hline
+            }{}
+        \end{tabular}
+
     \end{dsaSheetBox}
 }
 
