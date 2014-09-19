@@ -29,7 +29,7 @@
 
 \LoadClass[paper=a4, fontsize=11pt]{scrartcl}
 
-\usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm,showframe]{geometry}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Package imports
