@@ -1,0 +1,153 @@
+\begin{dsaCharacterSheet}
+\vspace*{10pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{dsaSheetBox}
+    
+    \vspace{8pt}
+    \begin{center}
+        \Huge \shadowtext{Heldendokument}
+    \end{center}
+    \begin{tabular}{p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}}
+        \textmansontt{Name} & \tabularTextInput{Name} & \textmansontt{GP-Basis} & \tabularTextInput{GP-Basis} \\ \hline
+        \textmansontt{Rasse} & \tabularTextInput{Rasse} & \textmansontt{Kultur} & \tabularTextInput{Kultur} \\ \hline
+        \textmansontt{Profession} & \multicolumn{3}{l}{\dsaTextInput{Profession}{\textwidth-4\tabcolsep-2cm}}
+    \end{tabular}
+\end{dsaSheetBox}
+
+\vspace{-8pt}
+\renewcommand{\tabularTextInput}[1]{
+    \dsaTextInput{#1}{\textwidth-3\tabcolsep-2.2cm}
+}
+\begin{multicols}{2}
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
+        \textmansontt{Geschlecht} & \tabularTextInput{Geschlecht} \\ \hline
+        \textmansontt{Geburtstag} & \tabularTextInput{Geburtstag} \\ \hline
+        \textmansontt{Größe} & \tabularTextInput{Groesse} \\ \hline
+        \textmansontt{Gewicht} & \tabularTextInput{Gewicht} \\ \hline
+        \textmansontt{Haarfarbe} & \tabularTextInput{Haarfarbe} \\ \hline
+        \textmansontt{Augenfarbe} & \tabularTextInput{Augenfarbe}
+    \end{tabular}
+\end{dsaSheetBox}%
+
+\columnbreak%
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
+        \textmansontt{Stand} & \tabularTextInput{Stand} \\ \hline
+        \textmansontt{Sozialstatus} & \tabularTextInput{Sozialstatus} \\ \hline
+        \textmansontt{Titel} & \tabularTextInput{Titel1} \\ \hline
+        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel2}{\textwidth-\tabcolsep}} \\ \hline
+        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel3}{\textwidth-\tabcolsep}} \\ \hline
+        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel4}{\textwidth-\tabcolsep}}
+    \end{tabular}
+\end{dsaSheetBox}%
+\end{multicols}
+\vspace{-12pt}
+
+\begin{dsaSheetBox}[\textwidth]
+    \begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
+        \textmansontt{Aussehen} & \tabularTextInput{Aussehen1} \\ \hline
+        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Aussehen2}{\textwidth-\tabcolsep}} \\ \hline
+        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Aussehen3}{\textwidth-\tabcolsep}}
+    \end{tabular}
+\end{dsaSheetBox}%
+
+\vspace{-4pt}
+\begin{multicols}{2}
+\begin{center}
+    \huge \shadowtext{Vorteile}%
+\end{center}%
+\vspace{-12pt}%
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \begin{tabular}{p{\dimexpr\textwidth-2\tabcolsep}}
+        \dsaTextInput{Vorteile1}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Vorteile2}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Vorteile3}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Vorteile4}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Vorteile5}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Vorteile6}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Vorteile7}{\textwidth-\tabcolsep}
+    \end{tabular}
+\end{dsaSheetBox}
+
+\columnbreak
+\begin{center}
+    \huge \shadowtext{Nachteile}%
+\end{center}%
+\vspace{-12pt}%
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \begin{tabular}{p{\dimexpr\textwidth-2\tabcolsep}}
+        \dsaTextInput{Nachteile1}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Nachteile2}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Nachteile3}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Nachteile4}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Nachteile5}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Nachteile6}{\textwidth-\tabcolsep} \\ \hline
+        \dsaTextInput{Nachteile7}{\textwidth-\tabcolsep}
+    \end{tabular}
+\end{dsaSheetBox}
+\end{multicols}
+
+\vspace{-24pt}
+\begin{center}
+    \huge \shadowtext{Eigenschaften \& Basiswerte}
+\end{center}
+
+\vspace{-8pt}
+\begin{dsaSheetBox}[2\fboxsep + 6.72cm]
+    \setlength{\tabcolsep}{0pt}
+    \begin{tabu}{p{3.1cm}|p{1.2cm}|p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}}
+        \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell} \Xhline{2\arrayrulewidth}
+        \dsaPropline{Mut}{MU} \\ \hline
+        \dsaPropline{Klugkeit}{KL} \\ \hline
+        \dsaPropline{Intuition}{IN} \\ \hline
+        \dsaPropline{Charisma}{CH} \\ \hline
+        \dsaPropline{Fingerfertigkeit}{FF} \\ \hline
+        \dsaPropline{Gewandtheit}{GE} \\ \hline
+        \dsaPropline{Konstitution}{KO} \\ \hline
+        \dsaPropline{Körperkraft}{KK} \\ \Xhline{2\arrayrulewidth}
+        \dsaPropline{Geschwindigkeit}{GS}
+   \end{tabu}%
+
+   \vspace{1pt}
+\end{dsaSheetBox}
+\begin{dsaSheetBox}[2\fboxsep + 11.2cm]
+    \setlength{\tabcolsep}{0pt}
+    \begin{tabu}{p{5.1cm}|p{1.2cm}|p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}|p{1.2cm}}
+        \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell & Zugekauft & Permanent} \Xhline{2\arrayrulewidth}
+        \dsaExtPropline{Lebenspunkte}{(KO+KO+KK)/2}{LE} \\ \hline
+        \dsaExtPropline{Ausdauer}{(MU+KO+GE)/2}{AU} \\ \hline
+        \dsaExtPropline{Astralenergie}{(MU+IN+CH)/2}{AE} \\ \hline
+        \dsaExtPropline{Karmaenergie}{}{KE} \\ \hline
+        \dsaExtPropline{Magieresistenz}{(MU+KL+KO)/5}{MR} \\ \hline
+        \dsaExtProp{INI-Basiswert}{(MU+MU+IN+GE)/5}{INI} & \multicolumn{2}{l}{
+            \hspace{5pt}\begin{minipage}{2.4cm}\tiny\normalfont
+                \vspace{-1pt}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Kampfreflexe}{0.13cm}{0.09cm}{Kampfreflexe} \raisebox{0.45ex}{Kampfreflexe (INI+4)} \\[1.5pt]
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Kampfgespür}{0.13cm}{0.09cm}{Kampfgespuer} \raisebox{0.45ex}{Kampfgespür (INI+2)}
+            \end{minipage}
+        } \\ \hline
+        \dsaExtProp{AT-Basiswert}{(MU+GE+KK)/5}{AT} & \multicolumn{2}{c}{\scriptsize \raisebox{-0.45ex}{Wundschwelle}} \\ \cline{1-4}
+        \dsaExtProp{PA-Basiswert}{(IN+GE+KK)/5}{PA} & \multicolumn{2}{c}{\tiny\normalfont \raisebox{2ex}{(KO/2)+Modifikator}} \\ \cline{1-4}
+        \dsaExtProp{FK-Basiswert}{(IN+FF+KK)/5}{FK} & \multicolumn{2}{c}{\num[1 1 1]{WS}}
+    \end{tabu}
+\end{dsaSheetBox}
+
+\vspace{-16pt}
+\begin{center}
+    \huge \shadowtext{Abenteuerpunkte}
+\end{center}
+\vspace{-8pt}
+
+\begin{dsaSheetBox}[\textwidth]
+    \Large
+
+    \vspace{-3pt}
+    \begin{tabular}{p{2.5cm}p{2.5cm}p{2.7cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+        Gesamt: & \dsaTextInput{AP-Gesamt}{2.5cm} & Eingesetzt: & \dsaTextInput{AP-Eingesetzt}{2.5cm} & Guthaben: & \dsaTextInput{AP-Guthaben}{2.5cm}
+    \end{tabular}
+
+    \vspace{-3pt}
+\end{dsaSheetBox}
+
+\end{dsaCharacterSheet}

@@ -15,3 +15,95 @@
 	\vspace{3pt}
 	\HandwerklicheTalente{15}
 }
+
+\newcommand{\KampftechnikenBasis}[2]{
+	\ifcase#1%
+		\kampf{#2}{Dolche}{D}{BE-1}%
+	\or%
+		\kampf{#2}{Hiebwaffen}{D}{BE-4}%
+	\or%
+		\kampf{#2}{Raufen}{C}{BE}%
+	\or%
+		\kampf{#2}{Ringen}{D}{BE}%
+	\or%
+		\kampf{#2}{Säbel}{D}{BE-3}%
+	\or%
+		\kampf{#2}{Wurfmesser}{C}{BE-3}%
+	\fi%
+}
+
+\newcommand{\KoerperBasis}[2]{
+	\ifcase#1%
+		\talent{#2}{Athletik}{GE}{KO}{KK}{BEx2}%
+	\or%
+		\talent{#2}{Klettern}{MU}{GE}{KK}{BEx2}%
+	\or%
+		\talent{#2}{Körperbeherrschung}{MU}{IN}{GE}{BEx2}%
+	\or%
+		\talent{#2}{Schleichen}{MU}{IN}{GE}{BE}%
+	\or%
+		\talent{#2}{Schwimmen}{GE}{KO}{KK}{BEx2}%
+	\or%
+		\talent{#2}{Selbstbeherrschung}{MU}{KO}{KK}{-}%
+	\or%
+		\talent{#2}{Sich Verstecken}{MU}{IN}{GE}{BE-2}%
+	\or%
+		\talent{#2}{Singen}{IN}{CH}{CH}{BE-3}%
+	\or%
+		\talent{#2}{Sinnesschärfe}{KL}{IN}{IN}{spez.}%
+	\or%
+		\talent{#2}{Tanzen}{CH}{GE}{GE}{BEx2}%
+	\or%
+		\talent{#2}{Zechen}{IN}{KO}{KK}{-}%
+	\fi%
+}
+
+\newcommand{\GesellschaftBasis}[2]{
+	\ifcase#1%
+		\talent{#2}{Menschenkenntnis}{KL}{IN}{CH}{}%
+	\or%
+		\talent{#2}{Überreden}{MU}{IN}{CH}{}%
+	\fi%
+}
+
+\newcommand{\NaturBasis}[2]{
+	\ifcase#1%
+		\talent{#2}{Fährtensuchen}{KL}{IN}{IN}{}%
+	\or%
+		\talent{#2}{Orientierung}{KL}{IN}{IN}{}%
+	\or%
+		\talent{#2}{Wildnisleben}{IN}{GE}{KO}{}%
+	\fi%
+}
+
+\newcommand{\WissenBasis}[2]{
+	\ifcase#1%
+		\talent{#2}{Götter / Kulte}{KL}{KL}{IN}{}%
+	\or%
+		\talent{#2}{Rechnen}{KL}{KL}{IN}{}%
+	\or%
+		\talent{#2}{Sagen / Legenden}{KL}{IN}{CH}{}%
+	\fi%
+}
+
+\newcommand{\SprachenBasis}[2]{
+	\ifcase#1%
+		\sprache{#2}{Muttersprache:}{}%
+	\fi
+}
+
+\newcommand{\HandwerkBasis}[2]{
+	\ifcase#1%
+		\talent{#2}{Heilkunde Wunden}{KL}{CH}{FF}{}%
+	\or%
+		\talent{#2}{Holzbearbeitung}{KL}{FF}{KK}{}%
+	\or%
+		\talent{#2}{Kochen}{KL}{IN}{FF}{}%
+	\or%
+		\talent{#2}{Lederarbeiten}{KL}{FF}{FF}{}%
+	\or%
+		\talent{#2}{Malen / Zeichnen}{KL}{IN}{FF}{}%
+	\or%
+		\talent{#2}{Schneidern}{KL}{FF}{FF}{}%
+	\fi%
+}
