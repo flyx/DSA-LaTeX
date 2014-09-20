@@ -36,7 +36,7 @@
     \newcommand{\Kampftechniken}[1]{
         \tiny
         \ifcase\MSpalte\relax
-            \begin{tabular}{p{0.2cm}|p{4.6cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize •}p{0.7cm}|p{0.8cm}}
+            \begin{tabular}{p{0.2cm}|p{4.6cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.7cm}|p{0.8cm}}
                 \multicolumn{3}{l|}{\Large \raisebox{0.35ex}{\textmansontt{Kampftechniken}}} & \footnotesize\centering BE & \footnotesize\centering AT & \footnotesize\centering PA & \footnotesize\hspace{0.5pt} TaW
                 \forloop{ct}{0}{\value{ct} < #1}%
                 {%
@@ -51,7 +51,7 @@
                 } \\ \hline
             \end{tabular}
         \else
-            \begin{tabular}{p{0.2cm}|p{4.15cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.7cm}|p{0.8cm}|p{0.4cm}}
+            \begin{tabular}{p{0.2cm}|p{4.15cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.7cm}|p{0.8cm}|p{0.4cm}}
                 \multicolumn{3}{l|}{\Large \raisebox{0.35ex}{\textmansontt{Kampftechniken}}} & \footnotesize\centering BE & \footnotesize\centering AT & \footnotesize\centering PA & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
                 \forloop{ct}{0}{\value{ct} < #1}%
                 {%
@@ -91,28 +91,28 @@
         \tiny
         \ifcase#4\relax
             \ifcase#5\relax
-                \begin{tabular}{p{0.2cm}|p{5.8cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{0.8cm}}
+                \begin{tabular}{p{0.2cm}|p{5.8cm}|p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}|p{0.8cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{5.8cm}{#6{\thect}{0}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm}{}%
                     } \\ \hline
                 \end{tabular}
             \else
-                \begin{tabular}{p{0.2cm}|p{4.7cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
+                \begin{tabular}{p{0.2cm}|p{4.7cm}|p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{4.7cm}{#6{\thect}{0}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{#1-BE\thect}{1cm}{#6{\thect}{4}} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm}{}%
                     } \\ \hline
@@ -120,29 +120,29 @@
             \fi
         \else
             \ifcase#5
-                \begin{tabular}{p{0.2cm}|p{5.4cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{0.8cm}|p{0.4cm}}
+                \begin{tabular}{p{0.2cm}|p{5.4cm}|p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}|p{0.8cm}|p{0.4cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{5.4cm}{#6{\thect}{0}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm}{} &
                         \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}{}}%
                     } \\ \hline
                 \end{tabular}
             \else
-                \begin{tabular}{p{0.2cm}|p{4.3cm}|p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{0.35ex}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
+                \begin{tabular}{p{0.2cm}|p{4.3cm}|p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.35ex}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
                         \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
                         \smalltext{#1-Name\thect}{4.3cm}{#6{\thect}{0}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.225cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.25cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{#1-BE\thect}{1cm}{#6{\thect}{4}} &
                         \smalltext[centered]{#1-TaW\thect}{0.8cm}{} &
                         \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}{}}%
