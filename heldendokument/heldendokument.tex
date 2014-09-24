@@ -28,16 +28,16 @@
 }
 \newcommand{\smalltext}[4][\empty]{%
     \ifthenelse{\equal{#1}{\empty}}{%
-        \raisebox{-3pt}{\textField[\textSize{8}\ui{value={\ignorespaces #4}}]{#2}{#3}{7pt}}%
+        \raisebox{-2pt}{\textField[\textSize{8}\ui{value={\ignorespaces #4}}]{#2}{#3}{11pt}}%
     }{%
-        \raisebox{-3pt}{\textField[\ui{align={#1},value={\ignorespaces #4}}\textSize{8}]{#2}{#3}{7pt}}%
+        \raisebox{-2pt}{\textField[\ui{align={#1},value={\ignorespaces #4}}\textSize{8}]{#2}{#3}{11pt}}%
     }%
 }
 \newcommand{\mediumtext}[3][\empty]{%
     \ifthenelse{\equal{#1}{\empty}}{%
-        \raisebox{-0.6ex}{\textField[\textSize{9}]{#2}{#3}{10pt}}%
+        \raisebox{-0.6ex}{\textField[\textSize{9}]{#2}{#3}{13pt}}%
     }{%
-        \raisebox{-0.6ex}{\textField[\ui{align={#1}}\textSize{9}]{#2}{#3}{10pt}}%
+        \raisebox{-0.6ex}{\textField[\ui{align={#1}}\textSize{9}]{#2}{#3}{13pt}}%
     }%
 }
 

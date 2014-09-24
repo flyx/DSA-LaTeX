@@ -1,19 +1,21 @@
 \newcommand{\MSpalte}{1}
+\newcommand{\TalenteInCombo}{0}
 
 \newcommand{\TalenteLinks}{
 	\Sonderfertigkeiten{6}
 	\Gaben[Übernatürliche Begabungen]{2}
-	\Kampftechniken{13}
+    \Kampftechniken{11}
 	\KoerperlicheTalente{17}
 	\GesellschaftlicheTalente{10}
 }
 
 \newcommand{\TalenteRechts}{
+	\vspace*{-11pt}
 	\NaturTalente{8}
 	\WissensTalente{15}
 	\SprachenSchriften{10}
-	\vspace{2.5pt}
-	\HandwerklicheTalente{16}
+	\vspace{2pt}
+	\HandwerklicheTalente{15}
 }
 
 \newcommand{\KampftechnikenBasis}[2]{
@@ -32,78 +34,6 @@
 	\fi%
 }
 
-\newcommand{\KoerperBasis}[2]{
-	\ifcase#1%
-		\talent{#2}{Athletik}{GE}{KO}{KK}{BEx2}%
-	\or%
-		\talent{#2}{Klettern}{MU}{GE}{KK}{BEx2}%
-	\or%
-		\talent{#2}{Körperbeherrschung}{MU}{IN}{GE}{BEx2}%
-	\or%
-		\talent{#2}{Schleichen}{MU}{IN}{GE}{BE}%
-	\or%
-		\talent{#2}{Schwimmen}{GE}{KO}{KK}{BEx2}%
-	\or%
-		\talent{#2}{Selbstbeherrschung}{MU}{KO}{KK}{-}%
-	\or%
-		\talent{#2}{Sich Verstecken}{MU}{IN}{GE}{BE-2}%
-	\or%
-		\talent{#2}{Singen}{IN}{CH}{CH}{BE-3}%
-	\or%
-		\talent{#2}{Sinnesschärfe}{KL}{IN}{IN}{spez.}%
-	\or%
-		\talent{#2}{Tanzen}{CH}{GE}{GE}{BEx2}%
-	\or%
-		\talent{#2}{Zechen}{IN}{KO}{KK}{-}%
-	\fi%
-}
+\input{talentbogen-extern.tex}
 
-\newcommand{\GesellschaftBasis}[2]{
-	\ifcase#1%
-		\talent{#2}{Menschenkenntnis}{KL}{IN}{CH}{}%
-	\or%
-		\talent{#2}{Überreden}{MU}{IN}{CH}{}%
-	\fi%
-}
-
-\newcommand{\NaturBasis}[2]{
-	\ifcase#1%
-		\talent{#2}{Fährtensuchen}{KL}{IN}{IN}{}%
-	\or%
-		\talent{#2}{Orientierung}{KL}{IN}{IN}{}%
-	\or%
-		\talent{#2}{Wildnisleben}{IN}{GE}{KO}{}%
-	\fi%
-}
-
-\newcommand{\WissenBasis}[2]{
-	\ifcase#1%
-		\talent{#2}{Götter / Kulte}{KL}{KL}{IN}{}%
-	\or%
-		\talent{#2}{Rechnen}{KL}{KL}{IN}{}%
-	\or%
-		\talent{#2}{Sagen / Legenden}{KL}{IN}{CH}{}%
-	\fi%
-}
-
-\newcommand{\SprachenBasis}[2]{
-	\ifcase#1%
-		\sprache{#2}{Muttersprache:}{}%
-	\fi
-}
-
-\newcommand{\HandwerkBasis}[2]{
-	\ifcase#1%
-		\talent{#2}{Heilkunde Wunden}{KL}{CH}{FF}{}%
-	\or%
-		\talent{#2}{Holzbearbeitung}{KL}{FF}{KK}{}%
-	\or%
-		\talent{#2}{Kochen}{KL}{IN}{FF}{}%
-	\or%
-		\talent{#2}{Lederarbeiten}{KL}{FF}{FF}{}%
-	\or%
-		\talent{#2}{Malen / Zeichnen}{KL}{IN}{FF}{}%
-	\or%
-		\talent{#2}{Schneidern}{KL}{FF}{FF}{}%
-	\fi%
-}
+\newcommand{\SprachenBasis}[2]{}

@@ -6,3 +6,9 @@ release
 *.log
 *.out
 *.vagrant
+*.ttf
+*.ps1
+*.sh
+*.ppm
+/acrotex
+*-extern.tex
