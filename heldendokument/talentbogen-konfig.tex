@@ -1,5 +1,5 @@
 \newcommand{\MSpalte}{1}
-\newcommand{\TalenteInCombo}{0}
+\newcommand{\TalenteInCombo}{1}
 
 \newcommand{\TalenteLinks}{
 	\Sonderfertigkeiten{6}
@@ -18,22 +18,6 @@
 	\HandwerklicheTalente{15}
 }
 
-\newcommand{\KampftechnikenBasis}[2]{
-	\ifcase#1%
-		\kampf{#2}{Dolche}{D}{BE-1}%
-	\or%
-		\kampf{#2}{Hiebwaffen}{D}{BE-4}%
-	\or%
-		\kampf{#2}{Raufen}{C}{BE}%
-	\or%
-		\kampf{#2}{Ringen}{D}{BE}%
-	\or%
-		\kampf{#2}{Säbel}{D}{BE-3}%
-	\or%
-		\kampf{#2}{Wurfmesser}{C}{BE-3}%
-	\fi%
-}
-
+\newcommand{\lparen}{(}
+\newcommand{\rparen}{)}
 \input{talentbogen-extern.tex}
-
-\newcommand{\SprachenBasis}[2]{}

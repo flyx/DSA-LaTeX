@@ -92,6 +92,50 @@ class Basiskampftechnik(Kampftechnik):
     def __repr__(self):
         return "Basiskampftechnik" + Kampftechnik.__repr__(self)
 
+class SprachSchriftTalent(yaml.YAMLObject):
+
+    @classmethod
+    def from_yaml(cls, loader, node):
+        if not isinstance(node, yaml.nodes.ScalarNode):
+            raise Exception("Excpected scalar node!")
+        scalar = loader.construct_scalar(node)
+        return cls(scalar)
+
+    def __init__(self, komp):
+        self.komp = komp
+
+    def __repr__(self):
+        return "(Komplexität: {})".format(self.komp)
+
+class Sprache(SprachSchriftTalent):
+    yaml_tag = u"!sprache"
+
+    def __init__(self, komp):
+        SprachSchriftTalent.__init__(self, komp)
+        self.sprache = True
+
+    def __repr__(self):
+        return "Sprache" + SprachSchriftTalent.__repr__(self)
+
+class Schrif(SprachSchriftTalent):
+    yaml_tag = u"!schrift"
+
+    def __init__(self, komp):
+        SprachSchriftTalent.__init__(self, komp)
+        self.sprache = False
+
+    def __repr__(self):
+        return "Schrift" + SprachSchriftTalent.__repr__(self)
+
+def latex_umlauts(s):
+    return s.replace(u'ä', u'\\"a').replace(
+                     u'ü', u'\\"u').replace(
+                     u'ö', u'\\"o').replace(
+                     u'Ä', u'\\"A').replace(
+                     u'Ü', u'\\"U').replace(
+                     u'Ö', u'\\"O').replace(
+                     u'(', u'\\lparen{}').replace(
+                     u')', u'\\rparen{}')
 
 
 def write_basis(dest, talente, name, varname):
@@ -105,19 +149,49 @@ def write_basis(dest, talente, name, varname):
             # best format string ever
             lines.append(u"\\talent{{#2}}{{{}}}{{{}}}{{{}}}{{{}}}{{{}}}".format(
                 key, eigenschaften[0], eigenschaften[1], eigenschaften[2], talent.behinderung))
-    dest.write(u"\\or".join(lines).encode('utf-8'))
-    dest.write("\\fi}\n\n")
+    dest.write(u'\\or'.join(lines).encode('utf-8'))
+    dest.write('\\fi}\n\n')
 
 def write_list(dest, talente, name, varname):
     current = talente[name]
     dest.write(u'\\newcommand{\\' + varname + '}{()')
     for key in sorted(current):
-        dest.write(u'({})'.format(key.replace(u'ä', u'\\"a').replace(u'ü', u'\\"u').replace(u'ö', u'\\"o').replace(u'Ä', u'\\"A').replace(u'Ü', u'\\"U').replace(u'Ö', u'\\"O')).encode('utf-8'))
+        dest.write(u'({})'.format(latex_umlauts(key)).encode('utf-8'))
+    dest.write('}\n\n')
+
+def write_kampfbasis(dest, talente, name, varname):
+    current = talente[name]
+    dest.write(u'\\newcommand{\\' + varname + '}[2]{\\ifcase#1')
+    lines = []
+    for key in sorted(current):
+        kampf = current[key]
+        if kampf.basis:
+            lines.append(u'\\kampf{{#2}}{{{}}}{{{}}}{{{}}}'.format(
+                key, kampf.spalte, kampf.behinderung))
+    dest.write(u'\\or'.join(lines).encode('utf-8'))
+    dest.write(u'\\fi}\n\n')
+
+def write_kampflist(dest, talente, name, varname):
+    current = talente[name]
+    dest.write(u'\\newcommand{\\' + varname + '}{()')
+    for key in sorted(current):
+        dest.write(u'({})'.format(latex_umlauts(key)).encode('utf-8'))
+    dest.write('}\n\n')
+
+def write_sprachschriftlist(dest, talente, name, varname):
+    current = talente[name]
+    dest.write(u'\\newcommand{\\' + varname + '}{()')
+    for key in sorted(current):
+        dest.write(u'({} \\lparen{{}}{}\\rparen{{}})'.format(latex_umlauts(key), u'Sprache' if current[key].sprache else u'Schrift').encode('utf-8'))
     dest.write('}\n\n')
 
 def process_category(dest, talente, category, categoryTrunk):
     write_basis(dest, talente, category, categoryTrunk + 'Basis')
     write_list(dest, talente, category, categoryTrunk + 'Talentliste')
+
+def process_kampf(dest, talente, category, categoryTrunk):
+    write_kampfbasis(dest, talente, category, categoryTrunk + 'Basis')
+    write_kampflist(dest, talente, category, categoryTrunk + 'Talentliste')
 
 with open('talente.yaml', 'r') as f:
     talente = yaml.load(f)
@@ -128,3 +202,5 @@ with open('talente.yaml', 'r') as f:
         process_category(dest, talente, u'Naturtalente', u'Natur')
         process_category(dest, talente, u'Wissenstalente', u'Wissen')
         process_category(dest, talente, u'Handwerkliche Talente', u'Handwerk')
+        process_kampf(dest, talente, u'Kampftechniken', u'Kampftechniken')
+        write_sprachschriftlist(dest, talente, u'Sprachen und Schriften', u'SprachenTalentliste')

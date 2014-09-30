@@ -88,6 +88,68 @@ Wissenstalente:
     Staatskunst: !spez [KL, IN, CH]
     Sternkunde: !spez [KL, KL, IN]
     Tierkunde: !spez [MU, KL, IN]
+Sprachen und Schriften:
+    Garethi: !sprache 18
+    Bosparano: !sprache 21
+    Aureliani: !sprache 21
+    Zyklopäisch: !sprache 18
+    Tulamidya: !sprache 18
+    Ur-Tulamidya: !sprache 21
+    Zelemja: !sprache 18
+    Alaani: !sprache 21
+    Zhulchammaqra: !sprache 15
+    Ferkina: !sprache 16
+    Ruuz: !sprache 18
+    Alte Kemi: !sprache 18
+    Rabensprache: !sprache 15
+    Nujuka: !sprache 15
+    Mohisch: !sprache 15
+    Thorwalsch: !sprache 18
+    Hjaldingsch: !sprache 18
+    Isdira: !sprache 21
+    Asdharia: !sprache 24
+    Rogolan: !sprache 21
+    Angram: !sprache 21
+    Ologhaijan: !sprache 15
+    Oloarkh: !sprache 10
+    Goblinisch: !sprache 12
+    Trollisch: !sprache 15
+    Rssaah: !sprache 18
+    Mahrisch: !sprache 20
+    Rissoal: !sprache 20
+    Molochisch: !sprache 17
+    Neckergesang: !sprache 18
+    Grolmisch: !sprache 17
+    Z'Lit: !sprache 17
+    Koboldisch: !sprache 15
+    Drachisch: !sprache 21
+    Zhayad: !sprache 15
+    Atak: !sprache 12
+    Füchsisch: !sprache 12
+    Altes Alaani: !schrift 18
+    Altes Kemi: !schrift 21
+    Amulashtra (modern): !schrift 11
+    Amulashtra (historisch): !schrift 17
+    Angram: !schrift 21
+    Arkanil: !schrift 24
+    Chrmk (Zelemja): !schrift 18
+    Cuchas: !schrift 24
+    Drakhard-Zinken: !schrift 9
+    Drakned-Glyphen: !schrift 15
+    Geheiligte Glyphen von Unau: !schrift 13
+    Gimaril: !schrift 10
+    Gjalskisch: !schrift 14
+    Hjaldingsche Runen: !schrift 10/16
+    Imperiale Zeichen: !schrift 12
+    Isdira / Asdharia: !schrift 15/18
+    Kusliker Zeichen: !schrift 10
+    Mahrische Glyphen: !schrift 15
+    Nanduria: !schrift 10
+    Rogolan: !schrift 11
+    Trollische Raumbilderschrift: !schrift 24
+    Tulamidya: !schrift 14
+    Ur-Tulamidya: !schrift 16
+    Zhayad: !schrift 18
 Handwerkliche Talente:
     Abrichten: !spez [MU, IN, CH]
     Ackerbau: !spez [IN, FF, KO]
