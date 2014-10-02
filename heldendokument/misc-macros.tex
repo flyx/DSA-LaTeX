@@ -1,0 +1,115 @@
+\newcommand{\Kleidung}[1]{
+\begin{dsaSheetBox}
+
+    \tiny
+    \begin{tabular}{p{\textwidth-.5\fboxsep}}
+        \raisebox{0.45ex}{\textmansontt{\Large Kleidung}} \hspace{5pt} \mediumtext{Kleidung0}{15.9cm}
+        \forloop{ct}{1}{\value{ct} < #1}{%
+            \\ \hline%
+            \mediumtext{Kleidung\thect}{\textwidth}{}
+        }%
+    \end{tabular}%
+\end{dsaSheetBox}
+}
+
+\newcommand{\Ausruestung}[1]{
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \tiny
+    \begin{tabular}{p{5.5cm}|p{1cm}|p{2.2cm}}
+        \raisebox{0.45ex}{\Large Ausrüstung} & \centering\raisebox{0.45ex}{\normalfont\bfseries Gewicht} & \centering\raisebox{0.45ex}{\normalfont\bfseries Wo getragen?}
+        \forloop{ct}{0}{\value{ct} < #1}{%
+            \tabularnewline \hline
+            \mediumtext{Ausruestung-Name\thect}{5.6cm} & \mediumtext[centered]{Ausruestung-Gewicht\thect}{1.05cm} & \mediumtext[centered]{Ausruestung-Wo\thect}{2.25cm}
+        }
+    \end{tabular}
+\end{dsaSheetBox}
+}
+
+\newcommand{\Proviant}[1]{
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \tiny
+    \begin{tabular}{p{5.3cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}}
+        \raisebox{0.45ex}{\Large Proviant / Tränke} & \multicolumn{4}{c}{\raisebox{0.45ex}{\normalfont\bfseries\scriptsize Rationen / Ladungen}}
+        \forloop{ct}{0}{\value{ct} < #1}{%
+            \\ \hline%
+            \mediumtext{Proviant-Name\thect}{5.3cm}%
+            \forloop{cta}{0}{\value{cta} < 4}{ & \mediumtext[centered]{Proviant-Ration\thecta-\thect}{0.9cm}}%
+        }%
+    \end{tabular}
+\end{dsaSheetBox}
+}
+
+\newcommand{\Vermoegen}[2]{
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \tiny
+    \begin{tabular}{p{2.6cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}}
+        \multicolumn{2}{l}{\raisebox{0.45ex}{\Large Vermögen}} & \multicolumn{7}{l}{\raisebox{0.45ex}{\normalfont (1 Dukate = 10 Silbertaler = 100 Heller = 1000 Kreuzer)}}
+        \forloop{ct}{0}{\value{ct} < #1}{%
+            \tabularnewline \hline
+            \normalfont\scriptsize\bfseries\ifcase\value{ct} Dukaten \or Silbertaler \or Heller \or Kreuzer \fi
+            \forloop{cta}{0}{\value{cta} < 8}{& \mediumtext[centered]{Vermoegen-\thecta-\thect}{0.8cm}}
+        } \\ \hline%
+        \multicolumn{1}{l}{\normalfont\scriptsize\bfseries Sonstiger Besitz} & \multicolumn{8}{p{6.1cm}}{ \mediumtext{SonstigerBesitz0}{6.2cm}}%
+        \forloop{ct}{1}{\value{ct} < #2}{%
+            \tabularnewline \hline%
+            \multicolumn{9}{p{8.8cm}}{\mediumtext{SonstigerBesitz\thect}{8.9cm}}%
+        }
+    \end{tabular}
+\end{dsaSheetBox}
+}
+
+\newcommand{\Verbindungen}[1]{
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \tiny
+    \begin{tabular}{p{\textwidth-.5\fboxsep}}
+        \raisebox{0.45ex}{\textmansontt{\Large Verbindungen}} \hspace{5pt} \mediumtext{Verbindungen0}{8.9cm}
+        \forloop{ct}{1}{\value{ct} < #1}{%
+            \\ \hline%
+            \mediumtext{Verbindungen\thect}{.5\textwidth}
+        }%
+    \end{tabular}
+\end{dsaSheetBox}
+}
+
+\newcommand{\Notizen}[1]{
+\begin{dsaSheetBox}
+
+    \tiny
+    \begin{tabular}{p{\textwidth-.5\fboxsep}}
+        \raisebox{0.45ex}{\textmansontt{\Large Notizen}} \hspace{5pt} \mediumtext{Notizen0}{15.9cm}
+        \forloop{ct}{1}{\value{ct} < #1}{%
+            \\ \hline%
+            \mediumtext{Notizen\thect}{\textwidth}{}
+        }%
+    \end{tabular}%
+\end{dsaSheetBox}
+}
+
+\newcommand{\Tiere}[1]{%
+\vspace*{-15pt}
+\begin{center}
+    \LARGE \shadowtext{Tiere}%
+\end{center}%
+\vspace{-10pt}
+
+\begin{dsaSheetBox}
+    \tiny
+    \begin{tabular}{p{3cm}|p{3.9cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}}
+        \scriptsize\centering Name & \scriptsize\centering Art & \scriptsize\centering INI & \scriptsize\centering AT &
+        \scriptsize\centering PA & \scriptsize\centering TP & \scriptsize\centering LE & \scriptsize\centering RS &
+        \scriptsize\centering KO & \scriptsize\centering GS & \scriptsize\centering AU & \scriptsize\centering MR &
+        \scriptsize\centering LO & \scriptsize\centering TK & \scriptsize\centering ZK
+        \forloop{ct}{0}{\value{ct} < #1}{%
+            \tabularnewline \hline%
+            \mediumtext{Tier-Name-\thect}{3cm} & \mediumtext{Tier-Art-\thect}{3.9cm} &
+            \mediumtext[centered]{Tier-INI-\thect}{0.85cm} & \mediumtext[centered]{Tier-AT-\thect}{0.85cm} &
+            \mediumtext[centered]{Tier-PA-\thect}{0.85cm} & \mediumtext[centered]{Tier-TP-\thect}{0.85cm} &
+            \mediumtext[centered]{Tier-LE-\thect}{0.85cm} & \mediumtext[centered]{Tier-RS-\thect}{0.85cm} &
+            \mediumtext[centered]{Tier-KO-\thect}{0.85cm} & \mediumtext[centered]{Tier-GS-\thect}{0.85cm} &
+            \mediumtext[centered]{Tier-AU-\thect}{0.85cm} & \mediumtext[centered]{Tier-MR-\thect}{0.85cm} &
+            \mediumtext[centered]{Tier-LO-\thect}{0.85cm} & \mediumtext[centered]{Tier-TK-\thect}{0.85cm} &
+            \mediumtext[centered]{Tier-ZK-\thect}{0.85cm}
+        }
+    \end{tabular}
+\end{dsaSheetBox}
+}

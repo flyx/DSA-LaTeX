@@ -1,7 +1,11 @@
 SRCS = frontseite.tex \
+       ausruestung.tex \
+       ausruestung-konfig.tex \
        heldendokument.tex \
+       heldendokument-konfig.tex \
        kampfbogen-konfig.tex \
        kampfbogen.tex \
+       misc-macros.tex \
        talentbogen-konfig.tex \
        talentbogen.tex
 
