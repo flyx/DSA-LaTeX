@@ -113,3 +113,19 @@
     \end{tabular}
 \end{dsaSheetBox}
 }
+
+\newcommand{\Liturgien}[1]{%
+\begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
+    \large Liturgiekenntnis (\textField[\ui{align={centered},bgcolor={1 1 1}}\textSize{12}]{Liturgiekenntnis-Gottheit}{3cm}{1.5em}): \raisebox{0.2ex}{\num[1 1 1]{Liturgiekenntnis}}
+
+    \vspace{5pt}
+    \tiny
+    \begin{tabular}{p{3cm}|p{0.8cm}|p{4.9cm}}
+        \normalfont\bfseries\scriptsize Liturgie & \normalfont\bfseries\scriptsize\centering Grad & \hspace{3pt}\normalfont\bfseries\scriptsize Wirkung
+        \forloop{ct}{0}{\value{ct} < #1}{%
+            \\ \hline %
+            \mediumtext{Liturgie-Name\thect}{3cm} & \mediumtext[centered]{Liturgie-Grad\thect}{0.85cm} & \mediumtext{Liturgie-Wirkung\thect}{4.9cm}
+        }%
+    \end{tabular}
+\end{dsaSheetBox}
+}
