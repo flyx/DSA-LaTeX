@@ -20,14 +20,8 @@
 \NeedsTeXFormat{LaTeX2e} 
 \ProvidesClass{dsa}[2014/02/06 v0.1]
 
-\newif\ifmypackage@eforms
-\DeclareOption{eforms}{\mypackage@eformstrue}
-\DeclareOption{noeforms}{\mypackage@eformsfalse}
-
-\ExecuteOptions{noeforms}
-\ProcessOptions\relax
-
-\LoadClass[paper=a4, fontsize=11pt]{scrartcl}
+\PassOptionsToClass{\CurrentOption}{scrartcl}
+\LoadClass[a4paper, fontsize=11pt]{scrartcl}
 
 \usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
 

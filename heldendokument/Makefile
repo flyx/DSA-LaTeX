@@ -1,23 +1,58 @@
-SRCS = frontseite.tex \
-       ausruestung.tex \
-       ausruestung-konfig.tex \
-       heldendokument.tex \
-       heldendokument-konfig.tex \
-       kampfbogen-konfig.tex \
-       kampfbogen.tex \
-       misc-macros.tex \
-       talentbogen-konfig.tex \
-       talentbogen.tex
+# Diese Makefile baut das Heldendokument zusammen. Jede Seite wird zunächst
+# als eigenes PDF generiert, aus mehreren Gründen:
+#
+#  - Man muss nicht bei jeder Änderung alles neu bauen, sondern nur die Seite,
+#    an der man Änderungen vorgenommen hat.
+#  - Die Eingabefelder funktionieren nicht korrekt, wenn man sie in der
+#    landscape-Umgebung benutzt, deshalb muss die Zauberliste auf jeden Fall
+#    als extra PDF generiert werden.
+
+### Definition der Quelldateien
+
+COMMON_SRCS=common.tex
+
+PRIMARY_SRCS=frontseite.tex \
+             talentbogen.tex \
+             kampfbogen.tex \
+             ausruestung.tex \
+             liturgien.tex \
+             zauberliste.tex
+
+CONFIG_SRCS=$(PRIMARY_SRCS:.tex=-konfig.tex)
 
 
-all: heldendokument.pdf
+### Definition generierter Dateien
 
-heldendokument.pdf: ${SRCS} talentbogen-extern.tex
-	xelatex heldendokument.tex
+INTERMEDIATE_PDFS=$(PRIMARY_SRCS:.tex=.pdf)
+
+TARGET=heldendokument.pdf
+
+
+### Targets zum Bauen der Dokumente
+
+all: $(TARGET)
+
+%.pdf: %.tex $(COMMON_SRCS)
+	xelatex $<
 	rm -rf *.log *.out *.aux
 
 talentbogen-extern.tex: talente.py talente.yaml
 	./talente.py
 
+$(TARGET): $(INTERMEDIATE_PDFS)
+	pdfunite $^ $(TARGET)
+
+wallpaper-landscape.png:
+	convert /usr/share/texmf/tex/latex/dsa/fanpaket/wallpaper.png -rotate 90 wallpaper-landscape.png
+
 clean:
-	rm talentbogen-extern.tex heldendokument.pdf
+	rm -f $(INTERMEDIATE_PDFS) heldendokument.pdf talentbogen-extern.pdf wallpaper-landscape.png
+
+
+### Zusätzliche Abhängigkeiten
+
+talentbogen.pdf: talentbogen-extern.tex
+liturgien.pdf: misc-macros.tex
+ausruestung.pdf: misc-macros.tex
+zauberliste.pdf: wallpaper-landscape.png
+%.pdf: %-konfig.tex

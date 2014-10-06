@@ -1,0 +1,43 @@
+\documentclass[landscape]{dsa}
+
+\usepackage{shadowtext}
+
+\setlength{\fboxsep}{6pt}
+
+\newcommand{\rnum}[1]{%
+    #1 : \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{#1-akt}{1.85cm}{1em}}%
+}
+
+\newcommand{\bigtext}[2]{%
+    \raisebox{-0.6ex}{\textField[\textSize{12}]{#1}{#2}{15pt}}%
+}
+
+\newcommand{\Zauberliste}[1][0]{%
+\begin{dsaCharacterSheet}
+\ClearWallPaper
+\setlength{\wpXoffset}{-0.1cm}
+\setlength{\wpYoffset}{-0.3cm}
+\ThisCenterWallPaper{1.0275}{wallpaper-landscape.png}
+
+\vspace*{-30pt}
+\begin{center}
+    \huge \shadowtext{Zauberliste\ifcase#1\else\ - Seite #1\fi}%
+\end{center}%
+\vspace{-8pt}
+
+\begin{dsaSheetBox}
+	\renewcommand{\arraystretch}{1.25}
+	\large
+	\begin{tabular}{p{14cm}p{12.4cm}}
+		\multicolumn{2}{c}{\rnum{MU} \rnum{KL} \rnum{IN} \rnum{CH} \rnum{FF} \rnum{GE} \rnum{KO} \rnum{KK} \rnum{MR}} \\ \hline
+		\raisebox{-0.25ex}{Repräsentationen:} \hspace{5pt} \bigtext{Repraesentationen}{10cm} & \raisebox{-0.25ex}{Merkmale:} \hspace{5pt} \bigtext{Merkmale}{9.95cm} \\ \hline
+		\raisebox{-0.25ex}{Begabungen:} \hspace{5pt} \bigtext{Begabungen}{11.2cm} & \raisebox{-0.25ex}{Unfähigkeiten:} \hspace{5pt} \bigtext{Unfaehigkeiten}{9.05cm}
+	\end{tabular}
+\end{dsaSheetBox}
+
+\end{dsaCharacterSheet}
+}
+
+\begin{document}
+\input{zauberliste-konfig.tex}
+\end{document}
