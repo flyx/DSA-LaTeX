@@ -1,6 +1,9 @@
 \documentclass[landscape]{dsa}
 
 \usepackage{shadowtext}
+\usepackage{forloop}
+\usepackage{intcalc}
+\usepackage{array}
 
 \setlength{\fboxsep}{6pt}
 
@@ -12,6 +15,23 @@
     \raisebox{-0.6ex}{\textField[\textSize{12}]{#1}{#2}{15pt}}%
 }
 
+\newcommand{\smalltext}[4][\empty]{%
+    \ifthenelse{\equal{#1}{\empty}}{%
+        \raisebox{-2pt}{\textField[\textSize{8}\ui{value={\ignorespaces #4}}]{#2}{#3}{11pt}}%
+    }{%
+        \raisebox{-2pt}{\textField[\ui{align={#1},value={\ignorespaces #4}}\textSize{8}]{#2}{#3}{11pt}}%
+    }%
+}
+
+\makeatletter
+\newcommand*{\shifttext}[2]{%
+  \settowidth{\@tempdima}{#2}%
+  \makebox[\@tempdima]{\hspace*{#1}#2}%
+}
+\makeatother
+
+\newcounter{ct}
+\newcounter{zct}\setcounter{zct}{0}
 \newcommand{\Zauberliste}[1][0]{%
 \begin{dsaCharacterSheet}
 \ClearWallPaper
@@ -26,13 +46,54 @@
 \vspace{-8pt}
 
 \begin{dsaSheetBox}
-	\renewcommand{\arraystretch}{1.25}
-	\large
-	\begin{tabular}{p{14cm}p{12.4cm}}
-		\multicolumn{2}{c}{\rnum{MU} \rnum{KL} \rnum{IN} \rnum{CH} \rnum{FF} \rnum{GE} \rnum{KO} \rnum{KK} \rnum{MR}} \\ \hline
-		\raisebox{-0.25ex}{Repräsentationen:} \hspace{5pt} \bigtext{Repraesentationen}{10cm} & \raisebox{-0.25ex}{Merkmale:} \hspace{5pt} \bigtext{Merkmale}{9.95cm} \\ \hline
-		\raisebox{-0.25ex}{Begabungen:} \hspace{5pt} \bigtext{Begabungen}{11.2cm} & \raisebox{-0.25ex}{Unfähigkeiten:} \hspace{5pt} \bigtext{Unfaehigkeiten}{9.05cm}
-	\end{tabular}
+    \renewcommand{\arraystretch}{1.25}
+    \large
+    \begin{tabular}{p{14cm}p{12.4cm}}
+        \multicolumn{2}{c}{\rnum{MU} \rnum{KL} \rnum{IN} \rnum{CH} \rnum{FF} \rnum{GE} \rnum{KO} \rnum{KK} \rnum{MR}} \\ \hline
+        \raisebox{-0.25ex}{Repräsentationen:} \hspace{5pt} \bigtext{Repraesentationen}{10cm} & \raisebox{-0.25ex}{Merkmale:} \hspace{5pt} \bigtext{Merkmale}{9.95cm} \\ \hline
+        \raisebox{-0.25ex}{Begabungen:} \hspace{5pt} \bigtext{Begabungen}{11.2cm} & \raisebox{-0.25ex}{Unfähigkeiten:} \hspace{5pt} \bigtext{Unfaehigkeiten}{9.05cm}
+    \end{tabular}
+\end{dsaSheetBox}
+
+\begin{dsaSheetBox}
+    \renewcommand{\arraystretch}{1}
+    \setlength{\tabcolsep}{1pt}
+    \normalfont\bfseries\tiny
+    \begin{tabular}{p{0.2cm}|p{4cm}|p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}|p{0.8cm}|p{1.5cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{5.5cm}|p{0.8cm}|p{0.8cm}|p{4cm}|p{0.8cm}|p{0.8cm}}
+        & \centering Zaubername & \multicolumn{3}{c|}{Probe} & \centering ZfW & \centering ZD & \centering Kosten & \centering Reichweite & \centering WD & \centering Anmerkungen & \centering Komp. & \centering Rep. & \centering Merkmale & \centering Haus? & \centering Lern
+        \forloop{ct}{0}{\value{ct} < 35}{%
+            \tabularnewline \hline%
+            \ifcase\intcalcMod{\value{ct}}{2}%
+                \rowcolor{white}%
+            \fi%
+            \checkBox[\symbolchoice{star}\BC{}]{Zauber-SE\thezct}{0.2cm}{0.2cm} &
+            \smalltext{Zauber-Name\thezct}{4cm}{} &
+            \ifcase\intcalcMod{\value{ct}}{2}%
+                \multicolumn{1}{p{0.5cm}!{\fboxsep=0pt\colorbox{white}{\footnotesize\raisebox{-0.6pt}{\strut•}}}}{
+                    \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft1-\thezct}{0.7cm}{}}%
+                } &
+                \multicolumn{1}{p{0.5cm}!{\fboxsep=0pt\colorbox{white}{\footnotesize\raisebox{-0.6pt}{\strut•}}}}{
+                    \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft2-\thezct}{0.7cm}{}}%
+                } &
+            \else
+                \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft1-\thezct}{0.7cm}{}} &
+                \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft2-\thezct}{0.7cm}{}} &
+            \fi%
+            \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft3-\thezct}{0.7cm}{}} &
+            \smalltext[centered]{Zauber-ZfW\thezct}{0.8cm}{} &
+            \smalltext[centered]{Zauber-Dauer\thezct}{1.5cm}{} &
+            \smalltext[centered]{Zauber-Kosten\thezct}{2cm}{} &
+            \smalltext[centered]{Zauber-Reichweite\thezct}{1.5cm}{} &
+            \smalltext[centered]{Zauber-Wirkungsdauer\thezct}{1.5cm}{} &
+            \smalltext[centered]{Zauber-Anmerkungen\thezct}{5.5cm}{} &
+            \smalltext[centered]{Zauber-Komplexitaet\thezct}{0.8cm}{} &
+            \smalltext[centered]{Zauber-Repraesentation\thezct}{0.8cm}{} &
+            \smalltext[centered]{Zauber-Merkmale\thezct}{4cm}{} &
+            \smalltext[centered]{Zauber-Haus\thezct}{0.8cm}{} &
+            \smalltext[centered]{Zauber-Lern\thezct}{0.8cm}{}
+            \stepcounter{zct}%
+        }%
+    \end{tabular}
 \end{dsaSheetBox}
 
 \end{dsaCharacterSheet}

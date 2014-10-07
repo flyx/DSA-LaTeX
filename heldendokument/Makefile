@@ -32,7 +32,7 @@ TARGET=heldendokument.pdf
 
 all: $(TARGET)
 
-%.pdf: %.tex $(COMMON_SRCS)
+%.pdf: %.tex %-konfig.tex $(COMMON_SRCS)
 	xelatex $<
 	rm -rf *.log *.out *.aux
 
@@ -55,4 +55,3 @@ talentbogen.pdf: talentbogen-extern.tex
 liturgien.pdf: misc-macros.tex
 ausruestung.pdf: misc-macros.tex
 zauberliste.pdf: wallpaper-landscape.png
-%.pdf: %-konfig.tex
