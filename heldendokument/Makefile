@@ -32,12 +32,15 @@ TARGET=heldendokument.pdf
 
 all: $(TARGET)
 
-%.pdf: %.tex %-konfig.tex $(COMMON_SRCS)
+%.pdf: %.tex %-konfig.tex $(COMMON_SRCS) eingabefelder-extern.tex
 	xelatex $<
 	rm -rf *.log *.out *.aux
 
 talentbogen-extern.tex: talente.py talente.yaml
 	./talente.py
+
+eingabefelder-extern.tex: eingabefelder.py eingabefelder.yaml
+	./eingabefelder.py
 
 $(TARGET): $(INTERMEDIATE_PDFS)
 	pdfunite $^ $(TARGET)
@@ -46,7 +49,7 @@ wallpaper-landscape.png:
 	convert /usr/share/texmf/tex/latex/dsa/fanpaket/wallpaper.png -rotate 90 wallpaper-landscape.png
 
 clean:
-	rm -f $(INTERMEDIATE_PDFS) heldendokument.pdf talentbogen-extern.pdf wallpaper-landscape.png
+	rm -f $(INTERMEDIATE_PDFS) heldendokument.pdf talentbogen-extern.tex eingabefelder-extern.tex wallpaper-landscape.png
 
 
 ### Zusätzliche Abhängigkeiten

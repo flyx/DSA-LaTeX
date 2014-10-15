@@ -5,10 +5,12 @@
 \usepackage{intcalc}
 \usepackage{array}
 
+\input{eingabefelder-extern.tex}
+
 \setlength{\fboxsep}{6pt}
 
-\newcommand{\rnum}[1]{%
-    #1 : \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{#1-akt}{1.85cm}{1em}}%
+\newcommand{\rnum}[2]{%
+    #1 : \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{#2}{1.85cm}{1em}}%
 }
 
 \newcommand{\bigtext}[2]{%
@@ -49,9 +51,9 @@
     \renewcommand{\arraystretch}{1.25}
     \large
     \begin{tabular}{p{14cm}p{12.4cm}}
-        \multicolumn{2}{c}{\rnum{MU} \rnum{KL} \rnum{IN} \rnum{CH} \rnum{FF} \rnum{GE} \rnum{KO} \rnum{KK} \rnum{MR}} \\ \hline
-        \raisebox{-0.25ex}{Repräsentationen:} \hspace{5pt} \bigtext{Repraesentationen}{10cm} & \raisebox{-0.25ex}{Merkmale:} \hspace{5pt} \bigtext{Merkmale}{9.95cm} \\ \hline
-        \raisebox{-0.25ex}{Begabungen:} \hspace{5pt} \bigtext{Begabungen}{11.2cm} & \raisebox{-0.25ex}{Unfähigkeiten:} \hspace{5pt} \bigtext{Unfaehigkeiten}{9.05cm}
+        \multicolumn{2}{c}{\rnum{MU}{\FroEigAktuell{0}} \rnum{KL}{\FroEigAktuell{1}} \rnum{IN}{\FroEigAktuell{2}} \rnum{CH}{\FroEigAktuell{3}} \rnum{FF}{\FroEigAktuell{4}} \rnum{GE}{\FroEigAktuell{5}} \rnum{KO}{\FroEigAktuell{6}} \rnum{KK}{\FroEigAktuell{7}} \rnum{MR}{\FroEigAktuell{13}}} \\ \hline
+        \raisebox{-0.25ex}{Repräsentationen:} \hspace{5pt} \bigtext{\ZauReprasentationen}{10cm} & \raisebox{-0.25ex}{Merkmale:} \hspace{5pt} \bigtext{\ZauMerkmale}{9.95cm} \\ \hline
+        \raisebox{-0.25ex}{Begabungen:} \hspace{5pt} \bigtext{\ZauBegabungen}{11.2cm} & \raisebox{-0.25ex}{Unfähigkeiten:} \hspace{5pt} \bigtext{\ZauUnfahigkeiten}{9.05cm}
     \end{tabular}
 \end{dsaSheetBox}
 
@@ -66,31 +68,31 @@
             \ifcase\intcalcMod{\value{ct}}{2}%
                 \rowcolor{white}%
             \fi%
-            \checkBox[\symbolchoice{star}\BC{}]{Zauber-SE\thezct}{0.2cm}{0.2cm} &
-            \smalltext{Zauber-Name\thezct}{4cm}{} &
+            \checkBox[\symbolchoice{star}\BC{}]{\ZauZauSpezielleErfahrung{\thezct}}{0.2cm}{0.2cm}{on} &
+            \smalltext{\ZauZauName{\thezct}}{4cm}{} &
             \ifcase\intcalcMod{\value{ct}}{2}%
                 \multicolumn{1}{p{0.5cm}!{\fboxsep=0pt\colorbox{white}{\footnotesize\raisebox{-0.6pt}{\strut•}}}}{
-                    \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft1-\thezct}{0.7cm}{}}%
+                    \shifttext{-0.15cm}{\smalltext[centered]{\ZauZauEigenschafta{\thezct}}{0.7cm}{}}%
                 } &
                 \multicolumn{1}{p{0.5cm}!{\fboxsep=0pt\colorbox{white}{\footnotesize\raisebox{-0.6pt}{\strut•}}}}{
-                    \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft2-\thezct}{0.7cm}{}}%
+                    \shifttext{-0.15cm}{\smalltext[centered]{\ZauZauEigenschaftb{\thezct}}{0.7cm}{}}%
                 } &
             \else
-                \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft1-\thezct}{0.7cm}{}} &
-                \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft2-\thezct}{0.7cm}{}} &
+                \shifttext{-0.15cm}{\smalltext[centered]{\ZauZauEigenschafta{\thezct}}{0.7cm}{}} &
+                \shifttext{-0.15cm}{\smalltext[centered]{\ZauZauEigenschaftb{\thezct}}{0.7cm}{}} &
             \fi%
-            \shifttext{-0.15cm}{\smalltext[centered]{Zauber-Eigenschaft3-\thezct}{0.7cm}{}} &
-            \smalltext[centered]{Zauber-ZfW\thezct}{0.8cm}{} &
-            \smalltext[centered]{Zauber-Dauer\thezct}{1.5cm}{} &
-            \smalltext[centered]{Zauber-Kosten\thezct}{2cm}{} &
-            \smalltext[centered]{Zauber-Reichweite\thezct}{1.5cm}{} &
-            \smalltext[centered]{Zauber-Wirkungsdauer\thezct}{1.5cm}{} &
-            \smalltext[centered]{Zauber-Anmerkungen\thezct}{5.5cm}{} &
-            \smalltext[centered]{Zauber-Komplexitaet\thezct}{0.8cm}{} &
-            \smalltext[centered]{Zauber-Repraesentation\thezct}{0.8cm}{} &
-            \smalltext[centered]{Zauber-Merkmale\thezct}{4cm}{} &
-            \smalltext[centered]{Zauber-Haus\thezct}{0.8cm}{} &
-            \smalltext[centered]{Zauber-Lern\thezct}{0.8cm}{}
+            \shifttext{-0.15cm}{\smalltext[centered]{\ZauZauEigenschaftc{\thezct}}{0.7cm}{}} &
+            \smalltext[centered]{\ZauZauFertigkeitswert{\thezct}}{0.8cm}{} &
+            \smalltext[centered]{\ZauZauZauberdauer{\thezct}}{1.5cm}{} &
+            \smalltext[centered]{\ZauZauKosten{\thezct}}{2cm}{} &
+            \smalltext[centered]{\ZauZauReichweite{\thezct}}{1.5cm}{} &
+            \smalltext[centered]{\ZauZauWirkungsdauer{\thezct}}{1.5cm}{} &
+            \smalltext[centered]{\ZauZauAnmerkungen{\thezct}}{5.5cm}{} &
+            \smalltext[centered]{\ZauZauKomplexitat{\thezct}}{0.8cm}{} &
+            \smalltext[centered]{\ZauZauReprasentation{\thezct}}{0.8cm}{} &
+            \smalltext[centered]{\ZauZauMerkmale{\thezct}}{4cm}{} &
+            \smalltext[centered]{\ZauZauHauszauber{\thezct}}{0.8cm}{} &
+            \smalltext[centered]{\ZauZauLernschwierigkeit{\thezct}}{0.8cm}{}
             \stepcounter{zct}%
         }%
     \end{tabular}

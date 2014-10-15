@@ -12,3 +12,4 @@ release
 *.ppm
 /acrotex
 *-extern.tex
+*.pyc

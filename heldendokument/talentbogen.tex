@@ -8,7 +8,15 @@
 \begin{dsaSheetBox}[\textwidth]
     \vspace{1pt}
     \begin{tabular}{llllllllllllllllll}
-        MU: & \smallnum{MU-akt} & KL: & \smallnum{KL-akt} & IN: & \smallnum{IN-akt} & CH: & \smallnum{CH-akt} & FF: & \smallnum{FF-akt} & GE: & \smallnum{GE-akt} & KO: & \smallnum{KO-akt} & KK: & \smallnum{KK-akt} & \hspace{10pt} BE: & \smallnum{BE}
+        MU: & \smallnum{\FroEigAktuell{0}} &
+        KL: & \smallnum{\FroEigAktuell{1}} &
+        IN: & \smallnum{\FroEigAktuell{2}} &
+        CH: & \smallnum{\FroEigAktuell{3}} &
+        FF: & \smallnum{\FroEigAktuell{4}} &
+        GE: & \smallnum{\FroEigAktuell{5}} &
+        KO: & \smallnum{\FroEigAktuell{6}} &
+        KK: & \smallnum{\FroEigAktuell{7}} & \hspace{10pt}
+        BE: & \smallnum{\KamRusResultierendeBehinderung}
     \end{tabular}
     \vspace{-1pt}
 \end{dsaSheetBox}
@@ -31,7 +39,7 @@
         \begin{tabular}{p{.5\textwidth-.5\columnsep-.5\fboxsep}} \hline
             \forloop{ct}{0}{\value{ct} < #1}%
             {%
-              \smalltext{Sonderfertigkeiten-Allgemein\thect}{.5\textwidth-.5\columnsep-.5\fboxsep}{} \\ \hline
+              \smalltext{\TalSonderfertigkeiten{\thect}}{.5\textwidth-.5\columnsep-.5\fboxsep}{} \\ \hline
             }
         \end{tabular}
     }
@@ -43,17 +51,18 @@
                 \forloop{ct}{0}{\value{ct} < #1}%
                 {%
                     \\ \hline
-                    \checkBox[\symbolchoice{star}\BC{}]{Kampftechniken-SE\thect}{0.2cm}{0.2cm} &
+                    \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{0}{\thect}}{0.2cm}{0.2cm}{on} &
                     \ifthenelse{\equal{\TalenteInCombo}{1}}{
-                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\ui{value={\KampftechnikenBasis{\thect}{0}}}\textSize{8}\W{0}]{Kampftechniken-Name\thect}{4.6cm}{10pt}{\KampftechnikenTalentliste}}
+                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\ui{value={\KampftechnikenBasis{\thect}{0}}}\textSize{8}\W{0}]{\TalTalName{0}{\thect}}{4.6cm}{10pt}{\KampftechnikenTalentliste}}
                     }{
-                        \smalltext{Kampftechniken-Name\thect}{4.6cm}{\KampftechnikenBasis{\thect}{0}}
+                        \smalltext{\TalTalName{0}{\thect}}{4.6cm}{\KampftechnikenBasis{\thect}{0}}
                     } &
-                    \smalltext[centered]{Kampftechniken-Spalte\thect}{0.4cm}{\KampftechnikenBasis{\thect}{1}} &
-                    \smalltext[centered]{Kampftechniken-BE\thect}{1cm}{\KampftechnikenBasis{\thect}{2}} &
-                    \smalltext[centered]{Kampftechniken-AT\thect}{0.7cm}{} &
-                    \smalltext[centered]{Kampftechniken-PA\thect}{0.7cm}{} &
-                    \smalltext[centered]{Kampftechniken-TaW\thect}{0.8cm}{}%
+                    \smalltext[centered]{\TalTalSteigerungsspalte{0}{\thect}}{0.4cm}{\KampftechnikenBasis{\thect}{1}} &
+                    \smalltext[centered]{\TalTalBehinderung{0}{\thect}}{1cm}{\KampftechnikenBasis{\thect}{2}} &
+                    \smalltext[centered]{\TalTalAttacke{0}{\thect}}{0.7cm}{} &
+                    \smalltext[centered]{\TalTalParade{0}{\thect}}{0.7cm}{} &
+                    \smalltext[centered]{\TalTalTalentwert{0}{\thect}}{0.8cm}{}%
+                    % https://www.youtube.com/watch?v=hOo5yr76RJs
                 } \\ \hline
             \end{tabular}
         \else
@@ -62,18 +71,18 @@
                 \forloop{ct}{0}{\value{ct} < #1}%
                 {%
                     \\ \hline
-                    \checkBox[\symbolchoice{star}\BC{}]{Kampftechniken-SE\thect}{0.2cm}{0.2cm} &
+                    \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{0}{\thect}}{0.2cm}{0.2cm}{on} &
                     \ifthenelse{\equal{\TalenteInCombo}{1}}{
-                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\ui{value={\KampftechnikenBasis{\thect}{0}}}\textSize{8}\W{0}]{Kampftechniken-Name\thect}{4.15cm}{10pt}{\KampftechnikenTalentliste}}
+                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\ui{value={\KampftechnikenBasis{\thect}{0}}}\textSize{8}\W{0}]{\TalTalName{0}{\thect}}{4.15cm}{10pt}{\KampftechnikenTalentliste}}
                     }{
-                        \smalltext{Kampftechniken-Name\thect}{4.15cm}{\KampftechnikenBasis{\thect}{0}}
+                        \smalltext{\TalTalName{0}{\thect}}{4.15cm}{\KampftechnikenBasis{\thect}{0}}
                     } &
-                    \smalltext[centered]{Kampftechniken-Spalte\thect}{0.4cm}{\KampftechnikenBasis{\thect}{1}} &
-                    \smalltext[centered]{Kampftechniken-BE\thect}{1cm}{\KampftechnikenBasis{\thect}{2}} &
-                    \smalltext[centered]{Kampftechniken-AT\thect}{0.7cm}{} &
-                    \smalltext[centered]{Kampftechniken-PA\thect}{0.7cm}{} &
-                    \smalltext[centered]{Kampftechniken-TaW\thect}{0.8cm}{} &
-                    \shifttext{-0.1cm}{\smalltext[centered]{Kampftechniken-M\thect}{0.6cm}{}}%
+                    \smalltext[centered]{\TalTalSteigerungsspalte{0}{\thect}}{0.4cm}{\KampftechnikenBasis{\thect}{1}} &
+                    \smalltext[centered]{\TalTalBehinderung{0}{\thect}}{1cm}{\KampftechnikenBasis{\thect}{2}} &
+                    \smalltext[centered]{\TalTalAttacke{0}{\thect}}{0.7cm}{} &
+                    \smalltext[centered]{\TalTalParade{0}{\thect}}{0.7cm}{} &
+                    \smalltext[centered]{\TalTalTalentwert{0}{\thect}}{0.8cm}{} &
+                    \shifttext{-0.1cm}{\smalltext[centered]{\TalTalMSpalte{0}{\thect}}{0.6cm}{}}%
                 } \\ \hline
             \end{tabular}
         \fi
@@ -87,30 +96,30 @@
             \footnotesize\centering Komp. & \footnotesize\hspace{0.5pt} TaW
             \forloop{ct}{0}{\value{ct} < #1}{%
                 \\ \hline
-                \checkBox[\symbolchoice{star}\BC{}]{Kampftechniken-SE\thect}{0.2cm}{0.2cm} &
+                \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{5}{\thect}}{0.2cm}{0.2cm}{on} &
                 \ifthenelse{\equal{\thect}{0}}{
                     \normalfont\fontsize{8pt}{1em}\selectfont Muttersprache:
                     \ifthenelse{\equal{\TalenteInCombo}{1}}{
-                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\textSize{8}\W{0}]{Sprachen-Name\thect}{5cm}{10pt}{\SprachenTalentliste}}
+                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\textSize{8}\W{0}]{\TalTalName{5}{\thect}}{5cm}{10pt}{\SprachenTalentliste}}
                     }{
-                        \smalltext{Sprachen-Name\thect}{5cm}{}
+                        \smalltext{\TalTalName{5}{\thect}}{5cm}{}
                     } &
                 }{
                     \ifthenelse{\equal{\TalenteInCombo}{1}}{
-                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\textSize{8}\W{0}]{Sprachen-Name\thect}{6.85cm}{10pt}{\SprachenTalentliste}}
+                        \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\textSize{8}\W{0}]{\TalTalName{5}{\thect}}{6.85cm}{10pt}{\SprachenTalentliste}}
                     }{
-                        \smalltext{Sprachen-Name\thect}{6.85cm}{}
+                        \smalltext{\TalTalName{5}{\thect}}{6.85cm}{}
                     } &
                 }
-                \smalltext[centered]{Sprachen-Komp\thect}{1cm}{} &
-                \smalltext[centered]{Sprachen-TaW\thect}{0.8cm}{}%
+                \smalltext[centered]{\TalTalKomplexitat{5}{\thect}}{1cm}{} &
+                \smalltext[centered]{\TalTalTalentwert{5}{\thect}}{0.8cm}{}%
             } \\ \hline
         \end{tabular}
 
         \vspace{8pt}
     }
 
-    \newcommand{\Talentliste}[7]{% #1=Feldname-Präfix, #2=Anzeigename, #3=Anzahl, #4=Mirakel?, #5=BE?, #6=Voreingestellte Werte, #7=Mögliche Werte
+    \newcommand{\Talentliste}[7]{% #1=Talentgruppenindex, #2=Anzeigename, #3=Anzahl, #4=Mirakel?, #5=BE?, #6=Voreingestellte Werte, #7=Mögliche Werte
         \tiny
         \ifcase#4\relax
             \ifcase#5\relax
@@ -118,16 +127,16 @@
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
-                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{#1}{\thect}}{0.2cm}{0.2cm}{on} &
                         \ifthenelse{\equal{\TalenteInCombo}{1}}{
-                            \raisebox{-0.3ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{#1-Name\thect}{5.8cm}{10pt}{#7}}
+                            \raisebox{-0.3ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{\TalTalName{#1}{\thect}}{5.8cm}{10pt}{#7}}
                         }{
-                            \smalltext{#1-Name\thect}{5.8cm}{#6{\thect}{0}}
+                            \smalltext{\TalTalName{#1}{\thect}}{5.8cm}{#6{\thect}{0}}
                         } &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
-                        \smalltext[centered]{#1-TaW\thect}{0.8cm}{}%
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \smalltext[centered]{\TalTalTalentwert{#1}{\thect}}{0.8cm}{}%
                     } \\ \hline
                 \end{tabular}
             \else
@@ -135,17 +144,17 @@
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
-                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm}{on} &
                         \ifthenelse{\equal{\TalenteInCombo}{1}}{
-                            \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{#1-Name\thect}{4.7cm}{10pt}{#7}}
+                            \raisebox{-0.1ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{\TalTalName{#1}{\thect}}{4.7cm}{10pt}{#7}}
                         }{
-                            \smalltext{#1-Name\thect}{4.7cm}{#6{\thect}{0}}
+                            \smalltext{\TalTalName{#1}{\thect}}{4.7cm}{#6{\thect}{0}}
                         } &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
-                        \smalltext[centered]{#1-BE\thect}{1cm}{#6{\thect}{4}} &
-                        \smalltext[centered]{#1-TaW\thect}{0.8cm}{}%
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \smalltext[centered]{\TalTalBehinderung{#1}{\thect}}{1cm}{#6{\thect}{4}} &
+                        \smalltext[centered]{\TalTalBehinderung{#1}{\thect}}{0.8cm}{}%
                     } \\ \hline
                 \end{tabular}
             \fi
@@ -155,17 +164,17 @@
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
-                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{#1}{\thect}}{0.2cm}{0.2cm}{on} &
                         \ifthenelse{\equal{\TalenteInCombo}{1}}{
-                            \raisebox{-0.3ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{#1-Name\thect}{5.4cm}{10pt}{#7}}
+                            \raisebox{-0.3ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{\TalTalName{#1}{\thect}}{5.4cm}{10pt}{#7}}
                         }{
-                            \smalltext{#1-Name\thect}{5.4cm}{#6{\thect}{0}}
+                            \smalltext{\TalTalName{#1}{\thect}}{5.4cm}{#6{\thect}{0}}
                         } &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
-                        \smalltext[centered]{#1-TaW\thect}{0.8cm}{} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}{}}%
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \smalltext[centered]{\TalTalTalentwert{#1}{\thect}}{0.8cm}{} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{\TalTalMSpalte{#1}{\thect}}{0.6cm}{}}%
                     } \\ \hline
                 \end{tabular}
             \else
@@ -173,19 +182,18 @@
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
-                        \checkBox[\symbolchoice{star}\BC{}]{#1-SE\thect}{0.2cm}{0.2cm} &
+                        \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{#1}{\thect}}{0.2cm}{0.2cm}{on} &
                         \ifthenelse{\equal{\TalenteInCombo}{1}}{
-%                        \ChoiceMenu[combo, width=4.3cm, height=10pt, default=#6{\thect}{0}]{#1-Name\thect}{\KoerperTalentliste} &
-                            \raisebox{-0.3ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{#1-Name\thect}{4.3cm}{10pt}{#7}}
+                            \raisebox{-0.3ex}{\comboBox[\Ff\FfEdit\ui{value={#6{\thect}{0}}}\textSize{8}\W{0}]{\TalTalName{#1}{\thect}}{4.3cm}{10pt}{#7}}
                         }{
-                            \smalltext{#1-Name\thect}{4.3cm}{#6{\thect}{0}}
+                            \smalltext{\TalTalName{#1}{\thect}}{4.3cm}{#6{\thect}{0}}
                         } &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft1-\thect}{0.7cm}{#6{\thect}{1}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft2-\thect}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{#1-Eigenschaft3-\thect}{0.7cm}{#6{\thect}{3}}} &
-                        \smalltext[centered]{#1-BE\thect}{1cm}{#6{\thect}{4}} &
-                        \smalltext[centered]{#1-TaW\thect}{0.8cm}{} &
-                        \shifttext{-0.1cm}{\smalltext[centered]{#1-M\thect}{0.6cm}{}}%
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \smalltext[centered]{\TalTalBehinderung{#1}{\thect}}{1cm}{#6{\thect}{4}} &
+                        \smalltext[centered]{\TalTalTalentwert{#1}{\thect}}{0.8cm}{} &
+                        \shifttext{-0.1cm}{\smalltext[centered]{\TalTalMSpalte{#1}{\thect}}{0.6cm}{}}%
                     } \\ \hline
                 \end{tabular}
             \fi
@@ -193,21 +201,16 @@
 
         \vspace{8pt}
     }
-    \newcommand{\Gaben}[2][Gaben]{\Talentliste{Gaben}{#1}{#2}{0}{0}{\leer}{}}
-    \newcommand{\KoerperlicheTalente}[1]{\Talentliste{Koerper}{Körperliche Talente}{#1}{\MSpalte}{1}{\KoerperBasis}{\KoerperTalentliste}}
-    \newcommand{\GesellschaftlicheTalente}[1]{\Talentliste{Gesellschaft}{Gesellschaftliche Talente}{#1}{\MSpalte}{0}{\GesellschaftBasis}{\GesellschaftTalentliste}}
-    \newcommand{\NaturTalente}[1]{\Talentliste{Natur}{Naturtalente}{#1}{\MSpalte}{0}{\NaturBasis}{\NaturTalentliste}}
-    \newcommand{\WissensTalente}[1]{\Talentliste{Wissen}{Wissenstalente}{#1}{\MSpalte}{0}{\WissenBasis}{\WissenTalentliste}}
-    \newcommand{\HandwerklicheTalente}[1]{\Talentliste{Handwerk}{Handwerkliche Talente}{#1}{\MSpalte}{0}{\HandwerkBasis}{\HandwerkTalentliste}}
+    \newcommand{\Gaben}[2][Gaben]{\Talentliste{7}{#1}{#2}{0}{0}{\leer}{}}
+    \newcommand{\KoerperlicheTalente}[1]{\Talentliste{1}{Körperliche Talente}{#1}{\MSpalte}{1}{\KoerperBasis}{\KoerperTalentliste}}
+    \newcommand{\GesellschaftlicheTalente}[1]{\Talentliste{2}{Gesellschaftliche Talente}{#1}{\MSpalte}{0}{\GesellschaftBasis}{\GesellschaftTalentliste}}
+    \newcommand{\NaturTalente}[1]{\Talentliste{3}{Naturtalente}{#1}{\MSpalte}{0}{\NaturBasis}{\NaturTalentliste}}
+    \newcommand{\WissensTalente}[1]{\Talentliste{4}{Wissenstalente}{#1}{\MSpalte}{0}{\WissenBasis}{\WissenTalentliste}}
+    \newcommand{\HandwerklicheTalente}[1]{\Talentliste{6}{Handwerkliche Talente}{#1}{\MSpalte}{0}{\HandwerkBasis}{\HandwerkTalentliste}}
 
     \newcommand{\kampf}[4]{\ifcase#1#2\or#3\or#4\fi}
     \newcommand{\talent}[6]{\ifcase#1#2\or#3\or#4\or#5\or#6\fi}
-    \newcommand{\sprache}[3]{
-        \ifcase#1%
-            #2%
-        \or #3%
-        \fi%
-    }
+    \newcommand{\sprache}[3]{\ifcase#1#2\or#3\fi}
 
     \newcommand{\leer}[2]{}
 

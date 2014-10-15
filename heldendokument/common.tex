@@ -3,6 +3,8 @@
 \usepackage{shadowtext}
 \usepackage{forloop}
 
+\input{eingabefelder-extern.tex}
+
 \newcommand{\tabularTextInput}[1]{
     \dsaTextInput{#1}{.5\textwidth-4\tabcolsep-2cm}
 }
@@ -13,15 +15,6 @@
     }{
         \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12},bgcolor={#1}}]{#2}{1.2cm}{1.5em}}%
     }%
-}
-\newcommand{\dsaPropline}[2]{
-    \small #1 & \num{#2-modif} & \num{#2-orig} & \cellcolor{white} \num{#2-akt}%
-}
-\newcommand{\dsaExtProp}[3]{
-    \small #1 \hfill \tiny\normalfont\bfseries #2 \hspace{3pt} & \num{#3-modif} & \num{#3-orig} & \cellcolor{white}\num{#3-akt}
-}
-\newcommand{\dsaExtPropline}[3]{
-    \dsaExtProp{#1}{#2}{#3} & \num{#3-bought} & \num{#3-perm}%
 }
 \newcommand{\smallnum}[1]{
     \hspace{-6pt}\raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{#1}{0.8cm}{1em}}\hspace{-4pt}%

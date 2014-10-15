@@ -6,6 +6,9 @@ apt-get install -y --no-install-recommends texlive texlive-xetex texlive-latex-e
 apt-get install -y poppler-utils imagemagick
 apt-get install -y curl unzip
 
+# Python für die Skripte
+apt-get install -y python2.7 python-pystache python-yaml python-markdown python-unidecode
+
 # irgendwas braucht das
 locale-gen de_DE.UTF-8
 
@@ -14,7 +17,6 @@ mkdir -p /tmp/dsa && cd /tmp/dsa
 if [ ! -f "/dsa/fanpaket-setup.sh" ]
 then
     # Nicht Release, sondern Git-Repo: Skript muss erst generiert werden.
-    apt-get install -y python2.7 python-pystache python-yaml python-markdown
     python /dsa/dev/build-release.py /dsa/dev /dsa 
 fi
 sh /dsa/fanpaket-setup.sh

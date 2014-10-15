@@ -13,9 +13,9 @@
         \Huge \shadowtext{Heldendokument}
     \end{center}
     \begin{tabular}{p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}}
-        \textmansontt{Name} & \tabularTextInput{Name} & \textmansontt{GP-Basis} & \tabularTextInput{GP-Basis} \\ \hline
-        \textmansontt{Rasse} & \tabularTextInput{Rasse} & \textmansontt{Kultur} & \tabularTextInput{Kultur} \\ \hline
-        \textmansontt{Profession} & \multicolumn{3}{l}{\dsaTextInput{Profession}{\textwidth-4\tabcolsep-2cm}}
+        \textmansontt{Name} & \tabularTextInput{\FroName} & \textmansontt{GP-Basis} & \tabularTextInput{\FroGPBasis} \\ \hline
+        \textmansontt{Rasse} & \tabularTextInput{\FroRasse} & \textmansontt{Kultur} & \tabularTextInput{\FroKultur} \\ \hline
+        \textmansontt{Profession} & \multicolumn{3}{l}{\dsaTextInput{\FroProfession}{\textwidth-4\tabcolsep-2cm}}
     \end{tabular}
 \end{dsaSheetBox}
 
@@ -26,24 +26,25 @@
 \begin{multicols}{2}
 \begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
     \begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
-        \textmansontt{Geschlecht} & \tabularTextInput{Geschlecht} \\ \hline
-        \textmansontt{Geburtstag} & \tabularTextInput{Geburtstag} \\ \hline
-        \textmansontt{Größe} & \tabularTextInput{Groesse} \\ \hline
-        \textmansontt{Gewicht} & \tabularTextInput{Gewicht} \\ \hline
-        \textmansontt{Haarfarbe} & \tabularTextInput{Haarfarbe} \\ \hline
-        \textmansontt{Augenfarbe} & \tabularTextInput{Augenfarbe}
+        \textmansontt{Geschlecht} & \tabularTextInput{\FroGeschlecht} \\ \hline
+        \textmansontt{Geburtstag} & \tabularTextInput{\FroGeburtstag} \\ \hline
+        \textmansontt{Größe} & \tabularTextInput{\FroGrosse} \\ \hline
+        \textmansontt{Gewicht} & \tabularTextInput{\FroGewicht} \\ \hline
+        \textmansontt{Haarfarbe} & \tabularTextInput{\FroHaarfarbe} \\ \hline
+        \textmansontt{Augenfarbe} & \tabularTextInput{\FroAugenfarbe}
     \end{tabular}
 \end{dsaSheetBox}%
 
 \columnbreak%
 \begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
     \begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
-        \textmansontt{Stand} & \tabularTextInput{Stand} \\ \hline
-        \textmansontt{Sozialstatus} & \tabularTextInput{Sozialstatus} \\ \hline
-        \textmansontt{Titel} & \tabularTextInput{Titel1} \\ \hline
-        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel2}{\textwidth-\tabcolsep}} \\ \hline
-        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel3}{\textwidth-\tabcolsep}} \\ \hline
-        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Titel4}{\textwidth-\tabcolsep}}
+        \textmansontt{Stand} & \tabularTextInput{\FroStand} \\ \hline
+        \textmansontt{Sozialstatus} & \tabularTextInput{\FroSozialstatus} \\ \hline
+        \textmansontt{Titel} & \tabularTextInput{\FroTitel{0}}%
+        \forloop{ct}{1}{\value{ct} < 4}{%
+            \\ \hline%
+            \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{\FroTitel{\thect}}{\textwidth-\tabcolsep}}%
+        }%
     \end{tabular}
 \end{dsaSheetBox}%
 \end{multicols}
@@ -51,9 +52,11 @@
 
 \begin{dsaSheetBox}[\textwidth]
     \begin{tabular}{p{2.2cm}p{\dimexpr\textwidth-4\tabcolsep-2.2cm}}
-        \textmansontt{Aussehen} & \tabularTextInput{Aussehen1} \\ \hline
-        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Aussehen2}{\textwidth-\tabcolsep}} \\ \hline
-        \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{Aussehen3}{\textwidth-\tabcolsep}}
+        \textmansontt{Aussehen} & \tabularTextInput{\FroAussehen{0}}%
+        \forloop{ct}{1}{\value{ct} < 3}{%
+            \\ \hline%
+            \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{\FroAussehen{\thect}}{\textwidth-\tabcolsep}} \\ \hline
+        }%
     \end{tabular}
 \end{dsaSheetBox}%
 
@@ -65,13 +68,10 @@
 \vspace{-12pt}%
 \begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
     \begin{tabular}{p{\dimexpr\textwidth-2\tabcolsep}}
-        \dsaTextInput{Vorteile1}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Vorteile2}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Vorteile3}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Vorteile4}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Vorteile5}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Vorteile6}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Vorteile7}{\textwidth-\tabcolsep}
+        \forloop{ct}{0}{\value{ct} < 7}{%
+            \ifcase\value{ct}\else\\\hline\fi%
+            \dsaTextInput{\FroVorteile{\thect}}{\textwidth-\tabcolsep}%
+        }%
     \end{tabular}
 \end{dsaSheetBox}
 
@@ -82,13 +82,10 @@
 \vspace{-12pt}%
 \begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
     \begin{tabular}{p{\dimexpr\textwidth-2\tabcolsep}}
-        \dsaTextInput{Nachteile1}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Nachteile2}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Nachteile3}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Nachteile4}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Nachteile5}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Nachteile6}{\textwidth-\tabcolsep} \\ \hline
-        \dsaTextInput{Nachteile7}{\textwidth-\tabcolsep}
+        \forloop{ct}{0}{\value{ct} < 7}{%
+            \ifcase\value{ct}\else\\\hline\fi%
+            \dsaTextInput{\FroNachteile{\thect}}{\textwidth-\tabcolsep}%
+        }%
     \end{tabular}
 \end{dsaSheetBox}
 \end{multicols}
@@ -98,20 +95,30 @@
     \huge \shadowtext{Eigenschaften \& Basiswerte}
 \end{center}
 
+\newcommand{\dsaPropline}[2]{%
+    \small #1 & \num{\FroEigModifikator{#2}} & \num{\FroEigStartwert{#2}} & \cellcolor{white} \num{\FroEigAktuell{#2}}%
+}
+\newcommand{\dsaExtProp}[3]{%
+    \small #1 \hfill \tiny\normalfont\bfseries #2 \hspace{3pt} & \num{\FroEigModifikator{#3}} & \num{\FroEigStartwert{#3}} & \cellcolor{white}\num{\FroEigAktuell{#3}}%
+}
+\newcommand{\dsaExtPropline}[3]{
+    \dsaExtProp{#1}{#2}{#3} & \num{\FroEigZugekauft{#3}} & \num{\FroEigPermanent{#3}}%
+}
+
 \vspace{-8pt}
 \begin{dsaSheetBox}[2\fboxsep + 6.72cm]
     \setlength{\tabcolsep}{0pt}
     \begin{tabu}{p{3.1cm}|p{1.2cm}|p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}}
         \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell} \Xhline{2\arrayrulewidth}
-        \dsaPropline{Mut}{MU} \\ \hline
-        \dsaPropline{Klugkeit}{KL} \\ \hline
-        \dsaPropline{Intuition}{IN} \\ \hline
-        \dsaPropline{Charisma}{CH} \\ \hline
-        \dsaPropline{Fingerfertigkeit}{FF} \\ \hline
-        \dsaPropline{Gewandtheit}{GE} \\ \hline
-        \dsaPropline{Konstitution}{KO} \\ \hline
-        \dsaPropline{Körperkraft}{KK} \\ \Xhline{2\arrayrulewidth}
-        \dsaPropline{Geschwindigkeit}{GS}
+        \dsaPropline{Mut}{0} \\ \hline
+        \dsaPropline{Klugkeit}{1} \\ \hline
+        \dsaPropline{Intuition}{2} \\ \hline
+        \dsaPropline{Charisma}{3} \\ \hline
+        \dsaPropline{Fingerfertigkeit}{4} \\ \hline
+        \dsaPropline{Gewandtheit}{5} \\ \hline
+        \dsaPropline{Konstitution}{6} \\ \hline
+        \dsaPropline{Körperkraft}{7} \\ \Xhline{2\arrayrulewidth}
+        \dsaPropline{Geschwindigkeit}{8}
    \end{tabu}%
 
    \vspace{1pt}
@@ -120,21 +127,21 @@
     \setlength{\tabcolsep}{0pt}
     \begin{tabu}{p{5.1cm}|p{1.2cm}|p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}|p{1.2cm}}
         \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell & Zugekauft & Permanent} \Xhline{2\arrayrulewidth}
-        \dsaExtPropline{Lebenspunkte}{(KO+KO+KK)/2}{LE} \\ \hline
-        \dsaExtPropline{Ausdauer}{(MU+KO+GE)/2}{AU} \\ \hline
-        \dsaExtPropline{Astralenergie}{(MU+IN+CH)/2}{AE} \\ \hline
-        \dsaExtPropline{Karmaenergie}{}{KE} \\ \hline
-        \dsaExtPropline{Magieresistenz}{(MU+KL+KO)/5}{MR} \\ \hline
-        \dsaExtProp{INI-Basiswert}{(MU+MU+IN+GE)/5}{INI} & \multicolumn{2}{l}{
+        \dsaExtPropline{Lebenspunkte}{(KO+KO+KK)/2}{9} \\ \hline
+        \dsaExtPropline{Ausdauer}{(MU+KO+GE)/2}{10} \\ \hline
+        \dsaExtPropline{Astralenergie}{(MU+IN+CH)/2}{11} \\ \hline
+        \dsaExtPropline{Karmaenergie}{}{12} \\ \hline
+        \dsaExtPropline{Magieresistenz}{(MU+KL+KO)/5}{13} \\ \hline
+        \dsaExtProp{INI-Basiswert}{(MU+MU+IN+GE)/5}{14} & \multicolumn{2}{l}{
             \hspace{5pt}\begin{minipage}{2.4cm}\tiny\normalfont
                 \vspace{-1pt}
-                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Kampfreflexe}{0.13cm}{0.09cm}{Kampfreflexe} \raisebox{0.45ex}{Kampfreflexe (INI+4)} \\[1.5pt]
-                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{Kampfgespür}{0.13cm}{0.09cm}{Kampfgespuer} \raisebox{0.45ex}{Kampfgespür (INI+2)}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{\FroKampfreflexe}{0.13cm}{0.09cm}{on} \raisebox{0.45ex}{Kampfreflexe (INI+4)} \\[1.5pt]
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{\FroKampfgespur}{0.13cm}{0.09cm}{on} \raisebox{0.45ex}{Kampfgespür (INI+2)}
             \end{minipage}
         } \\ \hline
-        \dsaExtProp{AT-Basiswert}{(MU+GE+KK)/5}{AT} & \multicolumn{2}{c}{\scriptsize \raisebox{-0.45ex}{Wundschwelle}} \\ \cline{1-4}
-        \dsaExtProp{PA-Basiswert}{(IN+GE+KK)/5}{PA} & \multicolumn{2}{c}{\tiny\normalfont \raisebox{2ex}{(KO/2)+Modifikator}} \\ \cline{1-4}
-        \dsaExtProp{FK-Basiswert}{(IN+FF+KK)/5}{FK} & \multicolumn{2}{c}{\num[1 1 1]{WS}}
+        \dsaExtProp{AT-Basiswert}{(MU+GE+KK)/5}{15} & \multicolumn{2}{c}{\scriptsize \raisebox{-0.45ex}{Wundschwelle}} \\ \cline{1-4}
+        \dsaExtProp{PA-Basiswert}{(IN+GE+KK)/5}{16} & \multicolumn{2}{c}{\tiny\normalfont \raisebox{2ex}{(KO/2)+Modifikator}} \\ \cline{1-4}
+        \dsaExtProp{FK-Basiswert}{(IN+FF+KK)/5}{17} & \multicolumn{2}{c}{\num[1 1 1]{\FroWundschwelle}}
     \end{tabu}
 \end{dsaSheetBox}
 
@@ -149,7 +156,7 @@
 
     \vspace{-3pt}
     \begin{tabular}{p{2.5cm}p{2.5cm}p{2.7cm}p{2.5cm}p{2.5cm}p{2.5cm}}
-        Gesamt: & \dsaTextInput{AP-Gesamt}{2.5cm} & Eingesetzt: & \dsaTextInput{AP-Eingesetzt}{2.5cm} & Guthaben: & \dsaTextInput{AP-Guthaben}{2.5cm}
+        Gesamt: & \dsaTextInput{\FroAbeGesamt}{2.5cm} & Eingesetzt: & \dsaTextInput{\FroAbeEingesetzt}{2.5cm} & Guthaben: & \dsaTextInput{\FroAbeGuthaben}{2.5cm}
     \end{tabular}
 
     \vspace{-3pt}
