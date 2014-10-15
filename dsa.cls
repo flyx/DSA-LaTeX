@@ -20,7 +20,17 @@
 \NeedsTeXFormat{LaTeX2e} 
 \ProvidesClass{dsa}[2014/02/06 v0.1]
 
-\PassOptionsToClass{\CurrentOption}{scrartcl}
+\newif\if@wallpaper\@wallpapertrue
+
+\DeclareOption{nowallpaper}{
+    \@wallpaperfalse
+}
+\DeclareOption*{
+    \PassOptionsToClass{\CurrentOption}{scrartcl}
+}
+
+\ProcessOptions
+
 \LoadClass[a4paper, fontsize=11pt]{scrartcl}
 
 \usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
@@ -131,12 +141,14 @@
    \setlength{\dsaOldParindent}{\parindent}
    \setlength{\parindent}{0pt}
    \ClearWallPaper
-   \IfFileExists{fanpaket/wallpaper.png}{
-      % wallpaper image is bigger than actual page
-      \setlength{\wpXoffset}{-0.3cm}
-      \setlength{\wpYoffset}{-0.1cm}
-      \ThisCenterWallPaper{1.0275}{fanpaket/wallpaper.png}
-   }{}
+   \if@wallpaper%
+       \IfFileExists{fanpaket/wallpaper.png}{
+          % wallpaper image is bigger than actual page
+          \setlength{\wpXoffset}{-0.3cm}
+          \setlength{\wpYoffset}{-0.1cm}
+          \ThisCenterWallPaper{1.0275}{fanpaket/wallpaper.png}
+       }{}
+   \fi
    
    \titleformat{\section}%
       {\dsaHeadingFont\Huge\bfseries\centering} % format

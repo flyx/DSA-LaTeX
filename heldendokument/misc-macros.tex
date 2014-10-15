@@ -65,10 +65,10 @@
 \begin{dsaSheetBox}[.5\textwidth-.5\columnsep]
     \tiny
     \begin{tabular}{p{\textwidth-.5\fboxsep}}
-        \raisebox{0.45ex}{\textmansontt{\Large Verbindungen}} \hspace{5pt} \mediumtext{\InvVerbindungen{0}}{8.9cm}
+        \raisebox{0.45ex}{\textmansontt{\Large Verbindungen}} \hspace{5pt} \mediumtext{\InvVerbindungen{0}}{5cm}
         \forloop{ct}{1}{\value{ct} < #1}{%
             \\ \hline%
-            \mediumtext{\InvVerbindungen{\thect}}{.5\textwidth}
+            \mediumtext{\InvVerbindungen{\thect}}{\textwidth}
         }%
     \end{tabular}
 \end{dsaSheetBox}

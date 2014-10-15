@@ -36,10 +36,12 @@
 \newcounter{zct}\setcounter{zct}{0}
 \newcommand{\Zauberliste}[1][0]{%
 \begin{dsaCharacterSheet}
-\ClearWallPaper
-\setlength{\wpXoffset}{-0.1cm}
-\setlength{\wpYoffset}{-0.3cm}
-\ThisCenterWallPaper{1.0275}{wallpaper-landscape.png}
+\IfFileExists{wallpaper-landscape.png}{
+    \ClearWallPaper
+    \setlength{\wpXoffset}{-0.1cm}
+    \setlength{\wpYoffset}{-0.3cm}
+    \ThisCenterWallPaper{1.0275}{wallpaper-landscape.png}
+}{}
 
 \vspace*{-30pt}
 \begin{center}

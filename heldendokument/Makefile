@@ -16,10 +16,19 @@ PRIMARY_SRCS=frontseite.tex \
              kampfbogen.tex \
              ausruestung.tex \
              liturgien.tex \
-             zauberliste.tex
+             zauberliste.tex \
+             zauberdokument.tex
 
 CONFIG_SRCS=$(PRIMARY_SRCS:.tex=-konfig.tex)
 
+
+### Wallpaper ist optional
+WALLPAPER?=enabled
+ifeq ($(WALLPAPER), enabled)
+	WALLPAPER_SRCS=wallpaper-landscape.png
+else
+	WALLPAPER_SRCS=
+endif
 
 ### Definition generierter Dateien
 
@@ -57,4 +66,4 @@ clean:
 talentbogen.pdf: talentbogen-extern.tex
 liturgien.pdf: misc-macros.tex
 ausruestung.pdf: misc-macros.tex
-zauberliste.pdf: wallpaper-landscape.png
+zauberliste.pdf: $(WALLPAPER_SRCS)

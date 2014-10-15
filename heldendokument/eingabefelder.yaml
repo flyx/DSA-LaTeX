@@ -214,3 +214,19 @@ Zauberei:
         Merkmale: !mehrfach Spruch-Merkmale-{n}
         Hauszauber: !mehrfach Spruch-Haus-{n}
         Lernschwierigkeit: !mehrfach Spruch-Lern-{n}
+    Rituale:
+        Name: !mehrfach Ritual-Name-{n}
+        Eigenschaft 1: !mehrfach Ritual-Eigenschaft1-{n}
+        Eigenschaft 2: !mehrfach Ritual-Eigenschaft2-{n}
+        Eigenschaft 3: !mehrfach Ritual-Eigenschaft3-{n}
+        Zauberdauer: !mehrfach Ritual-ZD-{n}
+        Kosten: !mehrfach Ritual-Kosten-{n}
+        Wirkung: !mehrfach Ritual-Wirkung-{n}
+        Ritualkenntnis:
+            Name: !mehrfach Ritualkenntnis-Name-{n}
+            Wert: !mehrfach Ritualkenntniswert-{n}
+    Vor- und Nachteile: !mehrfach Magische-Vor-und-Nachteile-{n}
+    Sonderfertigkeiten: !mehrfach Magische-Sonderfertigkeiten-{n}
+    Regeneration: Magische-Regeneration
+    Artefakte: !mehrfach Artefakte-{n}
+    Notizen: !mehrfach Magische-Notizen-{n}
