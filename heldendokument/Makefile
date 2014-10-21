@@ -66,4 +66,5 @@ clean:
 talentbogen.pdf: talentbogen-extern.tex
 liturgien.pdf: misc-macros.tex
 ausruestung.pdf: misc-macros.tex
+kampfbogen.pdf: silhouette.png
 zauberliste.pdf: $(WALLPAPER_SRCS)

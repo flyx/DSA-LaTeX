@@ -131,6 +131,15 @@ Kampfbogen:
         Rüstungsgewöhnung II: RuestungsgewoehnungII
         Rüstungsgewöhnung III: RuestungsgewoehnungIII
         Resultierende Behinderung: BE
+        Zonen:
+            Kopf: RS-Kopf
+            Brust: RS-Brust
+            Rücken: RS-Ruecken
+            Bauch: RS-Bauch
+            Linker Arm: RS-L-Arm
+            Rechter Arm: RS-R-Arm
+            Linkes Bein: RS-L-Bein
+            Rechtes Bein: RS-R-Bein
     Ausweichen:
         Ausweichen I: AusweichenI
         Ausweichen II: AusweichenII
