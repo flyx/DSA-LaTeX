@@ -13,3 +13,4 @@ release
 /acrotex
 *-extern.tex
 *.pyc
+*.html

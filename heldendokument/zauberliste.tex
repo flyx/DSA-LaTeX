@@ -1,4 +1,5 @@
-\documentclass[landscape]{dsa}
+\input{wallpaper-extern.tex}
+\documentclass[landscape,\dsaClassParams]{dsa}
 
 \usepackage{shadowtext}
 \usepackage{forloop}
@@ -36,11 +37,11 @@
 \newcounter{zct}\setcounter{zct}{0}
 \newcommand{\Zauberliste}[1][0]{%
 \begin{dsaCharacterSheet}
-\IfFileExists{wallpaper-landscape.png}{
+\IfFileExists{\landscapewp}{
     \ClearWallPaper
     \setlength{\wpXoffset}{-0.1cm}
     \setlength{\wpYoffset}{-0.3cm}
-    \ThisCenterWallPaper{1.0275}{wallpaper-landscape.png}
+    \ThisCenterWallPaper{1.0275}{\landscapewp}
 }{}
 
 \vspace*{-30pt}

@@ -23,11 +23,16 @@ CONFIG_SRCS=$(PRIMARY_SRCS:.tex=-konfig.tex)
 
 
 ### Wallpaper ist optional
-WALLPAPER?=enabled
-ifeq ($(WALLPAPER), enabled)
+WALLPAPER?=original
+WALLPAPER_SRCS=
+WALLPAPER_PY_PARAMS="none" "" 
+ifeq ($(WALLPAPER),original)
 	WALLPAPER_SRCS=wallpaper-landscape.png
-else
-	WALLPAPER_SRCS=
+	WALLPAPER_PY_PARAMS="" "wallpaper-landscape.png"
+endif
+ifeq ($(WALLPAPER),alternative)
+	WALLPAPER_SRCS=wallpaper-alternative.png wallpaper-alternative-landscape.png
+	WALLPAPER_PY_PARAMS="wallpaper-alternative.png" "wallpaper-alternative-landscape.png"
 endif
 
 ### Definition generierter Dateien
@@ -41,7 +46,7 @@ TARGET=heldendokument.pdf
 
 all: $(TARGET)
 
-%.pdf: %.tex %-konfig.tex $(COMMON_SRCS) eingabefelder-extern.tex
+%.pdf: %.tex %-konfig.tex $(COMMON_SRCS) eingabefelder-extern.tex wallpaper-extern.tex
 	xelatex $<
 	rm -rf *.log *.out *.aux
 
@@ -57,8 +62,14 @@ $(TARGET): $(INTERMEDIATE_PDFS)
 wallpaper-landscape.png:
 	convert /usr/share/texmf/tex/latex/dsa/fanpaket/wallpaper.png -rotate 90 wallpaper-landscape.png
 
+wallpaper-alternative-landscape.png:
+	convert wallpaper-alternative.png -rotate 90 wallpaper-alternative-landscape.png
+
+wallpaper-extern.tex: wallpaper.py
+	./wallpaper.py $(WALLPAPER_PY_PARAMS)
+
 clean:
-	rm -f $(INTERMEDIATE_PDFS) heldendokument.pdf talentbogen-extern.tex eingabefelder-extern.tex wallpaper-landscape.png
+	rm -f $(INTERMEDIATE_PDFS) heldendokument.pdf *-extern.tex wallpaper-*landscape.png
 
 
 ### Zusätzliche Abhängigkeiten

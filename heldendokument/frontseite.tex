@@ -4,11 +4,12 @@
 \begin{document}
 
 \begin{dsaCharacterSheet}
+\setwp{}
 \vspace*{10pt}
 \renewcommand{\arraystretch}{1.25}
 \begin{dsaSheetBox}
     
-    \vspace{8pt}
+    \vspace{15pt}
     \begin{center}
         \Huge \shadowtext{Heldendokument}
     \end{center}
@@ -60,7 +61,7 @@
     \end{tabular}
 \end{dsaSheetBox}%
 
-\vspace{-4pt}
+\vspace{-8pt}
 \begin{multicols}{2}
 \begin{center}
     \huge \shadowtext{Vorteile}%
@@ -90,10 +91,11 @@
 \end{dsaSheetBox}
 \end{multicols}
 
-\vspace{-24pt}
+\vspace{-36pt}
 \begin{center}
     \huge \shadowtext{Eigenschaften \& Basiswerte}
 \end{center}
+\vspace{-4pt}
 
 \newcommand{\dsaPropline}[2]{%
     \small #1 & \num{\FroEigModifikator{#2}} & \num{\FroEigStartwert{#2}} & \cellcolor{white} \num{\FroEigAktuell{#2}}%
@@ -120,8 +122,6 @@
         \dsaPropline{Körperkraft}{7} \\ \Xhline{2\arrayrulewidth}
         \dsaPropline{Geschwindigkeit}{8}
    \end{tabu}%
-
-   \vspace{1pt}
 \end{dsaSheetBox}
 \begin{dsaSheetBox}[2\fboxsep + 11.2cm]
     \setlength{\tabcolsep}{0pt}
@@ -145,22 +145,26 @@
     \end{tabu}
 \end{dsaSheetBox}
 
-\vspace{-16pt}
+\vspace{-25pt}
 \begin{center}
     \huge \shadowtext{Abenteuerpunkte}
 \end{center}
-\vspace{-8pt}
+\vspace{-12pt}
 
 \begin{dsaSheetBox}[\textwidth]
     \Large
 
-    \vspace{-3pt}
-    \begin{tabular}{p{2.5cm}p{2.5cm}p{2.7cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+    \vspace{-5pt}
+    \begin{tabular}{p{2cm}p{3cm}p{2.7cm}p{2.5cm}p{2.5cm}p{2.5cm}}
         Gesamt: & \dsaTextInput{\FroAbeGesamt}{2.5cm} & Eingesetzt: & \dsaTextInput{\FroAbeEingesetzt}{2.5cm} & Guthaben: & \dsaTextInput{\FroAbeGuthaben}{2.5cm}
     \end{tabular}
-
-    \vspace{-3pt}
 \end{dsaSheetBox}
+
+\begin{tikzpicture}[remember picture, overlay]
+    \node[inner sep=0pt] at ([xshift=-0.8cm,yshift=-2.25cm]current page.north) {%
+        \includegraphics[width=6cm]{fanpaket/logo-fanprodukt.png}%
+    };%
+\end{tikzpicture}
 
 \end{dsaCharacterSheet}
 

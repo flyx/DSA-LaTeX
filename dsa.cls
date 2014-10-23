@@ -174,10 +174,10 @@
 \NewEnviron{dsaSheetBox}[1][\textwidth]{%
   \begin{lrbox}{\blockbox}%
     \noindent\hspace{\fboxsep}\begin{minipage}{#1-2\fboxsep}
-      \vspace{\fboxsep}
-      \BODY
-      \vspace{\fboxsep}
-    \end{minipage}
+      \vspace{\fboxsep}%
+      \BODY%
+      \vspace{.66\fboxsep}%
+    \end{minipage}%
   \end{lrbox}
   \noindent
   \begin{tikzpicture}
