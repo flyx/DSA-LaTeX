@@ -6,25 +6,21 @@
 
 \input{eingabefelder-extern.tex}
 
-\newcommand{\tabularTextInput}[1]{
-    \dsaTextInput{#1}{.5\textwidth-4\tabcolsep-2cm}
-}
-
 \newcommand{\num}[2][\empty]{
     \ifthenelse{\equal{#1}{\empty}}{
-        \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}]{#2}{1.2cm}{1em}}%
+        \raisebox{-1ex}{\textField[\ui{align={centered},textsize={12}}]{#2}{1.2cm}{16pt}}%
     }{
-        \raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12},bgcolor={#1}}]{#2}{1.2cm}{1.5em}}%
+        \raisebox{-1ex}{\textField[\ui{align={centered},textsize={12},bgcolor={#1}}]{#2}{1.2cm}{16pt}}%
     }%
 }
 \newcommand{\smallnum}[1]{
-    \hspace{-6pt}\raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={12}}\Ff{\FfReadOnly}]{#1}{0.8cm}{1em}}\hspace{-4pt}%
+    \hspace{-6pt}\raisebox{-0.35ex}{\textField[\ui{align={centered},textsize={11}}\Ff{\FfReadOnly}]{#1}{0.8cm}{15pt}}\hspace{-4pt}%
 }
 \newcommand{\smalltext}[4][\empty]{%
     \ifthenelse{\equal{#1}{\empty}}{%
-        \raisebox{-2pt}{\textField[\textSize{8}\ui{value={\ignorespaces #4}}]{#2}{#3}{11pt}}%
+        \raisebox{-3pt}{\textField[\textSize{8}\ui{value={\ignorespaces #4}}]{#2}{#3}{10pt}}%
     }{%
-        \raisebox{-2pt}{\textField[\ui{align={#1},value={\ignorespaces #4}}\textSize{8}]{#2}{#3}{11pt}}%
+        \raisebox{-3pt}{\textField[\ui{align={#1},value={\ignorespaces #4}}\textSize{8}]{#2}{#3}{10pt}}%
     }%
 }
 \newcommand{\mediumtext}[3][\empty]{%

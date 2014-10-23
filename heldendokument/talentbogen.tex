@@ -7,19 +7,18 @@
 
 \vspace*{4pt}
 \begin{dsaSheetBox}[\textwidth]
-    \vspace{1pt}
     \begin{tabular}{llllllllllllllllll}
-        MU: & \smallnum{\FroEigAktuell{0}} &
-        KL: & \smallnum{\FroEigAktuell{1}} &
-        IN: & \smallnum{\FroEigAktuell{2}} &
-        CH: & \smallnum{\FroEigAktuell{3}} &
-        FF: & \smallnum{\FroEigAktuell{4}} &
-        GE: & \smallnum{\FroEigAktuell{5}} &
-        KO: & \smallnum{\FroEigAktuell{6}} &
-        KK: & \smallnum{\FroEigAktuell{7}} & \hspace{10pt}
-        BE: & \smallnum{\KamRusResultierendeBehinderung}
+        \raisebox{2pt}{MU:} & \smallnum{\FroEigAktuell{0}} &
+        \raisebox{2pt}{KL:} & \smallnum{\FroEigAktuell{1}} &
+        \raisebox{2pt}{IN:} & \smallnum{\FroEigAktuell{2}} &
+        \raisebox{2pt}{CH:} & \smallnum{\FroEigAktuell{3}} &
+        \raisebox{2pt}{FF:} & \smallnum{\FroEigAktuell{4}} &
+        \raisebox{2pt}{GE:} & \smallnum{\FroEigAktuell{5}} &
+        \raisebox{2pt}{KO:} & \smallnum{\FroEigAktuell{6}} &
+        \raisebox{2pt}{KK:} & \smallnum{\FroEigAktuell{7}} & \hspace{10pt}
+        \raisebox{2pt}{BE:} & \smallnum{\KamRusResultierendeBehinderung}
     \end{tabular}
-    \vspace{-1pt}
+    \vspace{-4pt}
 \end{dsaSheetBox}
 
 \vspace{-16pt}
@@ -40,7 +39,7 @@
         \begin{tabular}{p{.5\textwidth-.5\columnsep-.5\fboxsep}} \hline
             \forloop{ct}{0}{\value{ct} < #1}%
             {%
-              \smalltext{\TalSonderfertigkeiten{\thect}}{.5\textwidth-.5\columnsep-.5\fboxsep}{} \\ \hline
+              \mediumtext{\TalSonderfertigkeiten{\thect}}{.5\textwidth-.5\columnsep-.5\fboxsep}{} \\ \hline
             }
         \end{tabular}
     }
@@ -49,8 +48,7 @@
         \ifcase\MSpalte\relax
             \begin{tabular}{p{0.2cm}|p{4.6cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize\raisebox{-0.2pt}{•}}p{0.7cm}|p{0.8cm}}
                 \multicolumn{3}{l|}{\Large \raisebox{0.35ex}{\textmansontt{Kampftechniken}}} & \footnotesize\centering BE & \footnotesize\centering AT & \footnotesize\centering PA & \footnotesize\hspace{0.5pt} TaW
-                \forloop{ct}{0}{\value{ct} < #1}%
-                {%
+                \forloop{ct}{0}{\value{ct} < #1}{%
                     \\ \hline
                     \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{0}{\thect}}{0.2cm}{0.2cm}{on} &
                     \ifthenelse{\equal{\TalenteInCombo}{1}}{
@@ -69,8 +67,7 @@
         \else
             \begin{tabular}{p{0.2cm}|p{4.15cm}|p{0.4cm}|p{1cm}|p{0.7cm}!{\footnotesize\raisebox{-0.2pt}{•}}p{0.7cm}|p{0.8cm}|p{0.4cm}}
                 \multicolumn{3}{l|}{\Large \raisebox{0.35ex}{\textmansontt{Kampftechniken}}} & \footnotesize\centering BE & \footnotesize\centering AT & \footnotesize\centering PA & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
-                \forloop{ct}{0}{\value{ct} < #1}%
-                {%
+                \forloop{ct}{0}{\value{ct} < #1}{%
                     \\ \hline
                     \checkBox[\symbolchoice{star}\BC{}]{\TalTalSpezielleErfahrung{0}{\thect}}{0.2cm}{0.2cm}{on} &
                     \ifthenelse{\equal{\TalenteInCombo}{1}}{
@@ -216,6 +213,10 @@
     \newcommand{\leer}[2]{}
 
     \input{talentbogen-konfig.tex}
+
+    \newcommand{\lparen}{(}
+    \newcommand{\rparen}{)}
+    \input{talentbogen-extern.tex}
     
     \setlength{\columnseprule}{1pt}
     \setlength{\columnsep}{4pt}
@@ -223,7 +224,7 @@
         \TalenteLinks
 
     \columnbreak
-        \TalenteRechts
+        \hspace{1pt}\begin{minipage}{.5\textwidth-\columnsep}\TalenteRechts\vspace{-8pt}\end{minipage}%
     \end{multicols}
 \end{dsaSheetBox}
 
