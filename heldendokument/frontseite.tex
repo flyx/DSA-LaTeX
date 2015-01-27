@@ -4,25 +4,24 @@
 \newcommand{\tabularTextInput}[1]{%
     \dsaTextInput{#1}{.5\textwidth-4\tabcolsep-2cm}%
 }
-\tabulinesep=-2pt
 
 \begin{document}
 
 \begin{dsaCharacterSheet}
 \setwp{}
 \vspace*{10pt}
-\renewcommand{\arraystretch}{1.1}
+\renewcommand{\arraystretch}{1}
 \begin{dsaSheetBox}
     
     \vspace{15pt}
     \begin{center}
         \Huge \shadowtext{Heldendokument}
     \end{center}
-    \begin{tabu}{p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}}
+    \begin{tabular}{p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}p{2cm}p{\dimexpr.5\textwidth-4\tabcolsep-2cm}}
         \textmansontt{Name} & \tabularTextInput{\FroName} & \textmansontt{GP-Basis} & \tabularTextInput{\FroGPBasis} \\ \hline
         \textmansontt{Rasse} & \tabularTextInput{\FroRasse} & \textmansontt{Kultur} & \tabularTextInput{\FroKultur} \\ \hline
         \textmansontt{Profession} & \multicolumn{3}{l}{\dsaTextInput{\FroProfession}{\textwidth-4\tabcolsep-2cm}}
-    \end{tabu}
+    \end{tabular}
 \end{dsaSheetBox}
 
 \vspace{-8pt}
@@ -61,8 +60,9 @@
         \textmansontt{Aussehen} & \tabularTextInput{\FroAussehen{0}}%
         \forloop{ct}{1}{\value{ct} < 3}{%
             \\ \hline%
-            \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{\FroAussehen{\thect}}{\textwidth-\tabcolsep}} \\ \hline
+            \multicolumn{2}{p{\dimexpr\textwidth-4\tabcolsep}}{\dsaTextInput{\FroAussehen{\thect}}{\textwidth-\tabcolsep}}
         }%
+        \\ \hline
     \end{tabular}
 \end{dsaSheetBox}%
 
@@ -96,16 +96,17 @@
 \end{dsaSheetBox}
 \end{multicols}
 
-\vspace{-32pt}
+\vspace{-36pt}
 \begin{center}
     \huge \shadowtext{Eigenschaften \& Basiswerte}
 \end{center}
+\vspace{-4pt}
 
 \newcommand{\dsaPropline}[2]{%
-    \raisebox{-0.35ex}{\small #1} & \num{\FroEigModifikator{#2}} & \num{\FroEigStartwert{#2}} & \cellcolor{white} \num{\FroEigAktuell{#2}}%
+    \small #1 & \num{\FroEigModifikator{#2}} & \num{\FroEigStartwert{#2}} & \cellcolor{white} \num{\FroEigAktuell{#2}}%
 }
 \newcommand{\dsaExtProp}[3]{%
-    \raisebox{-0.35ex}{\small #1} \hfill \raisebox{-0.35ex}{\tiny\normalfont\bfseries #2} \hspace{3pt} & \num{\FroEigModifikator{#3}} & \num{\FroEigStartwert{#3}} & \cellcolor{white}\num{\FroEigAktuell{#3}}%
+    \small #1 \hfill \tiny\normalfont\bfseries #2 \hspace{3pt} & \num{\FroEigModifikator{#3}} & \num{\FroEigStartwert{#3}} & \cellcolor{white}\num{\FroEigAktuell{#3}}%
 }
 \newcommand{\dsaExtPropline}[3]{
     \dsaExtProp{#1}{#2}{#3} & \num{\FroEigZugekauft{#3}} & \num{\FroEigPermanent{#3}}%
@@ -113,7 +114,6 @@
 
 \vspace{-8pt}
 \begin{dsaSheetBox}[2\fboxsep + 6.72cm]
-    \renewcommand{\arraystretch}{1}
     \setlength{\tabcolsep}{0pt}
     \begin{tabu}{p{3.1cm}|p{1.2cm}|p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}}
         \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell} \Xhline{2\arrayrulewidth}
@@ -129,7 +129,6 @@
    \end{tabu}%
 \end{dsaSheetBox}
 \begin{dsaSheetBox}[2\fboxsep + 11.2cm]
-    \renewcommand{\arraystretch}{1}
     \setlength{\tabcolsep}{0pt}
     \begin{tabu}{p{5.1cm}|p{1.2cm}|p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}!{\vrule width 4\arrayrulewidth}p{1.2cm}|p{1.2cm}}
         \dsaRow{\scriptsize}{\tiny\normalfont\bfseries\centering}{ & Modifikator & Start & Aktuell & Zugekauft & Permanent} \Xhline{2\arrayrulewidth}
@@ -139,37 +138,36 @@
         \dsaExtPropline{Karmaenergie}{}{12} \\ \hline
         \dsaExtPropline{Magieresistenz}{(MU+KL+KO)/5}{13} \\ \hline
         \dsaExtProp{INI-Basiswert}{(MU+MU+IN+GE)/5}{14} & \multicolumn{2}{l}{
-            \hspace{3pt}\begin{minipage}{2.175cm}\tiny\normalfont
-                \vspace{2pt}
+            \hspace{5pt}\begin{minipage}{2.4cm}\tiny\normalfont
+                \vspace{-1pt}
                 \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{\FroKampfreflexe}{0.13cm}{0.09cm}{on} \raisebox{0.45ex}{Kampfreflexe (INI+4)} \\[1.5pt]
-                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{\FroKampfgespur}{0.13cm}{0.09cm}{on} \raisebox{0.45ex}{Kampfgespür (INI+2)} \hspace{-3pt}
+                \checkBox[\ui{bgcolor={1 1 1}}\symbolchoice{cross}]{\FroKampfgespur}{0.13cm}{0.09cm}{on} \raisebox{0.45ex}{Kampfgespür (INI+2)}
             \end{minipage}
-            \vspace{-2pt}
         } \\ \hline
         \dsaExtProp{AT-Basiswert}{(MU+GE+KK)/5}{15} & \multicolumn{2}{c}{\scriptsize \raisebox{-0.45ex}{Wundschwelle}} \\ \cline{1-4}
         \dsaExtProp{PA-Basiswert}{(IN+GE+KK)/5}{16} & \multicolumn{2}{c}{\tiny\normalfont \raisebox{2ex}{(KO/2)+Modifikator}} \\ \cline{1-4}
-        \dsaExtProp{FK-Basiswert}{(IN+FF+KK)/5}{17} & \multicolumn{2}{c}{\setlength{\fboxsep}{0pt}\colorbox{white}{\begin{minipage}{1.2cm}\vspace*{2pt}\num{\FroWundschwelle}\end{minipage}}\vspace{-1pt}}
+        \dsaExtProp{FK-Basiswert}{(IN+FF+KK)/5}{17} & \multicolumn{2}{c}{\num[1 1 1]{\FroWundschwelle}}
     \end{tabu}
+    
+    \vspace{1pt}
 \end{dsaSheetBox}
 
-\vspace{-20pt}
+\vspace{-25pt}
 \begin{center}
     \huge \shadowtext{Abenteuerpunkte}
 \end{center}
-\vspace{-8pt}
+\vspace{-12pt}
 
 \begin{dsaSheetBox}[\textwidth]
     \Large
 
-    \vspace{-5pt}
     \begin{tabular}{p{2cm}p{3cm}p{2.7cm}p{2.5cm}p{2.5cm}p{2.5cm}}
-        Gesamt: & \raisebox{-0.45ex}{\textField[\textSize{12}]{\FroAbeGesamt}{2.5cm}{16pt}} & Eingesetzt: & \raisebox{-0.45ex}{\textField[\textSize{12}]{\FroAbeEingesetzt}{2.5cm}{16pt}} & Guthaben: & \raisebox{-0.45ex}{\textField[\textSize{12}]{\FroAbeGuthaben}{2.5cm}{16pt}}
+        Gesamt: & \dsaTextInput{\FroAbeGesamt}{2.5cm} & Eingesetzt: & \dsaTextInput{\FroAbeEingesetzt}{2.5cm} & Guthaben: & \dsaTextInput{\FroAbeGuthaben}{2.5cm}
     \end{tabular}
-    \vspace{-3pt}
 \end{dsaSheetBox}
 
 \begin{tikzpicture}[remember picture, overlay]
-    \node[inner sep=0pt] at ([xshift=-0.8cm,yshift=-2.4cm]current page.north) {%
+    \node[inner sep=0pt] at ([xshift=-0.8cm,yshift=-2.25cm]current page.north) {%
         \includegraphics[width=6cm]{fanpaket/logo-fanprodukt.png}%
     };%
 \end{tikzpicture}

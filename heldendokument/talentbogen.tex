@@ -6,19 +6,20 @@
 \setwp{}
 
 \vspace*{4pt}
-\begin{dsaSheetBox}[\textwidth]
-    \begin{tabular}{llllllllllllllllll}
-        \raisebox{2pt}{MU:} & \smallnum{\FroEigAktuell{0}} &
-        \raisebox{2pt}{KL:} & \smallnum{\FroEigAktuell{1}} &
-        \raisebox{2pt}{IN:} & \smallnum{\FroEigAktuell{2}} &
-        \raisebox{2pt}{CH:} & \smallnum{\FroEigAktuell{3}} &
-        \raisebox{2pt}{FF:} & \smallnum{\FroEigAktuell{4}} &
-        \raisebox{2pt}{GE:} & \smallnum{\FroEigAktuell{5}} &
-        \raisebox{2pt}{KO:} & \smallnum{\FroEigAktuell{6}} &
-        \raisebox{2pt}{KK:} & \smallnum{\FroEigAktuell{7}} & \hspace{10pt}
-        \raisebox{2pt}{BE:} & \smallnum{\KamRusResultierendeBehinderung}
+\begin{dsaSheetBox}[\textwidth]%
+
+    \vspace*{-3pt}
+    \begin{tabular}{llllllllllllllllll}%
+        MU: & \smallnum{\FroEigAktuell{0}} &
+        KL: & \smallnum{\FroEigAktuell{1}} &
+        IN: & \smallnum{\FroEigAktuell{2}} &
+        CH: & \smallnum{\FroEigAktuell{3}} &
+        FF: & \smallnum{\FroEigAktuell{4}} &
+        GE: & \smallnum{\FroEigAktuell{5}} &
+        KO: & \smallnum{\FroEigAktuell{6}} &
+        KK: & \smallnum{\FroEigAktuell{7}} & \hspace{10pt}
+        BE: & \smallnum{\KamRusResultierendeBehinderung}
     \end{tabular}
-    \vspace{-4pt}
 \end{dsaSheetBox}
 
 \vspace{-16pt}
@@ -121,7 +122,7 @@
         \tiny
         \ifcase#4\relax
             \ifcase#5\relax
-                \begin{tabular}{p{0.2cm}|p{5.8cm}|p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}|p{0.8cm}}
+                \begin{tabular}{p{0.2cm}|p{5.8cm}|p{0.5cm}!{\footnotesize•}p{0.5cm}!{\footnotesize•}p{0.5cm}|p{0.8cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
@@ -133,12 +134,12 @@
                         } &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.6cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{\TalTalTalentwert{#1}{\thect}}{0.8cm}{}%
                     } \\ \hline
                 \end{tabular}
             \else
-                \begin{tabular}{p{0.2cm}|p{4.7cm}|p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
+                \begin{tabular}{p{0.2cm}|p{4.7cm}|p{0.5cm}!{\footnotesize•}p{0.5cm}!{\footnotesize•}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
@@ -150,7 +151,7 @@
                         } &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.6cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{\TalTalBehinderung{#1}{\thect}}{1cm}{#6{\thect}{4}} &
                         \smalltext[centered]{\TalTalBehinderung{#1}{\thect}}{0.8cm}{}%
                     } \\ \hline
@@ -158,7 +159,7 @@
             \fi
         \else
             \ifcase#5
-                \begin{tabular}{p{0.2cm}|p{5.4cm}|p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}|p{0.8cm}|p{0.4cm}}
+                \begin{tabular}{p{0.2cm}|p{5.4cm}|p{0.5cm}!{\footnotesize•}p{0.5cm}!{\footnotesize•}p{0.5cm}|p{0.8cm}|p{0.4cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
@@ -170,13 +171,13 @@
                         } &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.6cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{\TalTalTalentwert{#1}{\thect}}{0.8cm}{} &
                         \shifttext{-0.1cm}{\smalltext[centered]{\TalTalMSpalte{#1}{\thect}}{0.6cm}{}}%
                     } \\ \hline
                 \end{tabular}
             \else
-                \begin{tabular}{p{0.2cm}|p{4.3cm}|p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}!{\footnotesize\raisebox{-0.6pt}{•}}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
+                \begin{tabular}{p{0.2cm}|p{4.3cm}|p{0.5cm}!{\footnotesize•}p{0.5cm}!{\footnotesize•}p{0.5cm}|p{1.0cm}|p{0.8cm}|p{0.4cm}}
                     \multicolumn{5}{l|}{\Large \raisebox{0.35ex}{\textmansontt{#2}}} & \footnotesize\centering BE & \footnotesize\hspace{0.5pt} TaW & \footnotesize\hspace{1pt} M
                     \forloop{ct}{0}{\value{ct} < #3}{%
                         \\ \hline
@@ -188,7 +189,7 @@
                         } &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschafta{#1}{\thect}}{0.7cm}{#6{\thect}{1}}} &
                         \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftb{#1}{\thect}}{0.7cm}{#6{\thect}{2}}} &
-                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.7cm}{#6{\thect}{3}}} &
+                        \shifttext{-0.15cm}{\smalltext[centered]{\TalTalEigenschaftc{#1}{\thect}}{0.6cm}{#6{\thect}{3}}} &
                         \smalltext[centered]{\TalTalBehinderung{#1}{\thect}}{1cm}{#6{\thect}{4}} &
                         \smalltext[centered]{\TalTalTalentwert{#1}{\thect}}{0.8cm}{} &
                         \shifttext{-0.1cm}{\smalltext[centered]{\TalTalMSpalte{#1}{\thect}}{0.6cm}{}}%

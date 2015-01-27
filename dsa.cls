@@ -67,7 +67,7 @@
    \usepackage[xetex,useui]{eforms}
    \everyTextField{\textFont{GaramondNo8}\textSize{12}\W{0}}
    \everyComboBox{\textFont{GaramondNo8}\textSize{12}\W{0}}
-   \newcommand{\dsaTextInput}[3][10]{\raisebox{-0.55ex}{\textField[\textSize{##1}]{##2}{##3}{12pt}}}
+   \newcommand{\dsaTextInput}[3][12]{\textField[\textSize{##1}]{##2}{##3}{18pt}}
 }{}
 
 % font in TOC

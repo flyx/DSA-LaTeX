@@ -11,11 +11,14 @@
 
 \vspace*{4pt}
 \begin{dsaSheetBox}[\textwidth]
-    \vspace{1pt}
+
+    \vspace*{-3pt}
     \begin{tabular}{llllllll}
-        Attacke-Basiswert: & \smallnum{\FroEigAktuell{15}} & Parade-Basiswert: & \smallnum{\FroEigAktuell{16}} & Fernkampf-Basiswert: & \smallnum{\FroEigAktuell{17}} & Initiative-Basiswert: & \smallnum{\FroEigAktuell{14}}
+        AT-Basiswert: & \hspace{5pt} \smallnum{\FroEigAktuell{15}} \hspace{10pt} &
+        PA-Basiswert: & \hspace{5pt} \smallnum{\FroEigAktuell{16}} \hspace{10pt} &
+        FK-Basiswert: & \hspace{5pt} \smallnum{\FroEigAktuell{17}} \hspace{10pt} &
+        Initiative-Basiswert: & \smallnum{\FroEigAktuell{14}}
     \end{tabular}
-    \vspace{-1pt}
 \end{dsaSheetBox}
 
 \vspace{-16pt}
@@ -169,7 +172,7 @@
                     \\ \hline
                 \fi
                 \mediumtext{\KamSchName{\thect}}{4.8cm} &
-                \mediumtext[centered]{\KamSchTyp{\thect}}{2cm} &
+                \mediumtext[centered]{\KamSchTyp{\thect}}{2.6cm} &
                 \mediumtext[centered]{\KamSchINIModifikator{\thect}}{1cm} &
                 \mediumtext[centered]{\KamSchWaffenmodifikator{\thect}}{1.4cm} &
                 \mediumtext[centered]{\KamSchParade{\thect}}{0.8cm} &
@@ -232,9 +235,9 @@
         \tiny\normalfont\bfseries
         \begin{tabular}{p{1cm}p{0.3cm}p{0.7cm}p{0.3cm}p{2.5cm}p{0.3cm}p{1cm}}
             \multicolumn{2}{l}{\scriptsize PA-Basis} & \scriptsize\centering BE & & \scriptsize\centering SF Ausweichen & & \scriptsize Summe \\
-            \raisebox{-1.5ex}{\textField[\ui{align={centered},textsize={14}}\Ff{\FfReadOnly}]{PA-akt}{1cm}{2em}} &
+            \textField[\ui{align={centered},textsize={14}}\Ff{\FfReadOnly}]{PA-akt}{1cm}{2em} &
             \normalsize $-$ &
-            \raisebox{-1.5ex}{\textField[\ui{align={centered},textsize={14}}\Ff{\FfReadOnly}]{BE}{0.7cm}{2em}} &
+            \textField[\ui{align={centered},textsize={14}}\Ff{\FfReadOnly}]{BE}{0.7cm}{2em} &
             \normalsize $+$ &
             \begin{minipage}{2.5cm}
                 \centering
@@ -245,7 +248,7 @@
                 Flink (+1) / Behäbig (-1)?
             \end{minipage}
              & \normalsize $=$ &
-            \raisebox{-1.5ex}{\textField[\ui{align={centered},textsize={14}}]{\KamAusAusweichenwert}{0.9cm}{2em}} \\ \Xcline{1-1}{3\arrayrulewidth} \Xcline{3-3}{3\arrayrulewidth} \Xcline{7-7}{3\arrayrulewidth}
+            \textField[\ui{align={centered},textsize={14}}]{\KamAusAusweichenwert}{0.9cm}{2em} \\ \Xcline{1-1}{3\arrayrulewidth} \Xcline{3-3}{3\arrayrulewidth} \Xcline{7-7}{3\arrayrulewidth}
              & & & \multicolumn{3}{c}{Akrobatik (+$\lfloor(\mathrm{TaW}-9) / 3 \rfloor $)?} &
         \end{tabular}
     \end{dsaSheetBox}
@@ -255,7 +258,7 @@
     \begin{center}
         \LARGE \shadowtext{Wunden}%
     \end{center}%
-    \vspace{-4pt}
+    \vspace{-3pt}
 
     \begin{dsaSheetBox}
         \centering
