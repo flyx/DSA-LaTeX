@@ -17,9 +17,6 @@ finden sich im Release:
 
 Das Projekt ist lizensiert unter der [LaTeX Project Public License][2].
 
-Die Silhouette, die auf dem Kampfbogen des Heldendokuments benutzt wird, stammt
-von [Michael Binder][3] und steht unter der [Creative Commons BY-SA 3.0 DE][4] Lizenz.
-
  [1]: http://www.orkenspalter.de/filebase/index.php/File/661-LaTeX-Klasse-für-DSA-Dokumente/
  [2]: http://latex-project.org/lppl/
  [3]: https://github.com/thinkingstone
