@@ -6,17 +6,17 @@ clean:
 release/dsa:
 	mkdir -p release/dsa
 
-build-scripts: release/dsa
-	python dev/build-release.py dev release/dsa
+release/dsa/fanpaket-setup.ps1: dev/fanpaket-setup.ps1.in dev/fanpaket.yaml release/dsa
+	dev/build-fanpaket-setup.py $< dev/fanpaket.yaml $@
+release/dsa/fanpaket-setup.sh: dev/fanpaket-setup.sh.in dev/fanpaket.yaml release/dsa
+	dev/build-fanpaket-setup.py $< dev/fanpaket.yaml $@
+release/dsa/README.html: dev/README-release.md dev/build-readme.py
+	dev/build-readme.py $< $@
 
-release/dsa/fanpaket-setup.sh: build-scripts
-
-fanpaket: build-scripts
+fanpaket: release/dsa/fanpaket-setup.sh
 	sh release/dsa/fanpaket-setup.sh
 
-.PHONY: build-scripts
-
-release-files: $(shell find dev) $(shell find . -name "*.tex") clean build-scripts fanpaket
+release-files: $(shell find dev) $(shell find . -name "*.tex") clean release/dsa/fanpaket-setup.sh release/dsa/fanpaket-setup.ps1 release/dsa/README.html fanpaket
 	xelatex -output-directory release/dsa dokumentation.tex
 	cp dsa.cls dokumentation.tex release/dsa
 	cp -r dokumentation-snippets release/dsa

@@ -5,12 +5,6 @@
 Dies ist die Installationsanleitung der DSA-Klasse für das LaTeX-Textsatzsystem.
 Die Benutzung der Klasse wird im Dokument `dokumentation.pdf` erläutert.
 
-Für diejenigen Benutzer, die selbst keine oder wenig Ahnung von LaTeX haben und
-eigentlich nur die Dokumente generieren wollen, die der Klasse beiliegen, liegt
-die Definition einer VM (virtuellen Maschine) auf der Basis von Ubuntu bei, die
-mit Vagrant erzeugt werden kann und nach der Einrichtung alle nötige Software
-installiert hat. Eine Anleitung dazu findet sich in `README-VM.html`.
-
 ## TeX-Distribution installieren (sofern nicht vorhanden)
 
 ### Windows
@@ -95,7 +89,7 @@ das Fenster, das sich öffnet.
 `pdfimages` gehört zu der `poppler`-Bibliothek. Konsultiere deinen Paketmanager,
 um es zu installieren. Danach kannst du wie auf Windows diesen Befehl ausführen:
 
-    pdfimages Wege-des-Schwerts_Handouts._fee3.pdf wds
+	pdfimages -f 2 -l 2 Wege-des-Schwerts_Handouts._fee3.pdf wds
 
 ### Umwandlung und Einbindung
 
