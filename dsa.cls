@@ -63,7 +63,7 @@
 
 \usepackage[hidelinks, unicode]{hyperref}
 \IfFileExists{eforms.sty}{
-  \usepackage[xetex,useui]{eforms}
+  \usepackage[useui]{eforms}
   \everyTextField{\textFont{GaramondNo8}\textSize{12}\W{0}}
   \everyComboBox{\textFont{GaramondNo8}\textSize{12}\W{0}}
   \newcommand{\dsaTextInput}[3][12]{\textField[\ui{textsize={##1}}]{##2}{##3}{18pt}}
