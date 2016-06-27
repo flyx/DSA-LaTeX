@@ -46,7 +46,6 @@
 
 % font stuff
 
-\usepackage{xunicode}
 \usepackage{fontspec}
 \usepackage{titlesec}
 
