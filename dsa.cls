@@ -18,7 +18,7 @@
 % for details
 
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{dsa}[2014/02/06 v0.1]
+\ProvidesClass{dsa}[2016/06/27 v0.2.1]
 
 \newif\if@wallpaper\@wallpapertrue
 
