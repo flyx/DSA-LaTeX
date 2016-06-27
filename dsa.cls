@@ -33,7 +33,7 @@
 
 \LoadClass[a4paper, fontsize=11pt]{scrartcl}
 
-\usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
+\usepackage[top=1.69cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Package imports
@@ -130,7 +130,7 @@
   \pagebreak
   \onecolumn
   \dsaHeadingFont\bfseries
-  \newgeometry{top=0.5cm, bottom=0.5cm, left=1cm, right=1cm}
+  \newgeometry{top=1.0cm, bottom=0.5cm, left=1cm, right=1cm}
   \setlength{\dsaOldParindent}{\parindent}
   \setlength{\parindent}{0pt}
   \ClearWallPaper
@@ -156,6 +156,9 @@
   \dsaSetDefaultPageBorders
   \setlength{\parindent}{\dsaOldParindent}
 }
+
+% Set default value for border spacing within character sheet boxes
+\setlength{\fboxsep}{3mm}
 
 \newsavebox\blockbox
 \NewEnviron{dsaSheetBox}[1][\textwidth]{%
@@ -224,6 +227,7 @@
     ]{fanpaket/kasten-halbseiter.png}}%
   \begin{lrbox}{\langscapeSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
+  \vspace{4pt}
 }{%
   \centering%
   \end{minipage}
@@ -246,6 +250,7 @@
     ]{fanpaket/kasten-achtelseiter.png}}%
   \begin{lrbox}{\langscapeSmallSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
+  \vspace{4pt}
 }{%
   \centering%
   \end{minipage}
@@ -269,6 +274,7 @@
   \centering%
   \begin{lrbox}{\portraitSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
+  \vspace{4pt}
 }{%
   \end{minipage}
   \end{lrbox}%
