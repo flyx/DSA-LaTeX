@@ -23,10 +23,10 @@
 \newif\if@wallpaper\@wallpapertrue
 
 \DeclareOption{nowallpaper}{
-    \@wallpaperfalse
+  \@wallpaperfalse
 }
 \DeclareOption*{
-    \PassOptionsToClass{\CurrentOption}{scrartcl}
+  \PassOptionsToClass{\CurrentOption}{scrartcl}
 }
 
 \ProcessOptions
@@ -63,10 +63,10 @@
 
 \usepackage[hidelinks, unicode]{hyperref}
 \IfFileExists{eforms.sty}{
-   \usepackage[xetex,useui]{eforms}
-   \everyTextField{\textFont{GaramondNo8}\textSize{12}\W{0}}
-   \everyComboBox{\textFont{GaramondNo8}\textSize{12}\W{0}}
-   \newcommand{\dsaTextInput}[3][12]{\textField[\ui{textsize={##1}}]{##2}{##3}{18pt}}
+  \usepackage[xetex,useui]{eforms}
+  \everyTextField{\textFont{GaramondNo8}\textSize{12}\W{0}}
+  \everyComboBox{\textFont{GaramondNo8}\textSize{12}\W{0}}
+  \newcommand{\dsaTextInput}[3][12]{\textField[\ui{textsize={##1}}]{##2}{##3}{18pt}}
 }{}
 
 % font in TOC
@@ -94,8 +94,8 @@
 % default side images
 
 \newcommand{\dsaSetDefaultPageBorders}{
-   \ULCornerWallPaper{}{fanpaket/balken-links.png}
-   \URCornerWallPaper{}{fanpaket/balken-rechts.png}
+  \ULCornerWallPaper{}{fanpaket/balken-links.png}
+  \URCornerWallPaper{}{fanpaket/balken-rechts.png}
 }
 \dsaSetDefaultPageBorders
 
@@ -127,22 +127,22 @@
 
 \newlength\dsaOldParindent
 \newenvironment{dsaCharacterSheet}{
-   \pagebreak
-   \onecolumn
-   \dsaHeadingFont\bfseries
-   \newgeometry{top=0.5cm, bottom=0.5cm, left=1cm, right=1cm}
-   \setlength{\dsaOldParindent}{\parindent}
-   \setlength{\parindent}{0pt}
-   \ClearWallPaper
-   \if@wallpaper%
-       \IfFileExists{fanpaket/wallpaper.png}{
-          % wallpaper image is bigger than actual page
-          \setlength{\wpXoffset}{-0.3cm}
-          \setlength{\wpYoffset}{-0.1cm}
-          \ThisCenterWallPaper{1.0275}{fanpaket/wallpaper.png}
-       }{}
-   \fi
-   
+  \pagebreak
+  \onecolumn
+  \dsaHeadingFont\bfseries
+  \newgeometry{top=0.5cm, bottom=0.5cm, left=1cm, right=1cm}
+  \setlength{\dsaOldParindent}{\parindent}
+  \setlength{\parindent}{0pt}
+  \ClearWallPaper
+  \if@wallpaper%
+    \IfFileExists{fanpaket/wallpaper.png}{
+      % wallpaper image is bigger than actual page
+      \setlength{\wpXoffset}{-0.3cm}
+      \setlength{\wpYoffset}{-0.1cm}
+      \ThisCenterWallPaper{1.0275}{fanpaket/wallpaper.png}
+    }{}
+  \fi
+
   \setkomafont{section}{\dsaHeadingFont\dsaSectionStyle\centering}
   \setkomafont{subsection}{\dsaHeadingFont\dsaSubsectionStyle\centering}
   \RedeclareSectionCommand[ beforeskip = 15pt plus 2pt minus 2pt, % allow for 1pt resp. 2pt of ‘glue’ in either direction
@@ -150,11 +150,11 @@
   \RedeclareSectionCommand[ beforeskip = 15pt plus 2pt minus 2pt,
                             afterskip  =  8pt plus 1pt minus 1pt ]{subsection}
 }{
-   \newpage
-   \restoregeometry
-   \normalfont
-   \dsaSetDefaultPageBorders
-   \setlength{\parindent}{\dsaOldParindent}
+  \newpage
+  \restoregeometry
+  \normalfont
+  \dsaSetDefaultPageBorders
+  \setlength{\parindent}{\dsaOldParindent}
 }
 
 \newsavebox\blockbox
@@ -189,20 +189,19 @@
 }
 
 \newenvironment{dsaTitlePage}{
-   \onecolumn
-   \ClearWallPaper
-   \ThisULCornerWallPaper{}{fanpaket/balken-symbole-links.png}
-   \ThisURCornerWallPaper{}{fanpaket/balken-symbole-rechts.png}
-   \centering
-   \includegraphics[width=12cm]{fanpaket/logo-fanprodukt.png}
-   \vfill
-   \dsaHeadingFont
+  \onecolumn
+  \ClearWallPaper
+  \ThisULCornerWallPaper{}{fanpaket/balken-symbole-links.png}
+  \ThisURCornerWallPaper{}{fanpaket/balken-symbole-rechts.png}
+  \centering
+  \includegraphics[width=12cm]{fanpaket/logo-fanprodukt.png}
+  \vfill
+  \dsaHeadingFont
 }{
-   \vfill
-   \normalfont
-   {\tiny Dieses Dokument verwendet Grafiken aus dem DSA-Fanpaket der Ulisses Medien \& Spiel Distribution GmbH.}
-   \newpage
-   \dsaSetDefaultPageBorders
+  \vfill
+  \normalfont{\tiny Dieses Dokument verwendet Grafiken aus dem DSA-Fanpaket der Ulisses Medien \& Spiel Distribution GmbH.}
+  \newpage
+  \dsaSetDefaultPageBorders
 }
 
 \newlength{\dsaBoxLeftPadding}
@@ -226,15 +225,15 @@
   \begin{lrbox}{\langscapeSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
 }{%
-   \centering%
-   \end{minipage}
-   \end{lrbox}%
-   \noindent
-   \makebox[0pt][l]{%
-     \raisebox{\dimexpr-\dp\langscapeSafebox-\dsaBoxBottomPadding}{\imgcmd}%
-   }%
-   \hspace{\dsaBoxLeftPadding}
-   \usebox\langscapeSafebox
+  \centering%
+  \end{minipage}
+  \end{lrbox}%
+  \noindent
+  \makebox[0pt][l]{%
+    \raisebox{\dimexpr-\dp\langscapeSafebox-\dsaBoxBottomPadding}{\imgcmd}%
+  }%
+  \hspace{\dsaBoxLeftPadding}
+  \usebox\langscapeSafebox
 }
 
 \newsavebox\langscapeSmallSafebox
@@ -248,15 +247,15 @@
   \begin{lrbox}{\langscapeSmallSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
 }{%
-   \centering%
-   \end{minipage}
-   \end{lrbox}%
-   \noindent
-   \makebox[0pt][l]{%
-     \raisebox{\dimexpr-\dp\langscapeSmallSafebox-\dsaBoxBottomPadding}{\imgcmd}%
-   }%
-   \hspace{\dsaBoxLeftPadding}
-   \usebox\langscapeSmallSafebox
+  \centering%
+  \end{minipage}
+  \end{lrbox}%
+  \noindent
+  \makebox[0pt][l]{%
+    \raisebox{\dimexpr-\dp\langscapeSmallSafebox-\dsaBoxBottomPadding}{\imgcmd}%
+  }%
+  \hspace{\dsaBoxLeftPadding}
+  \usebox\langscapeSmallSafebox
 }
 
 \newsavebox\portraitSafebox
@@ -271,14 +270,14 @@
   \begin{lrbox}{\portraitSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
 }{%
-   \end{minipage}
-   \end{lrbox}%
-   \noindent
-   \makebox[0pt][l]{%
-     \raisebox{\dimexpr-\dp\portraitSafebox-\dsaBoxBottomPadding}{\imgcmd}%
-   }%
-   \hspace{\dsaBoxLeftPadding}
-   \usebox\portraitSafebox
+  \end{minipage}
+  \end{lrbox}%
+  \noindent
+  \makebox[0pt][l]{%
+    \raisebox{\dimexpr-\dp\portraitSafebox-\dsaBoxBottomPadding}{\imgcmd}%
+  }%
+  \hspace{\dsaBoxLeftPadding}
+  \usebox\portraitSafebox
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
