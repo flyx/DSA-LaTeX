@@ -20,6 +20,11 @@
 \NeedsTeXFormat{LaTeX2e} 
 \ProvidesClass{dsa}[2016/06/27 v0.2.1]
 
+\usepackage{iftex}
+\ifLuaTeX
+  \RequirePackage{luatex85}
+\fi
+
 \newif\if@wallpaper\@wallpapertrue
 
 \DeclareOption{nowallpaper}{
