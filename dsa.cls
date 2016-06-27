@@ -45,9 +45,9 @@
 \setdefaultlanguage{german}
 
 % font stuff
-
+% Note: If math packages are ever required, fontspec should 
+%       be loaded after them in order to load fonts correctly.
 \usepackage{fontspec}
-\usepackage{titlesec}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{7pt} 
@@ -107,19 +107,13 @@
 \newcommand{\dsaSubsectionStyle}{\Large\bfseries}
 
 \newcommand{\dsaSetHeadingFont}[1]{
-   \newfontfamily\dsaHeadingFont{#1}
-   \titleformat{\section}%
-      {\dsaHeadingFont\dsaSectionStyle} % format
-      {} % label
-      {10pt} % sep
-      {} % before
-      [\normalfont] % after
-   \titleformat{\subsection}%
-      {\dsaHeadingFont\dsaSubsectionStyle}%
-      {}
-      {10pt}
-      {}
-      [\normalfont]
+  \newfontfamily\dsaHeadingFont{#1}
+  \setkomafont{section}{\dsaHeadingFont\dsaSectionStyle}
+  \setkomafont{subsection}{\dsaHeadingFont\dsaSubsectionStyle}
+  \RedeclareSectionCommand[ beforeskip = 10pt plus 1pt minus 1pt, % allow for 1pt resp. 2pt of ‘glue’ in either direction
+                            afterskip  = 18pt plus 2pt minus 2pt ]{section}
+  \RedeclareSectionCommand[ beforeskip = 14pt plus 1pt minus 1pt,
+                            afterskip  =  7pt plus 1pt minus 1pt ]{subsection}
 }
 
 \setmainfont{GaramondNo8}
@@ -149,18 +143,12 @@
        }{}
    \fi
    
-   \titleformat{\section}%
-      {\dsaHeadingFont\Huge\bfseries\centering} % format
-      {} % label
-      {6pt} % sep
-      {} % before
-      [\normalfont] % after
-   \titleformat{\subsection}%
-      {\dsaHeadingFont\LARGE\bfseries\centering} % format
-      {} % label
-      {3pt} % sep
-      {} % before
-      [\normalfont] % after
+  \setkomafont{section}{\dsaHeadingFont\dsaSectionStyle\centering}
+  \setkomafont{subsection}{\dsaHeadingFont\dsaSubsectionStyle\centering}
+  \RedeclareSectionCommand[ beforeskip = 15pt plus 2pt minus 2pt, % allow for 1pt resp. 2pt of ‘glue’ in either direction
+                            afterskip  = 22pt plus 2pt minus 2pt ]{section}
+  \RedeclareSectionCommand[ beforeskip = 15pt plus 2pt minus 2pt,
+                            afterskip  =  8pt plus 1pt minus 1pt ]{subsection}
 }{
    \newpage
    \restoregeometry
