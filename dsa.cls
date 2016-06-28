@@ -18,7 +18,12 @@
 % for details
 
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{dsa}[2014/02/06 v0.1]
+\ProvidesClass{dsa}[2016/06/27 v0.2.1]
+
+\usepackage{iftex}
+\ifLuaTeX
+  \RequirePackage{luatex85}
+\fi
 
 \newif\if@wallpaper\@wallpapertrue
 
@@ -33,7 +38,7 @@
 
 \LoadClass[a4paper, fontsize=11pt]{scrartcl}
 
-\usepackage[top=1.5cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
+\usepackage[top=1.69cm, bottom=1.5cm, left=2.1cm, right=1.5cm]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Package imports
@@ -45,10 +50,9 @@
 \setdefaultlanguage{german}
 
 % font stuff
-
-\usepackage{xunicode}
+% Note: If math packages are ever required, fontspec should 
+%       be loaded after them in order to load fonts correctly.
 \usepackage{fontspec}
-\usepackage{titlesec}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{7pt} 
@@ -64,7 +68,7 @@
 
 \usepackage[hidelinks, unicode]{hyperref}
 \IfFileExists{eforms.sty}{
-   \usepackage[xetex,useui]{eforms}
+   \usepackage[useui]{eforms}
    \everyTextField{\textFont{GaramondNo8}\textSize{12}\W{0}}
    \everyComboBox{\textFont{GaramondNo8}\textSize{12}\W{0}}
    \newcommand{\dsaTextInput}[3][12]{\textField[\ui{textsize={##1}}]{##2}{##3}{18pt}}
@@ -108,19 +112,13 @@
 \newcommand{\dsaSubsectionStyle}{\Large\bfseries}
 
 \newcommand{\dsaSetHeadingFont}[1]{
-   \newfontfamily\dsaHeadingFont{#1}
-   \titleformat{\section}%
-      {\dsaHeadingFont\dsaSectionStyle} % format
-      {} % label
-      {10pt} % sep
-      {} % before
-      [\normalfont] % after
-   \titleformat{\subsection}%
-      {\dsaHeadingFont\dsaSubsectionStyle}%
-      {}
-      {10pt}
-      {}
-      [\normalfont]
+  \newfontfamily\dsaHeadingFont{#1}
+  \setkomafont{section}{\dsaHeadingFont\dsaSectionStyle}
+  \setkomafont{subsection}{\dsaHeadingFont\dsaSubsectionStyle}
+  \RedeclareSectionCommand[ beforeskip = 10pt plus 1pt minus 1pt, % allow for 1pt resp. 2pt of ‘glue’ in either direction
+                            afterskip  = 18pt plus 2pt minus 2pt ]{section}
+  \RedeclareSectionCommand[ beforeskip = 14pt plus 1pt minus 1pt,
+                            afterskip  =  7pt plus 1pt minus 1pt ]{subsection}
 }
 
 \setmainfont{GaramondNo8}
@@ -137,7 +135,7 @@
    \pagebreak
    \onecolumn
    \dsaHeadingFont\bfseries
-   \newgeometry{top=0.5cm, bottom=0.5cm, left=1cm, right=1cm}
+   \newgeometry{top=1.0cm, bottom=0.5cm, left=1cm, right=1cm}
    \setlength{\dsaOldParindent}{\parindent}
    \setlength{\parindent}{0pt}
    \ClearWallPaper
@@ -150,18 +148,12 @@
        }{}
    \fi
    
-   \titleformat{\section}%
-      {\dsaHeadingFont\Huge\bfseries\centering} % format
-      {} % label
-      {6pt} % sep
-      {} % before
-      [\normalfont] % after
-   \titleformat{\subsection}%
-      {\dsaHeadingFont\LARGE\bfseries\centering} % format
-      {} % label
-      {3pt} % sep
-      {} % before
-      [\normalfont] % after
+  \setkomafont{section}{\dsaHeadingFont\dsaSectionStyle\centering}
+  \setkomafont{subsection}{\dsaHeadingFont\dsaSubsectionStyle\centering}
+  \RedeclareSectionCommand[ beforeskip = 15pt plus 2pt minus 2pt, % allow for 1pt resp. 2pt of ‘glue’ in either direction
+                            afterskip  = 22pt plus 2pt minus 2pt ]{section}
+  \RedeclareSectionCommand[ beforeskip = 15pt plus 2pt minus 2pt,
+                            afterskip  =  8pt plus 1pt minus 1pt ]{subsection}
 }{
    \newpage
    \restoregeometry
@@ -169,6 +161,9 @@
    \dsaSetDefaultPageBorders
    \setlength{\parindent}{\dsaOldParindent}
 }
+
+% Set default value for border spacing within character sheet boxes
+\setlength{\fboxsep}{3mm}
 
 \newsavebox\blockbox
 \NewEnviron{dsaSheetBox}[1][\textwidth]{%
@@ -238,6 +233,7 @@
     ]{fanpaket/kasten-halbseiter.png}}%
   \begin{lrbox}{\langscapeSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
+  \vspace{4pt}
 }{%
    \centering%
    \end{minipage}
@@ -260,6 +256,7 @@
     ]{fanpaket/kasten-achtelseiter.png}}%
   \begin{lrbox}{\langscapeSmallSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
+  \vspace{4pt}
 }{%
    \centering%
    \end{minipage}
@@ -283,6 +280,7 @@
   \centering%
   \begin{lrbox}{\portraitSafebox}%
   \begin{minipage}{#1 - \dsaBoxLeftPadding - \dsaBoxRightPadding}
+  \vspace{4pt}
 }{%
    \end{minipage}
    \end{lrbox}%
