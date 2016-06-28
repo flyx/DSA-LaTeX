@@ -3,6 +3,7 @@
 \pagenumbering{gobble}
 
 \usepackage{multicol}
+\usepackage{metalogo}
 
 \usepackage{listings}
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -43,7 +44,7 @@
 
   Dies ist eine \LaTeX-Klasse, die Umgebungen und Kommandos zur Verfügung
   stellt, um Dokumente im Stil der DSA-Regelbücher und Charakterbögen zu 
-  erstellen - auf der Basis der Grafiken aus dem DSA-Fanpaket.
+  erstellen – auf der Basis der Grafiken aus dem DSA-Fanpaket.
 
   \subsection*{Abhängigkeiten}
 
@@ -65,25 +66,31 @@
   Das Hintergrundbild für Charakterbögen ist nicht Bestandteil des Fanpakets.
   Standardmäßig erstellt die \LaTeX-Klasse Charakterbögen auf weißem Hintergrund
   (also auch ohne den Rand). Du kannst jedoch das Original-Hintergrundbild der
-  DSA-Charakterbögen verwenden; eine Anleitung findest du im
-  \texttt{README.html}. Hast die das Hintergrundbild in den Ordner 
-  \texttt{fanpaket} gelegt, wird es automatisch als Hintergrundbild für deine
+  DSA-Charakterbögen verwenden; Eine Anleitung findest du in der \texttt{README.html}.
+  Wurde das Hintergrundbild unter dem Namen \texttt{wallpaper.png} im Ordner 
+  \texttt{fanpaket} abgelegt, wird es automatisch als Hintergrundbild für deine
   Charakterbögen verwendet.
   
-  Zum Erstellen der Dokumente wird eine TeX-Distribution benötigt, die
-  \texttt{xelatex} beinhaltet (das trifft auf alle derzeit verbreiteten
-  Distributionen zu). Außerdem müssen folgende LaTeX-Pakete verfügbar sein:
-  \texttt{polyglossia, xunicode, fontspec, titlesec, xcolor, pgf, graphics
-   wallpaper, environ}.
+  Zum Erstellen der Dokumente wird eine TeX-Distribution benötigt, die entweder
+  \XeLaTeX \ oder \LuaLaTeX \ beinhaltet (das trifft auf alle derzeit verbreiteten
+  Distributionen zu). Außerdem muss die Article-KOMA-Script-Klasse verfügbar und
+  folgende \LaTeX-Pakete installiert sein:
   
-  Des Weiteren benötigst du \texttt{eforms} für editierbare Textfelder.
+  \vspace{-12pt}
+  \begin{flushleft}
+    \texttt{calc, environ, fontspec, geometry, graphicx, hyperref, iftex, makecell,
+    multicol, pgf, polyglossia, tabu, tikz, tocloft, wallpaper, xcolor}
+  \end{flushleft}
+  \vspace{-12pt}
+  
+  Optional benötigst du zusätzlich \texttt{eforms} für editierbare Textfelder.
   Im Gegensatz zu den anderen Paketen musst du dieses manuell
-  \href{http://www.ctan.org/pkg/eforms}{hier} herunterladen und dann in deine
-  Distribution installieren (wie genau das geht, hängt von der Distribution ab).
+  \href{http://www.ctan.org/pkg/eforms}{hier} herunterladen und dann in deiner
+  Distribution installieren.
   
   \subsection*{Mitgelieferte Dokumente}
   
-  Der Klasse liegen bereits einige Dokumente bei:
+  Der DSA-Klasse liegen bereits einige Dokumente bei:
   
   \begin{itemize}
     \item \textbf{dokumentation.pdf:} Dieses Dokument.
@@ -93,29 +100,29 @@
   
   Wenn du das Vertrautendokument mit Hintergrundbild haben möchtest, kannst du
   es mit der beiliegenden Quelldatei \texttt{vertrautendokument.tex} selbst
-  erstellen, nachdem du das Hintergrundbild in den \texttt{fanpaket}-Ordner
-  gelegt hast.
+  erstellen, nachdem du das Hintergrundbild wie zuvor beschrieben im
+  \texttt{fanpaket}-Ordner abgelegt hast.
   
   \subsection*{Dateimanagement}
   
-  Üblicherweise werden \LaTeX-Pakete installiert, und von überall her
-  verfügbar zu sein. Dies kannst du mit der DSA-Klasse ebenfalls machen;
-  alternativ kannst du aber auch einfach \texttt{dsa.cls} und den Ordner
-  \texttt{fanpaket} dorthin kopieren, wo auch dein Dokument liegt. Der
-  Vorteil ist, dass du dann direkt Grafiken aus dem Fanpaket über relative
-  Pfadangaben verwenden kannst.
+  Üblicherweise werden \LaTeX-Pakete installiert um im gesamten System
+  verfügbar zu sein. Dies kannst du mit dieser DSA-Klasse natürlich ebenfalls
+  machen; Alternativ kannst du aber auch einfach die Klassendatei \texttt{dsa.cls}
+  und den Ordner \texttt{fanpaket} dorthin kopieren, wo auch dein Dokument
+  liegt. Der Vorteil davon ist, dass du dann in deinen Projekten direkt Grafiken
+  aus dem Fanpaket über relative Pfadangaben verwenden kannst.
   
   \begin{dsaBoxPortrait}
     \subsection*{\normalsize Informationen für Entwickler}
     
-    Diese LaTeX-Klasse wird auf GitHub gehostet, das Repository befindet sich
+    Diese LaTeX-Klasse wird auf GitHub gehostet. Das Repository befindet sich
     hier:
     
     \url{https://github.com/flyx/DSA-LaTeX}
     
     Wenn du den Code aus dem Repository aus\-checkst, statt das neueste
     Release zu nehmen, bist du auf dem neuesten Stand, allerdings hast du
-    dann die Skripte zum Herunterladen des Fanpakets nicht, denn die werden
+    dann die Skripte zum Herunterladen des Fanpakets nicht, denn diese werden
     erst beim Bauen eines Releases erzeugt. Die beiliegende \texttt{Makefile}
     nimmt dir die Arbeit ab, ein Release zu bauen. Um sie auszuführen, brauchst
     du \texttt{make}, \texttt{Python 2}, sowie die Python-Pakete
@@ -124,13 +131,13 @@
     Cygwin zum Laufen kriegen. 
     
     Das Makefile ist nicht dafür gedacht, während der Entwicklung eingesetzt
-    zu werden - es lädt bei jedem Aufruf das Fanpaket neu herunter!
+    zu werden – es lädt bei jedem Aufruf das Fanpaket neu herunter!
     
   \end{dsaBoxPortrait}
   
-  \begin{center}
-    \includegraphics{./fanpaket/symbol-nandus.png}
-  \end{center}
+  %\begin{center}
+    %\includegraphics{./fanpaket/symbol-nandus.png}
+  %\end{center}
   
   \onecolumn
   
@@ -139,14 +146,14 @@
   \begin{multicols}{2}
     \subsection*{Grundsätzliches}
     
-    Diese Klasse kann nur mit XeTeX benutzt werden. Das ist vor allem
-    deshalb so, weil normales \TeX nicht die im System installierten
-    TrueType-Schriftarten verwenden kann. Außerdem hat man mit XeTeX nicht
-    das ständige Problem mit der mangelhaften Unicode-Unterstützung (im
-    Deutschen vor allem wichtig für Umlaute). Entsprechend musst du deine
-    Dokumente immer mit dem Kommando \texttt{xelatex} setzen. Wenn du einen
-    grafischen \LaTeX-Editor verwendest, sollte dieser eine entsprechende
-    Einstellung haben.
+    Diese Klasse kann nur mit \XeTeX \ oder \LuaTeX \ benutzt werden. Das ist vor
+    allem deshalb so, weil normales \TeX \ nicht in der Lage ist die im System
+    installierten TrueType-Schriftarten zu verwenden. Außerdem hat man mit
+    \XeTeX \ und  \LuaTeX \ nicht ständig das Problem mit der mangelhaften
+    Unicode-Unterstützung (im Deutschen vor allem für Umlaute wichtig).
+    Entsprechend musst du deine Dokumente immer mit dem Kommando \texttt{xelatex}
+    bzw. \texttt{lualatex} setzen. Wenn du einen grafischen \LaTeX-Editor
+    verwendest, sollte dieser eine entsprechende Einstellung haben.
     
     \subsection*{Dokumentengerüst}
       
@@ -185,7 +192,7 @@
     \begin{lstlisting}
 \twocolumn[\section*{Überschrift}]\end{lstlisting}
 
-    Dies startet eine neue Seite. Wenn - wie auf dieser Seite - Ein Kasten
+    Dies startet eine neue Seite. Wenn – wie auf dieser Seite – ein Kasten
     über die gesamte Breite der Seite gehen soll, muss die Seite selbst mit
     \verb|\onecolumn| begonnen werden. Die zweispaltigen Teile der Seite
     können dann mithilfe der \verb|multicols|-Umgebung erstellt werden. 
@@ -196,8 +203,8 @@
     \subsection*{Mit Grafiken hinterlegte Boxen}
     
     \begin{multicols}{2}
-      Es ist drei Größen für Boxen verfügbar, die mit
-      folgenden Umgebungen benutzt werden können:
+      Es sind drei Größen für Boxen verfügbar, die mit
+      folgenden Umgebungen genutzt werden können:
       
       \begin{itemize} \itemsep0em
         \item \textbf{dsaBoxLandscape}: Querformat, gedacht für etwa eine
@@ -215,25 +222,24 @@
       den Abstand des Inhalts zum Rand anzupassen:
       
       \begin{itemize} \itemsep0em
-        \item \verb|\dsaBoxLeftPadding| (Standard: 12pt)
-        \item \verb|\dsaBoxRightPadding| (Standard: 14pt)
-        \item \verb|\dsaBoxTopPadding| (Standard: 7pt)
+        \item \verb|\dsaBoxLeftPadding  | (Standard: 12pt)
+        \item \verb|\dsaBoxRightPadding | (Standard: 14pt)
+        \item \verb|\dsaBoxTopPadding   | (Standard: \ \ 7pt)
         \item \verb|\dsaBoxBottomPadding| (Standard: 14pt)
       \end{itemize}
       \vspace{-10pt}
 
     \columnbreak
     
-      Standardmäßig werden die Boxen nicht in eine
-      \texttt{float}-Umgebung gepackt. Das erscheint mir nicht als sinnvoll,
-      denn die Boxen sollten schon genau dort erscheinen, wo der Autor sie
-      haben möchte. Bildverweise oder ähnliches sind hier wohl eher fehl
-      am Platz.
+      Standardmäßig werden die Boxen nicht in eine \texttt{float}-Umgebung
+      gepackt, denn die Boxen sollten schon genau dort erscheinen, wo der
+      Autor sie haben möchte. Bildverweise oder ähnliches sind hier wohl
+      eher fehl am Platz.
       
-      Der Inhalt in den Boxen befindet sich automatisch in einer Minipage,
+      Der Inhalt in den Boxen befindet sich von Haus aus in einer Minipage,
       das heißt, es können alle üblichen Formatierungstechniken verwendet
       werden. In dieser Box etwa wird der Text mittels einer
-      \verb|multicols|-Umgebung zweispaltig gelayoutet.
+      \verb|multicols|-Umgebung zweispaltig gelayoutet.\\
       
       Beispiel:
       
@@ -241,7 +247,7 @@
 \begin[0.5\linewidth]{dsaBoxPortrait}
   \subsection*{Informationskasten}
   
-  Hier steht etwas interessantes drin.
+  Hier steht etwas Interessantes drin.
 \end{dsaBoxPortrait}\end{lstlisting}
       
     \end{multicols}
@@ -259,16 +265,18 @@
         auf der ein Charakterbogen, Handout oder ähnliches erstellt werden
         kann. Diese Seite wird mit dem Hintergrundbild \texttt{wallpaper.png}
         im \texttt{fanpaket}-Ordner hinterlegt, sofern dieses Bild vorhanden
-        ist (wie auf der ersten Seite beschrieben, ist es nicht Bestandteil
+        ist (wie auf der ersten Seite beschrieben ist es nicht Bestandteil
         des Fanpakets). Ansonsten hat sie einen weißen Hintergrund.
         
-        Die Seite hat weniger Rand als normale Seiten, um möglichst viel
+        Die Seite hat weniger Rand als normale Seiten um möglichst viel
         Platz verwenden zu können. Mit der Umgebung \textbf{dsaSheetBox}
         können schwarz umrandete Boxen wie diese hier erstellt werden.
         Wird das Hintergrundbild verwendet, so wird die Box mit
         halbtransparentem weiß gefüllt. \textbf{dsaSheetBox} nimmt als
         optionales Argument die Breite der Box, deren Standardwert
-        \texttt{\textbackslash linewidth} ist.
+        \texttt{\textbackslash linewidth} ist. Zusätzlich kann das Spacing
+        des enthaltenen Textes zur Umrandung mittels \texttt{\textbackslash
+        setlength\{\textbackslash fboxsep\}\{<Länge>\}} angepasst werden.
         
         Auf der gesamten Seite wird standardmäßig die Schriftart für
         Überschriften verwendet, mit \texttt{\textbackslash normalfont} kann zur
@@ -297,8 +305,8 @@
         
         Es fügt ein editierbares Textfeld ein. \texttt{<size>} bestimmt die 
         Schriftgröße und steht standardmäßig auf 12 (ohne Einheit angeben!).
-        \texttt{<name>} ist der Name des Textfelds (wird nirgends angezeigt,
-        es muss nur darauf geachtet werden, dass kein Name doppelt benutzt
+        \texttt{<name>} ist der Name des Textfelds. Dieser wird nirgends angezeigt,
+        es muss allerdings darauf geachtet werden, dass kein Name doppelt benutzt
         wird). \texttt{<width>} setzt die Breite der Textbox.
       \end{dsaSheetBox}
     
