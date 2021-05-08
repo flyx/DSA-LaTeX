@@ -52,6 +52,8 @@
 % font stuff
 % Note: If math packages are ever required, fontspec should 
 %       be loaded after them in order to load fonts correctly.
+\usepackage[full]{textcomp}
+\usepackage{garamondx}
 \usepackage{fontspec}
 
 \setlength{\parindent}{0pt}
@@ -69,10 +71,12 @@
 \usepackage[hidelinks, unicode]{hyperref}
 \IfFileExists{eforms.sty}{
   \usepackage[useui]{eforms}
-  \everyTextField{\textFont{GaramondNo8}\textSize{12}\W{0}}
-  \everyComboBox{\textFont{GaramondNo8}\textSize{12}\W{0}}
+  \everyTextField{\textFont{NewG8}\textSize{12}\W{0}}
+  \everyComboBox{\textFont{NewG8}\textSize{12}\W{0}}
   \newcommand{\dsaTextInput}[3][12]{\textField[\ui{textsize={##1}}]{##2}{##3}{18pt}}
-}{}
+}{
+  \newcommand{\dsaTextInput}[3][12]{\makebox[##1pt][left]{##2}}
+}
 
 % font in TOC
 
@@ -121,7 +125,7 @@
                             afterskip  =  7pt plus 1pt minus 1pt ]{subsection}
 }
 
-\setmainfont{GaramondNo8}
+%\setmainfont{NewG8}
 \dsaSetHeadingFont{Manson}
 \newfontfamily{\mansontt}{Manson}
 \DeclareTextFontCommand{\textmansontt}{\mansontt}
